@@ -6,7 +6,7 @@
 /*   By: elouisia <elouisia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/06 15:54:20 by elouisia          #+#    #+#             */
-/*   Updated: 2022/09/07 15:57:57 by elouisia         ###   ########.fr       */
+/*   Updated: 2022/09/08 18:04:47 by elouisia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,11 +24,22 @@
 
 typedef struct s_cub_data
 {
-    void    *mlx_ptr;
-    void    *win_ptr;
-}   t_cub_data;
+	void	*mlx_ptr;
+	void	*win_ptr;
+	char	**map;
+}	t_cub_data;
 
-int    key_check(int key, t_cub_data *data);
+/*
+**	MAIN.C
+*/
+
+int	key_check(int key, t_cub_data *data);
 int	close_window(t_cub_data *data);
+
+/*
+**	MAP_CHECK.C
+*/
+
+int	check_map(t_cub_data *data, char *map_file);
 
 #endif

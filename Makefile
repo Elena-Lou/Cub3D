@@ -4,7 +4,7 @@ OBJS_DIR = objs
 
 CC = gcc
 
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -g3
 
 NAME = cub3D
 

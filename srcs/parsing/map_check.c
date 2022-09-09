@@ -6,7 +6,7 @@
 /*   By: elouisia <elouisia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/07 16:04:09 by elouisia          #+#    #+#             */
-/*   Updated: 2022/09/08 18:05:19 by elouisia         ###   ########.fr       */
+/*   Updated: 2022/09/09 14:52:55 by elouisia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,22 +14,29 @@
 
 int	check_map(t_cub_data *data, char *map_file)
 {
-	char	*str;
+	char	*line;
 	int		fd;
 	int		i;
 	(void)data;
 	
 	fd = open(map_file, O_RDONLY);
-	i = 0;
-	while (1)
+	if (fd < 0)
 	{
-		str = get_next_line(fd);
-		printf("GNL : %s\n", str);
-		if (str)
-			break ;
-		else if (str[0] != '\n')
-			i++;
+		write(2, "Open error\n", 11);
+		return (1);
 	}
-	printf("i = %d\n", i);
+	i = 0;
+	line = get_next_line(fd);
+	i++;
+	free(line);
+	while (line)
+	{
+		line = get_next_line(fd);
+		printf("GNL : %s", line);
+		i++;
+		free(line);
+	}
+	printf("\ni = %d\n", i);
+	close(fd);
 	return (0);
 }

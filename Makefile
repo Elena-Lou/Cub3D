@@ -91,10 +91,10 @@ re : fclean
 	@make -s all
 
 test:	all
-		./$(NAME)
+		./$(NAME) maps/default.cub
 
 vtest:	all
-		valgrind ./$(NAME)
+		valgrind --leak-check=full -s ./$(NAME) maps/default.cub
 
 -include $(DEPS)
 

@@ -38,14 +38,16 @@ int	main(int ac, char **av)
 		printf("Usage : ./cub2D map.cub\n");
 		return (1);
 	}
-	if (check_map(&data, av[1]))
-		return (1);
+	
+	data.lst_map = NULL;
+	map_to_list(&data, av[1]);
 	data.mlx_ptr = mlx_init();
 	if (!data.mlx_ptr)
 		return (1);
 	data.win_ptr = mlx_new_window(data.mlx_ptr, 1000, 800, "Cub3D");
 	if (!data.win_ptr)
 		return (1);
+	
 	mlx_key_hook(data.win_ptr, &key_check, &data);
 	mlx_hook(data.win_ptr, 17, 1L << 3, &close_window, &data);
 	mlx_loop(data.mlx_ptr);

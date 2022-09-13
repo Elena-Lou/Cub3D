@@ -15,16 +15,17 @@ INCS		=	-I include\
 				-I minilibx
 
 RM			=	rm -rf
+SILENT		=	--no-print-directory -s
 
 #############################################################################
 #							LIBRARIES										#
 #############################################################################
 
-MINILIBX = minilibx
+MLX_PATH	=	minilibx/
+MLX			=	$(addprefix $(MLX_PATH), libmlx_Linux.a)
 
-LIB = libft
-
-LIB_NAME = libft/libft.a
+LIBFT_PATH	=	libft/
+LIBFT		=	$(addprefix $(LIBFT_PATH), libft.a)
 
 #############################################################################
 #								FILES										#
@@ -67,28 +68,30 @@ $(OBJS_DIR)/%.o:	$(SRCS_DIR)/%.c
 		@mkdir -p $(dir $@)
 		$(CC) $(CFLAGS) -o $@ -c $< $(DEPSFLAGS) $(INCS)
 
-$(LIB_NAME):
-		@make --no-print-directory -s -C ./libft/ all
+$(LIBFT):
+		@make $(SILENT) -C ./libft/ all
 		@echo "$(PURPLE)\nLibft $(CYAN)compiled\n$(NO_COLOUR)"
 
-$(NAME): $(OBJS) $(LIB_NAME)
-		@make --no-print-directory -s -C ./minilibx/ all
+$(NAME): $(OBJS) $(LIBFT)
+		@make $(SILENT) -C ./minilibx/ all
 		@echo "$(CYAN)\nMiniLibX $(PURPLE)compiled\n$(NO_COLOUR)"
-		$(CC) $(CFLAGS) $(OBJS) -o $@ $(INCS) $(LIB_NAME) minilibx/libmlx.a -lm -lbsd -lX11 -lXext
+		#$(CC) $(CFLAGS) $(OBJS) -o $@ $(INCS) $(LIBFT) minilibx/libmlx_Linux.a -lm -lbsd -lX11 -lXext
+		$(CC) $(CFLAGS) $(OBJS) -o $@ $(INCS) $(LIBFT) $(MLX) -lm -lbsd -lX11 -lXext
 		@echo "$(ORANGE)cub3D$(CYAN) is ready$(NO_COLOUR)"
 
-clean :
-		@cd $(MINILIBX) && make -s $@
-		@cd $(LIB) && make -s $@
+clean:
+		@make $(SILENT) -C $(LIBFT_PATH) clean
+		@make $(SILENT) -C $(MLX_PATH) clean
 		$(RM) $(OBJS_DIR)
 
-fclean : clean
+fclean: clean
 		$(RM) minilibx/libmlx.a
-		@cd $(LIB) && make -s $@
 		$(RM) $(NAME)
+		@make $(SILENT) -C $(LIBFT_PATH) fclean
+		@rm -f $(MLX)
 
-re : fclean
-	@make -s all
+re:		fclean
+		@make $(SILENT) all
 
 test:	all
 		./$(NAME) maps/default.cub

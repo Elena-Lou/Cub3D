@@ -36,13 +36,13 @@ SRCS	=	main.c \
 				map_check.c\
 			)
 
-SRCS_DIR = ./srcs
+SRCS_DIR = ./srcs/
 
-OBJS_DIR = objs
+OBJS_DIR = ./objs/
 
-OBJS = $(addprefix $(OBJS_DIR)/, $(SRCS:.c=.o))
+OBJS = $(addprefix $(OBJS_DIR), $(SRCS:.c=.o))
 
-DEPS = $(addprefix $(OBJS_DIR)/, $(SRCS:.c=.d))
+DEPS = $(addprefix $(OBJS_DIR), $(SRCS:.c=.d))
 
 
 
@@ -64,7 +64,7 @@ NO_COLOUR	= \033[m
 all: $(NAME)
 	@make $(NAME) -q && echo "$(GREEN)All Good Here !$(NO_COLOUR)"
 
-$(OBJS_DIR)/%.o:	$(SRCS_DIR)/%.c
+$(OBJS_DIR)%.o:	$(SRCS_DIR)%.c
 		@mkdir -p $(dir $@)
 		$(CC) $(CFLAGS) -o $@ -c $< $(DEPSFLAGS) $(INCS)
 

@@ -1,12 +1,24 @@
-SRCS_DIR = ./srcs
-
-OBJS_DIR = objs
-
-CC = gcc
-
-CFLAGS = -Wall -Wextra -Werror -g3
-
 NAME = cub3D
+
+
+#############################################################################
+#							COMPILATION										#
+#############################################################################
+
+CC	=	cc
+
+CFLAGS		=	-Wall -Wextra -Werror -g3
+DEPSFLAGS	=	-MMD -MF $(@:.o=.d)
+
+INCS		=	-I include\
+				-I libft/include\
+				-I minilibx
+
+RM			=	rm -rf
+
+#############################################################################
+#							LIBRARIES										#
+#############################################################################
 
 MINILIBX = minilibx
 
@@ -14,29 +26,39 @@ LIB = libft
 
 LIB_NAME = libft/libft.a
 
-SRCS = main.c \
-		$(addprefix parsing/, \
-			map_check.c)
+#############################################################################
+#								FILES										#
+#############################################################################
+
+SRCS	=	main.c \
+			$(addprefix parsing/, \
+				map_check.c\
+			)
+
+SRCS_DIR = ./srcs
+
+OBJS_DIR = objs
 
 OBJS = $(addprefix $(OBJS_DIR)/, $(SRCS:.c=.o))
 
 DEPS = $(addprefix $(OBJS_DIR)/, $(SRCS:.c=.d))
 
-DEPSFLAGS = -MMD -MF $(@:.o=.d)
 
-INCS = -I include -I libft/include -I minilibx
 
-RM = rm -rf
+
+#############################################################################
+#							COLOURS											#
+#############################################################################
 
 PURPLE		= \033[1;35m
-
 CYAN		= \033[1;36m
-
 GREEN		= \033[1;32m
-
 ORANGE		= \033[1;33m
-
 NO_COLOUR	= \033[m
+
+#############################################################################
+#							RULES											#
+#############################################################################
 
 all: $(NAME)
 	@make $(NAME) -q && echo "$(GREEN)All Good Here !$(NO_COLOUR)"
@@ -55,7 +77,7 @@ $(NAME): $(OBJS) $(LIB_NAME)
 		$(CC) $(CFLAGS) $(OBJS) -o $@ $(INCS) $(LIB_NAME) minilibx/libmlx.a -lm -lbsd -lX11 -lXext
 		@echo "$(ORANGE)cub3D$(CYAN) is ready$(NO_COLOUR)"
 
-clean : 
+clean :
 		@cd $(MINILIBX) && make -s $@
 		@cd $(LIB) && make -s $@
 		$(RM) $(OBJS_DIR)
@@ -68,6 +90,12 @@ fclean : clean
 re : fclean
 	@make -s all
 
+test:	all
+		./$(NAME)
+
+vtest:	all
+		valgrind ./$(NAME)
+
 -include $(DEPS)
 
-.PHONY: all clean fclean re 
+.PHONY: all clean fclean re test vtest

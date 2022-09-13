@@ -17,8 +17,8 @@ int	check_map(t_cub_data *data, char *map_file)
 	char	*line;
 	int		fd;
 	int		i;
+
 	(void)data;
-	
 	fd = open(map_file, O_RDONLY);
 	if (fd < 0)
 	{

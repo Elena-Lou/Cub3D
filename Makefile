@@ -1,73 +1,104 @@
-SRCS_DIR = ./srcs
-
-OBJS_DIR = objs
-
-CC = gcc
-
-CFLAGS = -Wall -Wextra -Werror -g3
-
 NAME = cub3D
 
-MINILIBX = minilibx
 
-LIB = libft
+#############################################################################
+#							COMPILATION										#
+#############################################################################
 
-LIB_NAME = libft/libft.a
+CC	=	cc
 
-SRCS = main.c \
-		$(addprefix parsing/, \
-			map_check.c)
+CFLAGS		=	-Wall -Wextra -Werror -g3
+DEPSFLAGS	=	-MMD -MF $(@:.o=.d)
 
-OBJS = $(addprefix $(OBJS_DIR)/, $(SRCS:.c=.o))
+INCS		=	-I include\
+				-I libft/include\
+				-I minilibx
 
-DEPS = $(addprefix $(OBJS_DIR)/, $(SRCS:.c=.d))
+RM			=	rm -rf
+SILENT		=	--no-print-directory -s
 
-DEPSFLAGS = -MMD -MF $(@:.o=.d)
+#############################################################################
+#							LIBRARIES										#
+#############################################################################
 
-INCS = -I include -I libft/include -I minilibx
+MLX_PATH	=	minilibx/
+MLX			=	$(addprefix $(MLX_PATH), libmlx_Linux.a)
 
-RM = rm -rf
+LIBFT_PATH	=	libft/
+LIBFT		=	$(addprefix $(LIBFT_PATH), libft.a)
+
+#############################################################################
+#								FILES										#
+#############################################################################
+
+SRCS	=	main.c \
+			$(addprefix parsing/, \
+				map_check.c\
+			)
+
+SRCS_DIR = ./srcs/
+
+OBJS_DIR = ./objs/
+
+OBJS = $(addprefix $(OBJS_DIR), $(SRCS:.c=.o))
+
+DEPS = $(addprefix $(OBJS_DIR), $(SRCS:.c=.d))
+
+
+
+
+#############################################################################
+#							COLOURS											#
+#############################################################################
 
 PURPLE		= \033[1;35m
-
 CYAN		= \033[1;36m
-
 GREEN		= \033[1;32m
-
 ORANGE		= \033[1;33m
-
 NO_COLOUR	= \033[m
+
+#############################################################################
+#							RULES											#
+#############################################################################
 
 all: $(NAME)
 	@make $(NAME) -q && echo "$(GREEN)All Good Here !$(NO_COLOUR)"
 
-$(OBJS_DIR)/%.o:	$(SRCS_DIR)/%.c
+$(OBJS_DIR)%.o:	$(SRCS_DIR)%.c
 		@mkdir -p $(dir $@)
 		$(CC) $(CFLAGS) -o $@ -c $< $(DEPSFLAGS) $(INCS)
 
-$(LIB_NAME):
-		@make --no-print-directory -s -C ./libft/ all
+$(LIBFT):
+		@make $(SILENT) -C ./libft/ all
 		@echo "$(PURPLE)\nLibft $(CYAN)compiled\n$(NO_COLOUR)"
 
-$(NAME): $(OBJS) $(LIB_NAME)
-		@make --no-print-directory -s -C ./minilibx/ all
+$(NAME): $(OBJS) $(LIBFT)
+		@make $(SILENT) -C ./minilibx/ all
 		@echo "$(CYAN)\nMiniLibX $(PURPLE)compiled\n$(NO_COLOUR)"
-		$(CC) $(CFLAGS) $(OBJS) -o $@ $(INCS) $(LIB_NAME) minilibx/libmlx.a -lm -lbsd -lX11 -lXext
+		#$(CC) $(CFLAGS) $(OBJS) -o $@ $(INCS) $(LIBFT) minilibx/libmlx_Linux.a -lm -lbsd -lX11 -lXext
+		$(CC) $(CFLAGS) $(OBJS) -o $@ $(INCS) $(LIBFT) $(MLX) -lm -lbsd -lX11 -lXext
 		@echo "$(ORANGE)cub3D$(CYAN) is ready$(NO_COLOUR)"
 
-clean : 
-		@cd $(MINILIBX) && make -s $@
-		@cd $(LIB) && make -s $@
+clean:
+		@make $(SILENT) -C $(LIBFT_PATH) clean
+		@make $(SILENT) -C $(MLX_PATH) clean
 		$(RM) $(OBJS_DIR)
 
-fclean : clean
+fclean: clean
 		$(RM) minilibx/libmlx.a
-		@cd $(LIB) && make -s $@
 		$(RM) $(NAME)
+		@make $(SILENT) -C $(LIBFT_PATH) fclean
+		@rm -f $(MLX)
 
-re : fclean
-	@make -s all
+re:		fclean
+		@make $(SILENT) all
+
+test:	all
+		./$(NAME) maps/default.cub
+
+vtest:	all
+		valgrind --leak-check=full -s ./$(NAME) maps/default.cub
 
 -include $(DEPS)
 
-.PHONY: all clean fclean re 
+.PHONY: all clean fclean re test vtest

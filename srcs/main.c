@@ -6,7 +6,7 @@
 /*   By: elouisia <elouisia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/06 15:52:30 by elouisia          #+#    #+#             */
-/*   Updated: 2022/09/08 18:04:57 by elouisia         ###   ########.fr       */
+/*   Updated: 2022/09/14 10:18:34 by aweaver          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,13 +38,13 @@ int	main(int ac, char **av)
 		printf("Usage : ./cub2D map.cub\n");
 		return (1);
 	}
+	if (check_map(&data, av[1]))
+		return (1);
 	data.mlx_ptr = mlx_init();
 	if (!data.mlx_ptr)
 		return (1);
 	data.win_ptr = mlx_new_window(data.mlx_ptr, 1000, 800, "Cub3D");
 	if (!data.win_ptr)
-		return (1);
-	if (check_map(&data, av[1]))
 		return (1);
 	mlx_key_hook(data.win_ptr, &key_check, &data);
 	mlx_hook(data.win_ptr, 17, 1L << 3, &close_window, &data);

@@ -27,6 +27,8 @@ MLX			=	$(addprefix $(MLX_PATH), libmlx_Linux.a)
 LIBFT_PATH	=	libft/
 LIBFT		=	$(addprefix $(LIBFT_PATH), libft.a)
 
+LIBS		=	-lm -lbsd -lX11 -lXext
+
 #############################################################################
 #								FILES										#
 #############################################################################
@@ -72,10 +74,12 @@ $(LIBFT):
 		@make $(SILENT) -C ./libft/ all
 		@echo "$(PURPLE)\nLibft $(CYAN)compiled\n$(NO_COLOUR)"
 
-$(NAME): $(OBJS) $(LIBFT)
+$(MLX):
 		@make $(SILENT) -C ./minilibx/ all
 		@echo "$(CYAN)\nMiniLibX $(PURPLE)compiled\n$(NO_COLOUR)"
-		#$(CC) $(CFLAGS) $(OBJS) -o $@ $(INCS) $(LIBFT) minilibx/libmlx_Linux.a -lm -lbsd -lX11 -lXext
+
+$(NAME): $(OBJS) $(LIBFT) $(MLX)
+		#$(CC) $(CFLAGS) $(OBJS) -o $@ $(INCS) $(LIBFT) minilibx/libmlx_Linux.a $(LIBS)
 		$(CC) $(CFLAGS) $(OBJS) -o $@ $(INCS) $(LIBFT) $(MLX) -lm -lbsd -lX11 -lXext
 		@echo "$(ORANGE)cub3D$(CYAN) is ready$(NO_COLOUR)"
 
@@ -99,6 +103,10 @@ test:	all
 vtest:	all
 		valgrind --leak-check=full -s ./$(NAME) maps/default.cub
 
+test_map:	$(LIBFT) $(MLX)
+		$(CC) $(CFLAGS) srcs/tests/main_test_map.c srcs/parsing/map_check.c $(LIBFT) $(MLX) $(LIBS) -o $(NAME) $(INCS)
+		./.test_maps.sh
+
 -include $(DEPS)
 
-.PHONY: all clean fclean re test vtest
+.PHONY: all clean fclean re test vtest test_map

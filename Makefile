@@ -79,8 +79,7 @@ $(MLX):
 		@echo "$(CYAN)\nMiniLibX $(PURPLE)compiled\n$(NO_COLOUR)"
 
 $(NAME): $(OBJS) $(LIBFT) $(MLX)
-		#$(CC) $(CFLAGS) $(OBJS) -o $@ $(INCS) $(LIBFT) minilibx/libmlx_Linux.a $(LIBS)
-		$(CC) $(CFLAGS) $(OBJS) -o $@ $(INCS) $(LIBFT) $(MLX) -lm -lbsd -lX11 -lXext
+		$(CC) $(CFLAGS) $(OBJS) -o $@ $(INCS) $(LIBFT) minilibx/libmlx_Linux.a $(LIBS)
 		@echo "$(ORANGE)cub3D$(CYAN) is ready$(NO_COLOUR)"
 
 clean:

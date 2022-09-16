@@ -6,7 +6,7 @@
 /*   By: elouisia <elouisia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/06 15:54:20 by elouisia          #+#    #+#             */
-/*   Updated: 2022/09/16 14:56:47 by aweaver          ###   ########.fr       */
+/*   Updated: 2022/09/19 09:45:22 by aweaver          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,12 @@ typedef struct s_cub_data
 {
 	void	*mlx_ptr;
 	void	*win_ptr;
+	char	*no;
+	char	*so;
+	char	*ea;
+	char	*we;
+	int		ceilling;
+	int		floor;
 	int		fd;
 	t_list	*lst_map;
 }	t_cub_data;
@@ -48,6 +54,7 @@ int		close_window(t_cub_data *data);
 
 int		add_line_map(char *line, t_cub_data *data);
 int		map_to_list(t_cub_data *data, char *map_file);
+int		ft_check_map_content(t_cub_data *data);
 
 /*
 ** FREE_FUNCTIONS.C

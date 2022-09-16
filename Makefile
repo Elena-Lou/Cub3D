@@ -36,6 +36,7 @@ LIBS		=	-lm -lbsd -lX11 -lXext
 SRCS	=	main.c \
 			$(addprefix parsing/, \
 				map_check.c\
+				map_content.c\
 			)\
 			$(addprefix utils/, \
 				free_functions.c\

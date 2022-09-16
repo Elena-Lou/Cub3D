@@ -6,7 +6,7 @@
 /*   By: elouisia <elouisia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/07 16:04:09 by elouisia          #+#    #+#             */
-/*   Updated: 2022/09/16 15:48:01 by aweaver          ###   ########.fr       */
+/*   Updated: 2022/09/19 09:44:13 by aweaver          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,21 +53,21 @@ int	map_to_list(t_cub_data *data, char *map_file)
 	char		*line;
 
 	data->fd = open(map_file, O_RDONLY);
-	if (data->fd < 1)
-		return (write(2, "Open Error\n", 11), 1);
 	if (ft_check_name(map_file) == 1)
 		return (1);
-	line = get_next_line(data->fd);
-	if (!line)
+	if (data->fd < 1)
+		return (write(2, "Open Error\n", 11), 1);
+	if (ft_check_map_content(data) == 1)
 		return (1);
-	if (add_line_map(line, data))
+	line = get_next_line(data->fd);
+	if (line == NULL || add_line_map(line, data))
 		return (1);
 	while (line)
 	{
 		line = get_next_line(data->fd);
 		if (!line)
 			break ;
-		if (add_line_map(line, data))
+		if (add_line_map(line, data) == 1)
 			return (get_next_line(GNL_FLUSH), 1);
 	}
 	close(data->fd);

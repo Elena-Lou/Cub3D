@@ -6,7 +6,7 @@
 /*   By: elouisia <elouisia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/13 08:34:21 by elouisia          #+#    #+#             */
-/*   Updated: 2022/04/25 19:10:46 by elouisia         ###   ########.fr       */
+/*   Updated: 2022/09/16 14:09:02 by aweaver          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ static char	*read_line(char *aside, int fd, char *buffer)
 		{
 			free(aside);
 			aside = NULL;
-			return (0);
+			return (NULL);
 		}
 		aside = ft_strjoin_gnl(aside, buffer);
 	}
@@ -80,6 +80,12 @@ char	*get_next_line(int fd)
 
 	if (fd < 0 || BUFFER_SIZE <= 0 || fd > 1024)
 		return (NULL);
+	if (fd == GNL_FLUSH)
+	{
+		free(aside)
+		aside = NULL;
+		return (NULL);
+	}
 	if (read(fd, buffer, 0) == -1)
 		return (NULL);
 	dirty_line = read_line(aside, fd, buffer);

@@ -6,7 +6,7 @@
 /*   By: elouisia <elouisia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/07 16:04:09 by elouisia          #+#    #+#             */
-/*   Updated: 2022/09/16 11:52:01 by aweaver          ###   ########.fr       */
+/*   Updated: 2022/09/16 14:16:24 by aweaver          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,10 +41,7 @@ int	add_line_map(char *line, t_cub_data *data)
 
 	map_data = malloc(sizeof(t_map_data));
 	if (!map_data)
-	{
-		free(line);
-		return (1);
-	}
+		return (free(line), 1);
 	map_data->line = ft_strdup(line);
 	new = ft_lstnew(map_data);
 	ft_lstadd_back(&data->lst_map, new);
@@ -72,7 +69,7 @@ int	map_to_list(t_cub_data *data, char *map_file)
 		if (!line)
 			break ;
 		if (add_line_map(line, data))
-			return (1);
+			return (get_next_line(GNL_FLUSH), 1);
 	}
 	close(data->fd);
 	ft_lstiter(data->lst_map, &print_lst_map);

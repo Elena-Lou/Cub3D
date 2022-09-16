@@ -6,7 +6,7 @@
 /*   By: elouisia <elouisia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/13 08:34:29 by elouisia          #+#    #+#             */
-/*   Updated: 2022/09/09 14:57:17 by elouisia         ###   ########.fr       */
+/*   Updated: 2022/09/16 14:09:38 by aweaver          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,10 @@
 
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 100
+
+# endif
+# ifndef GNL_FLUSH
+#  define GNL_FLUSH -1
 
 # endif
 

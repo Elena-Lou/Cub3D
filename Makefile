@@ -100,7 +100,7 @@ test:	all
 		./$(NAME) maps/default.cub
 
 vtest:	all
-		valgrind --leak-check=full -s ./$(NAME) maps/default.cub
+		valgrind --leak-check=full --show-leak-kinds=all -s ./$(NAME) maps/default.cub
 
 test_map:	$(LIBFT) $(MLX)
 		$(CC) $(CFLAGS) srcs/tests/main_test_map.c srcs/parsing/map_check.c $(LIBFT) $(MLX) $(LIBS) -o $(NAME) $(INCS)

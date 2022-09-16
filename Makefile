@@ -36,6 +36,9 @@ LIBS		=	-lm -lbsd -lX11 -lXext
 SRCS	=	main.c \
 			$(addprefix parsing/, \
 				map_check.c\
+			)\
+			$(addprefix utils/, \
+				free_functions.c\
 			)
 
 SRCS_DIR = ./srcs/

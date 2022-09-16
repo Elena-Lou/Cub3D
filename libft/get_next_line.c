@@ -6,7 +6,7 @@
 /*   By: elouisia <elouisia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/13 08:34:21 by elouisia          #+#    #+#             */
-/*   Updated: 2022/09/16 14:09:02 by aweaver          ###   ########.fr       */
+/*   Updated: 2022/09/16 15:09:20 by aweaver          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ char	*get_next_line(int fd)
 		return (NULL);
 	if (fd == GNL_FLUSH)
 	{
-		free(aside)
+		free(aside);
 		aside = NULL;
 		return (NULL);
 	}

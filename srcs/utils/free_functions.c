@@ -1,21 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstdelone.c                                     :+:      :+:    :+:   */
+/*   free_functions.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: elouisia <elouisia@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aweaver <aweaver@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/06 09:25:21 by elouisia          #+#    #+#             */
-/*   Updated: 2022/09/16 15:26:49 by aweaver          ###   ########.fr       */
+/*   Created: 2022/09/16 14:51:37 by aweaver           #+#    #+#             */
+/*   Updated: 2022/09/16 15:07:45 by aweaver          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "cub3d.h"
 
-void	ft_lstdelone(t_list *lst, void (*del)(void *))
+void	ft_clear_map(void *list_elem)
 {
-	if (!lst)
-		return ;
-	del(lst->content);
-	free(lst);
+	t_map_data	*map;
+
+	map = (t_map_data *)list_elem;
+	free(map->line);
+	map->line = NULL;
+	free(map);
+	map = NULL;
 }

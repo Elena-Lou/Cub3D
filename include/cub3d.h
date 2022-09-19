@@ -6,7 +6,7 @@
 /*   By: elouisia <elouisia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/06 15:54:20 by elouisia          #+#    #+#             */
-/*   Updated: 2022/09/19 09:48:43 by aweaver          ###   ########.fr       */
+/*   Updated: 2022/09/19 11:09:14 by aweaver          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,18 @@ int		ft_check_ea(t_map_data *map);
 int		ft_check_we(t_map_data *map);
 int		ft_check_floor(t_map_data *map);
 int		ft_check_ceilling(t_map_data *map);
+
+/*
+**	FUNCTION POINTERS
+*/
+typedef int	(*t_check)(t_cub_data *data, char *line);
+
+int		ft_check_no(t_cub_data *data, char *line);
+int		ft_check_so(t_cub_data *data, char *line);
+int		ft_check_ea(t_cub_data *data, char *line);
+int		ft_check_we(t_cub_data *data, char *line);
+int		ft_check_floor(t_cub_data *data, char *line);
+int		ft_check_ceilling(t_cub_data *data, char *line);
 
 /*
 **	MAIN.C

@@ -6,18 +6,21 @@
 /*   By: aweaver <aweaver@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 11:38:05 by aweaver           #+#    #+#             */
-/*   Updated: 2022/09/19 11:54:32 by aweaver          ###   ########.fr       */
+/*   Updated: 2022/09/19 16:07:39 by aweaver          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include <stdlib.h>
+#include <stdio.h>
 
 static size_t	ft_count_words(char const *s, int (*funct)(int), size_t *j)
 {
 	size_t	in_a_word;
 	size_t	word_count;
 
+	if (s == NULL)
+		return (0);
 	*j = 0;
 	in_a_word = 0;
 	word_count = 0;
@@ -40,7 +43,7 @@ static size_t	ft_custom_strlen(const char *s, int (*funct)(int))
 	size_t	i;
 
 	i = 0;
-	while (s[i] && (*funct)(s[i]) != 0)
+	while (s[i] && (*funct)(s[i]) == 0)
 		i++;
 	return (i);
 }
@@ -74,7 +77,7 @@ char	**ft_split_f(char const *s, int (*funct)(int))
 	size_t	word_length;
 
 	i = -1;
-	if (!s)
+	if (s == NULL)
 		return (0);
 	word_count = ft_count_words(s, funct, &j);
 	tab = malloc(sizeof(*tab) * (word_count + 1));

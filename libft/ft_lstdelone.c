@@ -6,7 +6,7 @@
 /*   By: elouisia <elouisia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/06 09:25:21 by elouisia          #+#    #+#             */
-/*   Updated: 2022/09/16 15:26:49 by aweaver          ###   ########.fr       */
+/*   Updated: 2022/09/19 10:21:01 by aweaver          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,6 @@ void	ft_lstdelone(t_list *lst, void (*del)(void *))
 {
 	if (!lst)
 		return ;
-	del(lst->content);
+	(*del)(lst->content);
 	free(lst);
 }

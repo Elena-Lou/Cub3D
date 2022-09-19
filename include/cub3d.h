@@ -6,7 +6,7 @@
 /*   By: elouisia <elouisia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/06 15:54:20 by elouisia          #+#    #+#             */
-/*   Updated: 2022/09/19 11:09:14 by aweaver          ###   ########.fr       */
+/*   Updated: 2022/09/19 12:03:42 by aweaver          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,7 @@ int		close_window(t_cub_data *data);
 int		add_line_map(char *line, t_cub_data *data);
 int		map_to_list(t_cub_data *data, char *map_file);
 int		ft_check_map_content(t_cub_data *data);
+int		ft_check_name(char *map_name);
 
 /*
 ** FREE_FUNCTIONS.C

@@ -6,7 +6,7 @@
 /*   By: elouisia <elouisia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/07 16:04:09 by elouisia          #+#    #+#             */
-/*   Updated: 2022/09/19 09:44:13 by aweaver          ###   ########.fr       */
+/*   Updated: 2022/09/19 09:49:40 by aweaver          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ static void	print_lst_map(void *content)
 	t_map_data	*map_line;
 
 	map_line = content;
-	printf("line : %s\n", map_line->line);
+	printf("%s", map_line->line);
 }
 
 int	add_line_map(char *line, t_cub_data *data)

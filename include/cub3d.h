@@ -6,7 +6,7 @@
 /*   By: elouisia <elouisia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/06 15:54:20 by elouisia          #+#    #+#             */
-/*   Updated: 2022/09/19 12:03:42 by aweaver          ###   ########.fr       */
+/*   Updated: 2022/09/19 15:35:53 by aweaver          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@
 typedef struct s_map_data
 {
 	char	*line;
+	char	**flag_and_path;
 }	t_map_data;
 
 typedef struct s_cub_data
@@ -44,14 +45,14 @@ typedef struct s_cub_data
 /*
 **	FUNCTION POINTERS
 */
-typedef int	(*t_check)(t_cub_data *data, char *line);
+typedef int	(*t_check)(t_cub_data *data, char **flag_and_path);
 
-int		ft_check_no(t_cub_data *data, char *line);
-int		ft_check_so(t_cub_data *data, char *line);
-int		ft_check_ea(t_cub_data *data, char *line);
-int		ft_check_we(t_cub_data *data, char *line);
-int		ft_check_floor(t_cub_data *data, char *line);
-int		ft_check_ceilling(t_cub_data *data, char *line);
+int		ft_check_no(t_cub_data *data, char **flag_and_path);
+int		ft_check_so(t_cub_data *data, char **flag_and_path);
+int		ft_check_ea(t_cub_data *data, char **flag_and_path);
+int		ft_check_we(t_cub_data *data, char **flag_and_path);
+int		ft_check_floor(t_cub_data *data, char **flag_and_path);
+int		ft_check_ceilling(t_cub_data *data, char **flag_and_path);
 
 /*
 **	MAIN.C

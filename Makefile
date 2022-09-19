@@ -103,7 +103,7 @@ fclean: clean
 re:		fclean
 		@make $(SILENT) all
 
-test:	all
+test:	re
 		./$(NAME) maps/default.cub
 
 vtest:	all

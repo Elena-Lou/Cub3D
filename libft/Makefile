@@ -33,6 +33,7 @@ SRCS	= 	ft_isalpha.c \
 			ft_striteri.c \
 			ft_itoa.c \
 			ft_split.c \
+			ft_split_f.c \
 			ft_printf.c \
 			ft_printf_n.c \
 			ft_printf_base.c \

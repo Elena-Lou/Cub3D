@@ -37,6 +37,8 @@ SRCS	=	main.c \
 			$(addprefix parsing/, \
 				map_check.c\
 				map_check_content.c\
+				check_functions.c\
+				check_functions2.c\
 			)\
 			$(addprefix utils/, \
 				free_functions.c\

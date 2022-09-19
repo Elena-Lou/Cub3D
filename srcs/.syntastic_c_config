@@ -1,3 +1,3 @@
--Ilibft/include
--Iinclude
--Iminilibx
+-I ../libft/include
+-I ../include
+-I ../minilibx

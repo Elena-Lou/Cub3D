@@ -17,7 +17,6 @@ int	ft_check_floor(t_map_data *map)
 	printf("floor flag = %s\n", *map->flag_and_path);
 	printf("floor path = %s\n", (*(map->flag_and_path + 1)));
 	return (0);
-	ft_wrong_map(map->data->lst_map);
 }
 
 int	ft_check_ceilling(t_map_data *map)

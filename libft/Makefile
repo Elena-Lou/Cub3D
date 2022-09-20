@@ -49,7 +49,8 @@ SRCS	= 	ft_isalpha.c \
 	  		ft_lstsize.c \
 	  		ft_lstclear.c \
 	  		ft_lstdelone.c \
-			ft_lstmap.c
+			ft_lstmap.c\
+			ft_free_double_array.c
 
 OBJS_DIR = objs
 

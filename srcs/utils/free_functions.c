@@ -6,14 +6,14 @@
 /*   By: aweaver <aweaver@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/16 14:51:37 by aweaver           #+#    #+#             */
-/*   Updated: 2022/09/20 12:05:04 by aweaver          ###   ########.fr       */
+/*   Updated: 2022/09/20 13:16:03 by aweaver          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 #include <stdio.h>
 
-void	ft_wrong_map(t_list *list)
+void	ft_wrong_map(t_list *list, char *error_msg)
 {
 	t_map_data	*map;
 	t_cub_data	*data;
@@ -21,7 +21,7 @@ void	ft_wrong_map(t_list *list)
 	map = (t_map_data *)list->content;
 	data = map->data;
 	ft_clear_data(data);
-	write(2, "Error\n", 6);
+	ft_putstr_fd(error_msg, 2);
 	exit(1);
 }
 
@@ -45,7 +45,7 @@ void	ft_clear_map(void *list_elem)
 	map = (t_map_data *)list_elem;
 	free(map->line);
 	map->line = NULL;
-	ft_free_double_array(map->flag_and_path);
+	map->flag_and_path = ft_free_double_array(map->flag_and_path);
 	free(map);
 	map = NULL;
 }

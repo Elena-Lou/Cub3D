@@ -6,7 +6,7 @@
 /*   By: aweaver <aweaver@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 11:05:24 by aweaver           #+#    #+#             */
-/*   Updated: 2022/09/20 12:06:02 by aweaver          ###   ########.fr       */
+/*   Updated: 2022/09/20 12:18:08 by aweaver          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,10 +50,10 @@ int	ft_check_no(t_map_data *map)
 		printf("no flag = %s\n", *map->flag_and_path);
 		printf("no path = %s\n", (*(map->flag_and_path + 1)));
 	}
-	if (map->data->error == 0)
+	if (map->data->no == NULL)
 		map->data->no = map->flag_and_path[1];
 	else
-		ft_wrong_map(map->data->lst_map);
+		ft_wrong_map(map->data->lst_map, "Error\nNO texture re-written\n");
 	return (0);
 }
 

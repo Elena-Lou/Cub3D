@@ -6,7 +6,7 @@
 /*   By: aweaver <aweaver@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 11:31:41 by aweaver           #+#    #+#             */
-/*   Updated: 2022/09/20 11:44:44 by aweaver          ###   ########.fr       */
+/*   Updated: 2022/09/20 12:16:18 by aweaver          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@ int	ft_check_floor(t_map_data *map)
 	printf("floor flag = %s\n", *map->flag_and_path);
 	printf("floor path = %s\n", (*(map->flag_and_path + 1)));
 	return (0);
-	ft_wrong_map(map->data->lst_map);
 }
 
 int	ft_check_ceilling(t_map_data *map)

@@ -6,7 +6,7 @@
 /*   By: elouisia <elouisia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/26 14:26:53 by elouisia          #+#    #+#             */
-/*   Updated: 2022/09/20 09:53:23 by aweaver          ###   ########.fr       */
+/*   Updated: 2022/09/20 13:11:19 by aweaver          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,7 @@ t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
 */
 
 int		ft_iswhitespace(int c);
-void	ft_free_double_array(char **str);
+void	*ft_free_double_array(char **str);
 char	**ft_split_f(char const *s, int (*funct)(int arg));
 int		ft_strptr_len(char **str);
 

@@ -6,7 +6,7 @@
 /*   By: aweaver <aweaver@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/16 13:06:38 by aweaver           #+#    #+#             */
-/*   Updated: 2022/09/20 13:17:45 by aweaver          ###   ########.fr       */
+/*   Updated: 2022/09/20 13:42:45 by aweaver          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@ void	ft_check_map_header(void *arg)
 	int					i;
 
 	i = 0;
-	printf("entered check map header\n");
 	map = (t_map_data *)arg;
 	if (map->flag_and_path == NULL || *(map->flag_and_path) == NULL)
 		return ;

@@ -6,7 +6,7 @@
 /*   By: elouisia <elouisia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/06 15:54:20 by elouisia          #+#    #+#             */
-/*   Updated: 2022/09/20 12:15:51 by aweaver          ###   ########.fr       */
+/*   Updated: 2022/09/20 14:20:29 by aweaver          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ int		ft_check_name(char *map_name);
 ** FREE_FUNCTIONS.C
 */
 
-void	ft_wrong_map(t_list *list, char *error_msg);
+void	ft_wrong_map(t_list *list, char *texture, char *error_msg);
 void	ft_clear_map(void *list_elem);
 void	ft_clear_data(t_cub_data *data);
 

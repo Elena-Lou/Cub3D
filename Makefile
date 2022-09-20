@@ -106,7 +106,7 @@ re:		fclean
 test:	re
 		./$(NAME) maps/default.cub
 
-vtest:	all
+vtest:	re
 		valgrind --leak-check=full --show-leak-kinds=all -s ./$(NAME) maps/default.cub
 
 test_map:	$(LIBFT) $(MLX)

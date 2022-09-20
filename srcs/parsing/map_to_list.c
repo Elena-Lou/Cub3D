@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   map_check.c                                        :+:      :+:    :+:   */
+/*   map_to_list.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: elouisia <elouisia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/07 16:04:09 by elouisia          #+#    #+#             */
-/*   Updated: 2022/09/19 12:03:27 by aweaver          ###   ########.fr       */
+/*   Updated: 2022/09/20 12:00:25 by aweaver          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ int	add_line_map(char *line, t_cub_data *data)
 	if (!map_data)
 		return (free(line), 1);
 	map_data->line = line;
+	map_data->data = data;
 	new = ft_lstnew(map_data);
 	ft_lstadd_back(&data->lst_map, new);
 	return (0);

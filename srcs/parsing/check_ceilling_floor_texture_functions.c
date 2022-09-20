@@ -6,24 +6,23 @@
 /*   By: aweaver <aweaver@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 11:31:41 by aweaver           #+#    #+#             */
-/*   Updated: 2022/09/19 15:37:30 by aweaver          ###   ########.fr       */
+/*   Updated: 2022/09/20 11:44:44 by aweaver          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-int	ft_check_floor(t_cub_data *data, char **flag_and_path)
+int	ft_check_floor(t_map_data *map)
 {
-	(void)data;
-	printf("floor flag = %s\n", *flag_and_path);
-	printf("floor path = %s\n", (*flag_and_path + 1));
+	printf("floor flag = %s\n", *map->flag_and_path);
+	printf("floor path = %s\n", (*(map->flag_and_path + 1)));
 	return (0);
+	ft_wrong_map(map->data->lst_map);
 }
 
-int	ft_check_ceilling(t_cub_data *data, char **flag_and_path)
+int	ft_check_ceilling(t_map_data *map)
 {
-	(void)data;
-	printf("ceilling flag = %s\n", *flag_and_path);
-	printf("ceilling path = %s\n", (*flag_and_path + 1));
+	printf("ceilling flag = %s\n", *map->flag_and_path);
+	printf("ceilling path = %s\n", (*(map->flag_and_path + 1)));
 	return (0);
 }

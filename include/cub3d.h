@@ -6,7 +6,7 @@
 /*   By: elouisia <elouisia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/06 15:54:20 by elouisia          #+#    #+#             */
-/*   Updated: 2022/09/19 15:35:53 by aweaver          ###   ########.fr       */
+/*   Updated: 2022/09/20 11:45:46 by aweaver          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,11 +22,7 @@
 # include <X11/keysym.h>
 # include <errno.h>
 
-typedef struct s_map_data
-{
-	char	*line;
-	char	**flag_and_path;
-}	t_map_data;
+# define DEBUG 1
 
 typedef struct s_cub_data
 {
@@ -39,20 +35,29 @@ typedef struct s_cub_data
 	int		ceilling;
 	int		floor;
 	int		fd;
+	int		error;
 	t_list	*lst_map;
-}	t_cub_data;
+}				t_cub_data;
+
+typedef struct s_map_data
+{
+	char		*line;
+	char		**flag_and_path;
+	t_cub_data	*data;
+}				t_map_data;
 
 /*
 **	FUNCTION POINTERS
 */
-typedef int	(*t_check)(t_cub_data *data, char **flag_and_path);
 
-int		ft_check_no(t_cub_data *data, char **flag_and_path);
-int		ft_check_so(t_cub_data *data, char **flag_and_path);
-int		ft_check_ea(t_cub_data *data, char **flag_and_path);
-int		ft_check_we(t_cub_data *data, char **flag_and_path);
-int		ft_check_floor(t_cub_data *data, char **flag_and_path);
-int		ft_check_ceilling(t_cub_data *data, char **flag_and_path);
+typedef int	(*t_check)(t_map_data *map);
+
+int		ft_check_no(t_map_data *map);
+int		ft_check_so(t_map_data *map);
+int		ft_check_ea(t_map_data *map);
+int		ft_check_we(t_map_data *map);
+int		ft_check_floor(t_map_data *map);
+int		ft_check_ceilling(t_map_data *map);
 
 /*
 **	MAIN.C
@@ -74,5 +79,8 @@ int		ft_check_name(char *map_name);
 ** FREE_FUNCTIONS.C
 */
 
+void	ft_wrong_map(t_list *list);
 void	ft_clear_map(void *list_elem);
+void	ft_clear_data(t_cub_data *data);
+
 #endif

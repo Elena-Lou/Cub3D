@@ -6,7 +6,7 @@
 /*   By: elouisia <elouisia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/06 15:54:20 by elouisia          #+#    #+#             */
-/*   Updated: 2022/09/20 14:20:29 by aweaver          ###   ########.fr       */
+/*   Updated: 2022/09/20 18:08:06 by aweaver          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,12 @@
 # include <X11/keysym.h>
 # include <errno.h>
 
+# ifndef NOT_XPM
+#  define NOT_XPM 1
+# endif
+# ifndef NOT_FOUND
+#  define NOT_FOUND 1
+# endif
 # define DEBUG 1
 
 typedef struct s_cub_data

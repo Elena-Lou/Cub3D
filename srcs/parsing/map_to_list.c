@@ -6,7 +6,7 @@
 /*   By: elouisia <elouisia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/07 16:04:09 by elouisia          #+#    #+#             */
-/*   Updated: 2022/09/20 13:44:13 by aweaver          ###   ########.fr       */
+/*   Updated: 2022/09/20 18:11:16 by aweaver          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,5 +59,6 @@ int	map_to_list(t_cub_data *data, char *map_file)
 	}
 	close(data->fd);
 	ft_lstiter(data->lst_map, &print_lst_map);
+	ft_putstr_fd("\n", 1);
 	return (0);
 }

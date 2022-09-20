@@ -6,7 +6,7 @@
 /*   By: elouisia <elouisia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/26 14:26:53 by elouisia          #+#    #+#             */
-/*   Updated: 2022/09/20 13:11:19 by aweaver          ###   ########.fr       */
+/*   Updated: 2022/09/20 14:45:26 by aweaver          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,5 +89,10 @@ int		ft_iswhitespace(int c);
 void	*ft_free_double_array(char **str);
 char	**ft_split_f(char const *s, int (*funct)(int arg));
 int		ft_strptr_len(char **str);
+char	*ft_strjoin_free(char *s1, char *s2);
+int		ft_strlen_nl(char *str);
+char	*ft_strcpy(char *dest, const char *str);
+char	*ft_strcat(char *dest, char *src);
+int		ft_strlen_int(char *str);
 
 #endif

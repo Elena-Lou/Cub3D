@@ -111,7 +111,7 @@ vtest:	re
 		valgrind --leak-check=full --show-leak-kinds=all -s ./$(NAME) maps/default.cub
 
 test_map:	$(LIBFT) $(MLX)
-		$(CC) $(CFLAGS) srcs/test/main_map_tester.c srcs/parsing/check_map_name.c srcs/parsing/check_map_content.c srcs/parsing/check_wall_texture_functions.c srcs/parsing/check_ceilling_floor_texture_functions.c srcs/parsing/map_to_list.c srcs/utils/free_functions.c $(LIBFT) $(LIBS) -o $(NAME) $(INCS)
+		$(CC) $(CFLAGS) srcs/test/main_map_tester.c srcs/parsing/check_map_name.c srcs/parsing/check_map_content.c srcs/parsing/check_wall_texture_functions.c srcs/parsing/check_ceilling_floor_texture_functions.c srcs/parsing/map_to_list.c srcs/utils/free_functions.c srcs/utils/error_message.c $(LIBFT) $(LIBS) -o $(NAME) $(INCS)
 		./srcs/test/test_maps.sh
 
 -include $(DEPS)

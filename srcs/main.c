@@ -55,9 +55,9 @@ int	main(int ac, char **av)
 		return (1);
 	}
 	ft_init_data(&data);
-	map_to_list(&data, av[1]);
-	if (ft_check_map_content(&data) == 1)
-		return (ft_lstclear(&(data.lst_map), ft_clear_map), 1);
+	if (map_to_list(&data, av[1]))
+		return (0);
+	ft_check_map_content(&data);
 	data.mlx_ptr = mlx_init();
 	if (!data.mlx_ptr)
 		return (ft_lstclear(&(data.lst_map), ft_clear_map), 1);

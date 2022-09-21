@@ -22,6 +22,21 @@
 # include <X11/keysym.h>
 # include <errno.h>
 
+/*
+** DEFINES
+*/
+
+/* MAP_TO_LIST */
+
+# ifndef WRONG_MAP_NAME
+#  define WRONG_MAP_NAME 1
+# endif
+
+# ifndef WRONG_MALLOC
+#  define WRONG_MALLOC 1
+# endif
+
+/* XPM */
 # ifndef NOT_XPM
 #  define NOT_XPM 1
 # endif
@@ -29,6 +44,10 @@
 #  define NOT_FOUND 1
 # endif
 # define DEBUG 1
+
+/*
+** TYPEDEF
+*/
 
 typedef struct s_cub_data
 {
@@ -78,15 +97,21 @@ int		close_window(t_cub_data *data);
 
 int		add_line_map(char *line, t_cub_data *data);
 int		map_to_list(t_cub_data *data, char *map_file);
-int		ft_check_map_content(t_cub_data *data);
+void	ft_check_map_content(t_cub_data *data);
 int		ft_check_name(char *map_name);
 
 /*
 ** FREE_FUNCTIONS.C
 */
 
-void	ft_wrong_map(t_list *list, char *texture, char *error_msg);
 void	ft_clear_map(void *list_elem);
 void	ft_clear_data(t_cub_data *data);
+
+/*
+** ERROR_MESSAGE.C
+*/
+
+void	ft_wrong_map(t_list *list, char *texture, char *error_msg);
+int		ft_err_msg(char *str);
 
 #endif

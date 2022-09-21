@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "cub3d.h"
+#include <errno.h>
 
 static void	print_lst_map(void *content)
 {
@@ -27,7 +28,7 @@ int	add_line_map(char *line, t_cub_data *data)
 
 	map_data = malloc(sizeof(t_map_data));
 	if (!map_data)
-		return (free(line), 1);
+		return (free(line), WRONG_MALLOC);
 	map_data->line = line;
 	map_data->data = data;
 	new = ft_lstnew(map_data);
@@ -40,22 +41,23 @@ int	map_to_list(t_cub_data *data, char *map_file)
 	char		*line;
 
 	data->fd = open(map_file, O_RDONLY);
-	if (ft_check_name(map_file) == 1)
-		return (1);
+	if (ft_check_name(map_file) == WRONG_MAP_NAME)
+		return (WRONG_MAP_NAME);
 	if (data->fd < 1)
-		return (write(2, "Open Error\n", 11), 1);
-	if (ft_check_map_content(data) == 1)
-		return (1);
+		return (ft_err_msg(strerror(errno)));
+	ft_check_map_content(data);
 	line = get_next_line(data->fd);
-	if (line == NULL || add_line_map(line, data))
-		return (1);
+	if (line == NULL)
+		return (ft_err_msg("Empty map."));
+	if (add_line_map(line, data) == WRONG_MALLOC)
+		return (ft_err_msg("Malloc error."));
 	while (line)
 	{
 		line = get_next_line(data->fd);
 		if (!line)
 			break ;
-		if (add_line_map(line, data) == 1)
-			return (get_next_line(GNL_FLUSH), 1);
+		if (add_line_map(line, data) == WRONG_MALLOC)
+			return (get_next_line(GNL_FLUSH), ft_err_msg("Malloc error."));
 	}
 	close(data->fd);
 	ft_lstiter(data->lst_map, &print_lst_map);

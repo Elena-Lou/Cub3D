@@ -19,7 +19,7 @@
 typedef struct s_list
 {
 	void			*content;
-	struct s_list	*next;	
+	struct s_list	*next;
 }					t_list;
 
 /*
@@ -68,7 +68,7 @@ void	ft_striteri(char *s, void (*f)(unsigned int, char*));
 char	*ft_itoa(int n);
 
 /*
-** Bonus 
+** Bonus
 */
 
 t_list	*ft_lstnew(void *content);

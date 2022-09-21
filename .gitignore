@@ -62,3 +62,4 @@ dkms.conf
 *toto
 *todo
 *test
+!srcs/test/

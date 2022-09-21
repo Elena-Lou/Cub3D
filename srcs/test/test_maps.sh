@@ -3,23 +3,23 @@
 #the Makefile
 chmod 000 ./maps/forbidden.cub;
 echo "======= THE FOLLOWING SHOULD FAIL ======="
-echo "TESTING MAP FORBIDDEN"
+echo -e "\n\nTESTING MAP FORBIDDEN"
 ./cub3D ./maps/forbidden.cub
 echo "Tester returned $?"
-echo "TESTING MAP WITH NO .CUB EXTENSION"
+echo -e "\n\nTESTING MAP WITH NO .CUB EXTENSION"
 ./cub3D ./maps/nocub
 echo "Tester returned $?"
-echo "TESTING MAP WITH NO NAME WITH .CUB EXTENSION"
+echo -e "\n\nTESTING MAP WITH NO NAME WITH .CUB EXTENSION"
 ./cub3D ./maps/.cub
 echo "Tester returned $?"
-echo "TESTING EMPTY MAP"
+echo -e "\n\nTESTING EMPTY MAP"
 ./cub3D ./maps/empty.cub
 echo "Tester returned $?"
-echo "TESTING INCORRECT MAP 1"
+echo -e "\n\nTESTING INCORRECT MAP 1"
 ./cub3D ./maps/broken.cub
 echo "Tester returned $?"
 echo "======= THE FOLLOWING SHOULD SUCCEED ======="
-echo "TESTING CORRECT MAP"
+echo -e "\n\nTESTING CORRECT MAP"
 ./cub3D ./maps/default.cub
 echo "Tester returned $?"
 chmod 400 ./maps/forbidden.cub;

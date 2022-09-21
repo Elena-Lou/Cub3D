@@ -1,25 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strncmp.c                                       :+:      :+:    :+:   */
+/*   ft_strlen_int.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: elouisia <elouisia@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aweaver <aweaver@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/23 12:51:30 by elouisia          #+#    #+#             */
-/*   Updated: 2022/09/19 09:59:31 by aweaver          ###   ########.fr       */
+/*   Created: 2022/01/21 14:41:22 by aweaver           #+#    #+#             */
+/*   Updated: 2022/01/21 14:52:27 by aweaver          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-
-int	ft_strncmp(const char *s1, const char *s2, size_t n)
+int	ft_strlen_int(char *str)
 {
-	unsigned int	i;
+	int	i;
 
 	i = 0;
-	if (n <= 0)
-		return (0);
-	while (s1[i] && i < n - 1 && s1[i] == s2[i])
+	while (str[i])
 		i++;
-	return ((unsigned char)s1[i] - (unsigned char)s2[i]);
+	return (i);
 }

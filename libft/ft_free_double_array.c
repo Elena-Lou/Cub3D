@@ -1,25 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strncmp.c                                       :+:      :+:    :+:   */
+/*   ft_free_double_array.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: elouisia <elouisia@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aweaver <aweaver@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/23 12:51:30 by elouisia          #+#    #+#             */
-/*   Updated: 2022/09/19 09:59:31 by aweaver          ###   ########.fr       */
+/*   Created: 2022/09/20 08:28:14 by aweaver           #+#    #+#             */
+/*   Updated: 2022/09/20 15:07:55 by aweaver          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include <stdlib.h>
 
-int	ft_strncmp(const char *s1, const char *s2, size_t n)
+void	*ft_free_double_array(char **str)
 {
-	unsigned int	i;
+	int		i;
 
 	i = 0;
-	if (n <= 0)
-		return (0);
-	while (s1[i] && i < n - 1 && s1[i] == s2[i])
+	if (str == NULL)
+		return (NULL);
+	while (str[i])
+	{
+		free(str[i]);
+		str[i] = NULL;
 		i++;
-	return ((unsigned char)s1[i] - (unsigned char)s2[i]);
+	}
+	free(str);
+	return (NULL);
 }

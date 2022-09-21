@@ -6,7 +6,7 @@
 /*   By: elouisia <elouisia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/26 14:26:53 by elouisia          #+#    #+#             */
-/*   Updated: 2022/09/06 16:48:57 by elouisia         ###   ########.fr       */
+/*   Updated: 2022/09/20 14:45:26 by aweaver          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ void	*ft_memcpy(void *dest, const void *src, size_t n);
 void	*ft_memset(void *s, int c, size_t n);
 void	*ft_memmove(void *dest, const void *src, size_t n);
 int		ft_atoi(const char *str);
+int		ft_strcmp(const char *s1, const char *s2);
 int		ft_strncmp(const char *s1, const char *s2, size_t n);
 void	*ft_memchr(const void *s, int c, size_t n);
 int		ft_memcmp(const void *s1, const void *s2, size_t n);
@@ -79,5 +80,19 @@ void	ft_lstdelone(t_list *lst, void (*del)(void *));
 void	ft_lstclear(t_list **lst, void (*del)(void *));
 void	ft_lstiter(t_list *lst, void (*f)(void *));
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
+
+/*
+** Added
+*/
+
+int		ft_iswhitespace(int c);
+void	*ft_free_double_array(char **str);
+char	**ft_split_f(char const *s, int (*funct)(int arg));
+int		ft_strptr_len(char **str);
+char	*ft_strjoin_free(char *s1, char *s2);
+int		ft_strlen_nl(char *str);
+char	*ft_strcpy(char *dest, const char *str);
+char	*ft_strcat(char *dest, char *src);
+int		ft_strlen_int(char *str);
 
 #endif

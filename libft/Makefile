@@ -1,13 +1,15 @@
-SRCS	= 	ft_isalpha.c \
+SRCS	=	ft_isalpha.c \
 			ft_isdigit.c \
 			ft_isalnum.c \
 			ft_isascii.c \
 			ft_isprint.c \
+			ft_iswhitespace.c \
 			ft_strlen.c \
 			ft_toupper.c \
 			ft_tolower.c \
 			ft_strchr.c \
 			ft_strrchr.c \
+			ft_strcmp.c \
 			ft_strncmp.c \
 			ft_atoi.c \
 			ft_memset.c \
@@ -32,6 +34,7 @@ SRCS	= 	ft_isalpha.c \
 			ft_striteri.c \
 			ft_itoa.c \
 			ft_split.c \
+			ft_split_f.c \
 			ft_printf.c \
 			ft_printf_n.c \
 			ft_printf_base.c \
@@ -39,14 +42,21 @@ SRCS	= 	ft_isalpha.c \
 			get_next_line.c \
 			get_next_line_utils.c \
 			ft_lstnew.c \
-	  		ft_lstadd_front.c \
-	  		ft_lstlast.c \
-	  		ft_lstadd_back.c \
-	  		ft_lstiter.c \
-	  		ft_lstsize.c \
-	  		ft_lstclear.c \
-	  		ft_lstdelone.c \
-			ft_lstmap.c
+			ft_lstadd_front.c \
+			ft_lstlast.c \
+			ft_lstadd_back.c \
+			ft_lstiter.c \
+			ft_lstsize.c \
+			ft_lstclear.c \
+			ft_lstdelone.c \
+			ft_lstmap.c\
+			ft_free_double_array.c\
+			ft_strjoin_free.c\
+			ft_strcpy.c\
+			ft_strlen_nl.c\
+			ft_strcat.c\
+			ft_strlen_int.c\
+			ft_strptr_len.c
 
 OBJS_DIR = objs
 
@@ -62,7 +72,7 @@ RM	= rm -rf
 
 CC	= gcc
 
-CFLAGS	= -Wall -Wextra -Werror
+CFLAGS	= -Wall -Wextra -Werror -g3
 
 NAME	= libft.a
 

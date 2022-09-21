@@ -104,7 +104,6 @@ int		ft_check_name(char *map_name);
 ** FREE_FUNCTIONS.C
 */
 
-void	ft_wrong_map(t_list *list, char *texture, char *error_msg);
 void	ft_clear_map(void *list_elem);
 void	ft_clear_data(t_cub_data *data);
 
@@ -112,6 +111,7 @@ void	ft_clear_data(t_cub_data *data);
 ** ERROR_MESSAGE.C
 */
 
+void	ft_wrong_map(t_list *list, char *texture, char *error_msg);
 int		ft_err_msg(char *str);
 
 #endif

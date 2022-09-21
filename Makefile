@@ -48,7 +48,9 @@ SRCS	=	main.c \
 			$(addprefix utils/, \
 				free_functions.c\
 				error_message.c\
-			)
+			)\
+			$(addprefix image/, \
+				image_utils.c)
 
 SRCS_DIR = ./srcs/
 

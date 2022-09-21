@@ -13,21 +13,6 @@
 #include "cub3d.h"
 #include <stdio.h>
 
-void	ft_wrong_map(t_list *list, char *texture, char *error_msg)
-{
-	t_map_data	*map;
-	t_cub_data	*data;
-
-	map = (t_map_data *)list->content;
-	data = map->data;
-	ft_clear_data(data);
-	ft_putstr_fd("Error\n", 2);
-	ft_putstr_fd(texture, 2);
-	ft_putstr_fd(error_msg, 2);
-	ft_putstr_fd("\n", 2);
-	exit(1);
-}
-
 void	ft_clear_data(t_cub_data *data)
 {
 	free(data->no);

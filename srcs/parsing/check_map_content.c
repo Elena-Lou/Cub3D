@@ -49,9 +49,8 @@ void	ft_tokenise_map(void *arg)
 		map_data->flag_and_path = ft_free_double_array(map_data->flag_and_path);
 }
 
-int	ft_check_map_content(t_cub_data *data)
+void	ft_check_map_content(t_cub_data *data)
 {
 	ft_lstiter(data->lst_map, &ft_tokenise_map);
 	ft_lstiter(data->lst_map, &ft_check_map_header);
-	return (0);
 }

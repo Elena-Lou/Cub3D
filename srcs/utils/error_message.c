@@ -1,27 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_map_name.c                                   :+:      :+:    :+:   */
+/*   error_message.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aweaver <aweaver@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/19 12:03:10 by aweaver           #+#    #+#             */
-/*   Updated: 2022/09/20 12:11:19 by aweaver          ###   ########.fr       */
+/*   Created: 2022/09/21 15:22:15 by aweaver           #+#    #+#             */
+/*   Updated: 2022/09/21 15:22:15 by aweaver          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-int	ft_check_name(char *map_name)
+int	ft_err_msg(char *str)
 {
-	size_t	map_name_size;
+	ft_putstr_fd("Error\n", 2);
+	ft_putstr_fd(str, 2);
+	ft_putstr_fd("\n", 2);
+	return (1);
+}
 
-	if (map_name == NULL)
-		return (ft_err_msg("Wrong map name"));
-	map_name_size = ft_strlen(map_name);
-	if (map_name_size < 4)
-		return (ft_err_msg("Wrong map name"));
-	if (ft_strncmp(&map_name[map_name_size - 4], ".cub", 4) != 0)
-		return (ft_err_msg("Wrong map name"));
-	return (0);
+void	ft_wrong_map(t_list *list, char *texture, char *error_msg)
+{
+	t_map_data	*map;
+	t_cub_data	*data;
+
+	map = (t_map_data *)list->content;
+	data = map->data;
+	ft_clear_data(data);
+	ft_putstr_fd("Error\n", 2);
+	ft_putstr_fd(texture, 2);
+	ft_putstr_fd(error_msg, 2);
+	ft_putstr_fd("\n", 2);
+	exit(1);
 }

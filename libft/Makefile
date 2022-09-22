@@ -56,6 +56,7 @@ SRCS	=	ft_isalpha.c \
 			ft_strlen_nl.c\
 			ft_strcat.c\
 			ft_strlen_int.c\
+			ft_strptr_to_str.c\
 			ft_strptr_len.c
 
 OBJS_DIR = objs

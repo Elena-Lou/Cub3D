@@ -6,7 +6,7 @@
 /*   By: elouisia <elouisia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/26 14:26:53 by elouisia          #+#    #+#             */
-/*   Updated: 2022/09/20 14:45:26 by aweaver          ###   ########.fr       */
+/*   Updated: 2022/09/22 14:02:27 by aweaver          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,5 +94,6 @@ int		ft_strlen_nl(char *str);
 char	*ft_strcpy(char *dest, const char *str);
 char	*ft_strcat(char *dest, char *src);
 int		ft_strlen_int(char *str);
+char	*ft_strptr_to_str(char **strptr);
 
 #endif

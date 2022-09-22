@@ -6,7 +6,7 @@
 /*   By: elouisia <elouisia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/06 15:54:20 by elouisia          #+#    #+#             */
-/*   Updated: 2022/09/20 18:08:06 by aweaver          ###   ########.fr       */
+/*   Updated: 2022/09/22 11:48:24 by aweaver          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,10 +40,14 @@
 # ifndef NOT_XPM
 #  define NOT_XPM 1
 # endif
+
 # ifndef NOT_FOUND
 #  define NOT_FOUND 1
 # endif
-# define DEBUG 1
+
+# ifndef DEBUG
+#  define DEBUG 1
+# endif
 
 /*
 ** TYPEDEF

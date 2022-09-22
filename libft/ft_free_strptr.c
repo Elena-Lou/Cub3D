@@ -6,13 +6,13 @@
 /*   By: aweaver <aweaver@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/20 08:28:14 by aweaver           #+#    #+#             */
-/*   Updated: 2022/09/20 15:07:55 by aweaver          ###   ########.fr       */
+/*   Updated: 2022/09/22 14:35:41 by aweaver          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 
-void	*ft_free_double_array(char **str)
+void	*ft_free_strptr(char **str)
 {
 	int		i;
 

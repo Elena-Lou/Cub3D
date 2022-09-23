@@ -6,7 +6,7 @@
 /*   By: aweaver <aweaver@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/16 13:06:38 by aweaver           #+#    #+#             */
-/*   Updated: 2022/09/23 08:26:24 by aweaver          ###   ########.fr       */
+/*   Updated: 2022/09/23 09:31:31 by aweaver          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,8 +49,25 @@ void	ft_tokenise_map(void *arg)
 		map_data->flag_and_path = ft_free_strptr(map_data->flag_and_path);
 }
 
+static int	ft_check_texture_all_set(t_cub_data *data)
+{
+	const char	*texture[4] = {data->no, data->so, data->ea, data->we};
+	int			i;
+
+	i = -1;
+	while (++i < 4)
+		if (texture[i] == NULL)
+			return (1);
+	else if (data->floor == -1)
+		return (1);
+	else if (data->ceilling == -1)
+		return (1);
+	return (0);
+}
+
 void	ft_check_map_content(t_cub_data *data)
 {
 	ft_lstiter(data->lst_map, &ft_tokenise_map);
 	ft_lstiter(data->lst_map, &ft_check_map_header);
+	ft_check_texture_all_set(data);
 }

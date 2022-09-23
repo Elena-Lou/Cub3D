@@ -6,7 +6,7 @@
 /*   By: elouisia <elouisia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/06 15:54:20 by elouisia          #+#    #+#             */
-/*   Updated: 2022/09/22 11:48:24 by aweaver          ###   ########.fr       */
+/*   Updated: 2022/09/23 08:25:59 by aweaver          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,7 +115,7 @@ void	ft_clear_data(t_cub_data *data);
 ** ERROR_MESSAGE.C
 */
 
-void	ft_wrong_map(t_list *list, char *texture, char *error_msg);
+void	ft_wrong_map_exit(t_list *list, char *texture, char *error_msg);
 int		ft_err_msg(char *str);
 
 #endif

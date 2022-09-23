@@ -6,7 +6,7 @@
 /*   By: aweaver <aweaver@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/16 14:51:37 by aweaver           #+#    #+#             */
-/*   Updated: 2022/09/20 18:10:10 by aweaver          ###   ########.fr       */
+/*   Updated: 2022/09/23 08:28:32 by aweaver          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void	ft_clear_map(void *list_elem)
 	map = (t_map_data *)list_elem;
 	free(map->line);
 	map->line = NULL;
-	map->flag_and_path = ft_free_double_array(map->flag_and_path);
+	map->flag_and_path = ft_free_strptr(map->flag_and_path);
 	free(map);
 	map = NULL;
 }

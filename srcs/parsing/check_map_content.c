@@ -6,7 +6,7 @@
 /*   By: aweaver <aweaver@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/16 13:06:38 by aweaver           #+#    #+#             */
-/*   Updated: 2022/09/20 13:42:45 by aweaver          ###   ########.fr       */
+/*   Updated: 2022/09/23 08:26:24 by aweaver          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ void	ft_tokenise_map(void *arg)
 	map_data->flag_and_path = ft_split_f(map_data->line, &ft_iswhitespace);
 	if (*map_data->flag_and_path && (**map_data->flag_and_path == '0'
 			|| **map_data->flag_and_path == '1'))
-		map_data->flag_and_path = ft_free_double_array(map_data->flag_and_path);
+		map_data->flag_and_path = ft_free_strptr(map_data->flag_and_path);
 }
 
 void	ft_check_map_content(t_cub_data *data)

@@ -6,7 +6,7 @@
 /*   By: aweaver <aweaver@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 15:22:15 by aweaver           #+#    #+#             */
-/*   Updated: 2022/09/21 15:22:15 by aweaver          ###   ########.fr       */
+/*   Updated: 2022/09/23 08:28:25 by aweaver          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int	ft_err_msg(char *str)
 	return (1);
 }
 
-void	ft_wrong_map(t_list *list, char *texture, char *error_msg)
+void	ft_wrong_map_exit(t_list *list, char *texture, char *error_msg)
 {
 	t_map_data	*map;
 	t_cub_data	*data;

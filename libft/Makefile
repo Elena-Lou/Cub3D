@@ -50,12 +50,13 @@ SRCS	=	ft_isalpha.c \
 			ft_lstclear.c \
 			ft_lstdelone.c \
 			ft_lstmap.c\
-			ft_free_double_array.c\
+			ft_free_strptr.c\
 			ft_strjoin_free.c\
 			ft_strcpy.c\
 			ft_strlen_nl.c\
 			ft_strcat.c\
 			ft_strlen_int.c\
+			ft_strptr_to_str.c\
 			ft_strptr_len.c
 
 OBJS_DIR = objs

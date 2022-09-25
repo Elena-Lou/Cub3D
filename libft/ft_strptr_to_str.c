@@ -1,30 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_free_double_array.c                             :+:      :+:    :+:   */
+/*   ft_strptr_to_str.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aweaver <aweaver@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/20 08:28:14 by aweaver           #+#    #+#             */
-/*   Updated: 2022/09/20 15:07:55 by aweaver          ###   ########.fr       */
+/*   Created: 2022/09/22 12:20:26 by aweaver           #+#    #+#             */
+/*   Updated: 2022/09/22 14:05:14 by aweaver          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
+#include "libft.h"
 
-void	*ft_free_double_array(char **str)
+char	*ft_strptr_to_str(char **strptr)
 {
-	int		i;
+	char	*tmp;
 
-	i = 0;
-	if (str == NULL)
+	if (strptr == NULL || *strptr == NULL)
 		return (NULL);
-	while (str[i])
+	if (*strptr && *(strptr + 1))
 	{
-		free(str[i]);
-		str[i] = NULL;
-		i++;
+		tmp = ft_strjoin(*strptr, *(strptr + 1));
+		strptr += 2;
 	}
-	free(str);
-	return (NULL);
+	else
+		return (ft_strdup(*strptr));
+	while (*strptr)
+	{
+		tmp = ft_strjoin_free(tmp, *strptr);
+		strptr++;
+	}
+	return (tmp);
 }

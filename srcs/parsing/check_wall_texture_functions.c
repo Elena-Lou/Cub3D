@@ -6,7 +6,7 @@
 /*   By: aweaver <aweaver@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 11:05:24 by aweaver           #+#    #+#             */
-/*   Updated: 2022/09/20 18:25:06 by aweaver          ###   ########.fr       */
+/*   Updated: 2022/09/23 08:28:19 by aweaver          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,18 +47,19 @@ int	ft_check_no(t_map_data *map)
 
 	if (ft_strptr_len(map->flag_and_path) != 2)
 	{
-		ft_wrong_map(map->data->lst_map, "Texture NO: ", "wrong file");
+		ft_wrong_map_exit(map->data->lst_map, "Texture NO: ", "wrong file");
 		map->data->error = 1;
 	}
 	ret = ft_check_path(map->flag_and_path[1]);
 	if (ret == NOT_FOUND)
-		ft_wrong_map(map->data->lst_map, "Texture NO: ", strerror(errno));
+		ft_wrong_map_exit(map->data->lst_map, "Texture NO: ", strerror(errno));
 	if (ret == NOT_XPM)
-		ft_wrong_map(map->data->lst_map, "Texture NO:", "is not an xpm file");
+		ft_wrong_map_exit(map->data->lst_map, "Texture NO:",
+			"is not an xpm file");
 	if (map->data->no == NULL)
 		map->data->no = map->flag_and_path[1];
 	else
-		ft_wrong_map(map->data->lst_map, "Texture NO:",
+		ft_wrong_map_exit(map->data->lst_map, "Texture NO:",
 			"Unauthorized re-definition");
 	return (0);
 }
@@ -69,18 +70,19 @@ int	ft_check_so(t_map_data *map)
 
 	if (ft_strptr_len(map->flag_and_path) != 2)
 	{
-		ft_wrong_map(map->data->lst_map, "Texture SO: ", "wrong file");
+		ft_wrong_map_exit(map->data->lst_map, "Texture SO: ", "wrong file");
 		map->data->error = 1;
 	}
 	ret = ft_check_path(map->flag_and_path[1]);
 	if (ret == NOT_FOUND)
-		ft_wrong_map(map->data->lst_map, "Texture SO: ", strerror(errno));
+		ft_wrong_map_exit(map->data->lst_map, "Texture SO: ", strerror(errno));
 	if (ret == NOT_XPM)
-		ft_wrong_map(map->data->lst_map, "Texture SO:", "is not an xpm file");
+		ft_wrong_map_exit(map->data->lst_map, "Texture SO:",
+			"is not an xpm file");
 	if (map->data->so == NULL)
 		map->data->so = map->flag_and_path[1];
 	else
-		ft_wrong_map(map->data->lst_map, "Texture SO:",
+		ft_wrong_map_exit(map->data->lst_map, "Texture SO:",
 			"Unauthorized re-definition");
 	return (0);
 }
@@ -91,18 +93,20 @@ int	ft_check_ea(t_map_data *map)
 
 	if (ft_strptr_len(map->flag_and_path) != 2)
 	{
-		ft_wrong_map(map->data->lst_map, "Texture EA: ", "wrong file name");
+		ft_wrong_map_exit(map->data->lst_map, "Texture EA: ",
+			"wrong file name");
 		map->data->error = 1;
 	}
 	ret = ft_check_path(map->flag_and_path[1]);
 	if (ret == NOT_FOUND)
-		ft_wrong_map(map->data->lst_map, "Texture EA: ", strerror(errno));
+		ft_wrong_map_exit(map->data->lst_map, "Texture EA: ", strerror(errno));
 	if (ret == NOT_XPM)
-		ft_wrong_map(map->data->lst_map, "Texture EA:", "is not an xpm file");
+		ft_wrong_map_exit(map->data->lst_map, "Texture EA:",
+			"is not an xpm file");
 	if (map->data->ea == NULL)
 		map->data->ea = map->flag_and_path[1];
 	else
-		ft_wrong_map(map->data->lst_map, "Texture EA:",
+		ft_wrong_map_exit(map->data->lst_map, "Texture EA:",
 			"Unauthorized re-definition");
 	return (0);
 }
@@ -113,18 +117,19 @@ int	ft_check_we(t_map_data *map)
 
 	if (ft_strptr_len(map->flag_and_path) != 2)
 	{
-		ft_wrong_map(map->data->lst_map, "Texture WE: ", "wrong file");
+		ft_wrong_map_exit(map->data->lst_map, "Texture WE: ", "wrong file");
 		map->data->error = 1;
 	}
 	ret = ft_check_path(map->flag_and_path[1]);
 	if (ret == NOT_FOUND)
-		ft_wrong_map(map->data->lst_map, "Texture WE: ", strerror(errno));
+		ft_wrong_map_exit(map->data->lst_map, "Texture WE: ", strerror(errno));
 	if (ret == NOT_XPM)
-		ft_wrong_map(map->data->lst_map, "Texture WE:", "is not an xpm file");
+		ft_wrong_map_exit(map->data->lst_map, "Texture WE:",
+			"is not an xpm file");
 	if (map->data->we == NULL)
 		map->data->we = map->flag_and_path[1];
 	else
-		ft_wrong_map(map->data->lst_map, "Texture WE:",
+		ft_wrong_map_exit(map->data->lst_map, "Texture WE:",
 			"Unauthorized re-definition");
 	return (0);
 }

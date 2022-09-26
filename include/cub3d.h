@@ -6,7 +6,7 @@
 /*   By: elouisia <elouisia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/06 15:54:20 by elouisia          #+#    #+#             */
-/*   Updated: 2022/09/26 09:30:41 by aweaver          ###   ########.fr       */
+/*   Updated: 2022/09/26 10:22:22 by aweaver          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,6 @@ typedef struct s_cub_data
 	char	*we;
 	int		ceilling;
 	int		floor;
-	int		fd;
 	int		error;
 	t_list	*lst_map;
 }				t_cub_data;

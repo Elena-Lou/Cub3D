@@ -6,7 +6,7 @@
 /*   By: elouisia <elouisia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/07 16:04:09 by elouisia          #+#    #+#             */
-/*   Updated: 2022/09/20 18:11:16 by aweaver          ###   ########.fr       */
+/*   Updated: 2022/09/26 10:42:09 by aweaver          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,28 +39,27 @@ int	add_line_map(char *line, t_cub_data *data)
 int	map_to_list(t_cub_data *data, char *map_file)
 {
 	char		*line;
+	int			fd;
 
-	data->fd = open(map_file, O_RDONLY);
+	fd = open(map_file, O_RDONLY);
 	if (ft_check_name(map_file) == WRONG_MAP_NAME)
 		return (WRONG_MAP_NAME);
-	if (data->fd < 1)
+	if (fd < 1)
 		return (ft_err_msg(strerror(errno)));
 	ft_check_map_content(data);
-	line = get_next_line(data->fd);
+	line = get_next_line(fd);
 	if (line == NULL)
-		return (ft_err_msg("Empty map."));
+		return (close(fd), ft_err_msg("Empty map."));
 	if (add_line_map(line, data) == WRONG_MALLOC)
-		return (ft_err_msg("Malloc error."));
+		return (close(fd), ft_err_msg("Malloc error."));
 	while (line)
 	{
-		line = get_next_line(data->fd);
-		if (!line)
-			break ;
-		if (add_line_map(line, data) == WRONG_MALLOC)
+		line = get_next_line(fd);
+		if (line && add_line_map(line, data) == WRONG_MALLOC)
 			return (get_next_line(GNL_FLUSH), ft_err_msg("Malloc error."));
 	}
-	close(data->fd);
 	ft_lstiter(data->lst_map, &print_lst_map);
 	ft_putstr_fd("\n", 1);
+	close(fd);
 	return (0);
 }

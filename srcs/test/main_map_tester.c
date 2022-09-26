@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   main_map_tester.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: elouisia <elouisia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/06 15:52:30 by elouisia          #+#    #+#             */
-/*   Updated: 2022/09/08 18:04:57 by elouisia         ###   ########.fr       */
+/*   Updated: 2022/09/26 10:45:27 by aweaver          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ void	ft_init_data(t_cub_data *data)
 	data->we = NULL;
 	data->ceilling = -1;
 	data->floor = -1;
-	data->fd = -1;
 	data->error = 0;
 	data->lst_map = NULL;
 }
@@ -41,5 +40,6 @@ int	main(int ac, char **av)
 		return (0);
 	ft_check_map_content(&data);
 	printf("Main would have started a mlx window\n");
+	ft_lstclear(&(data.lst_map), ft_clear_map);
 	return (0);
 }

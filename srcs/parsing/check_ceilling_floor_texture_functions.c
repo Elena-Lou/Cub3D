@@ -6,7 +6,7 @@
 /*   By: aweaver <aweaver@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 11:31:41 by aweaver           #+#    #+#             */
-/*   Updated: 2022/09/26 09:52:36 by aweaver          ###   ########.fr       */
+/*   Updated: 2022/09/26 10:44:21 by aweaver          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,8 +86,7 @@ int	ft_check_floor(t_map_data *map)
 	while (++i < 3)
 	{
 		if (ft_check_value(map->flag_and_path[i], &rgb[i]) == 1)
-			return (ft_free_strptr(map->flag_and_path),
-				ft_wrong_map_exit(map->data->lst_map, "Texture F: ",
+			return (ft_wrong_map_exit(map->data->lst_map, "Texture F: ",
 					"not a valid colour"), 1);
 	}
 	ft_check_redefinition(map, "F: ", &(map->data->floor),
@@ -114,8 +113,7 @@ int	ft_check_ceilling(t_map_data *map)
 	while (++i < 3)
 	{
 		if (ft_check_value(map->flag_and_path[i], &rgb[i]) == 1)
-			return (ft_free_strptr(map->flag_and_path),
-				ft_wrong_map_exit(map->data->lst_map, "Texture C: ",
+			return (ft_wrong_map_exit(map->data->lst_map, "Texture C: ",
 					"not a valid colour"), 1);
 	}
 	ft_check_redefinition(map, "C: ", &(map->data->ceilling),

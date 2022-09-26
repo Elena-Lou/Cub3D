@@ -17,6 +17,8 @@ INCS		=	-I include\
 RM			=	rm -rf
 SILENT		=	--no-print-directory -s
 
+VALGRIND	=	valgrind --leak-check=full --show-leak-kinds=all
+
 #############################################################################
 #							LIBRARIES										#
 #############################################################################
@@ -108,11 +110,16 @@ test:	re
 		./$(NAME) maps/default.cub
 
 vtest:	re
-		valgrind --leak-check=full --show-leak-kinds=all -s ./$(NAME) maps/default.cub
+		$(VALGRIND) ./$(NAME) maps/default.cub
 
 test_map:	$(LIBFT) $(MLX)
 		$(CC) $(CFLAGS) srcs/test/main_map_tester.c srcs/parsing/check_map_name.c srcs/parsing/check_map_content.c srcs/parsing/check_wall_texture_functions.c srcs/parsing/check_ceilling_floor_texture_functions.c srcs/parsing/map_to_list.c srcs/utils/free_functions.c srcs/utils/error_message.c $(LIBFT) $(LIBS) -o $(NAME) $(INCS)
 		./srcs/test/test_maps.sh
+
+vtest_map:	$(LIBFT) $(MLX)
+		$(CC) $(CFLAGS) srcs/test/main_map_tester.c srcs/parsing/check_map_name.c srcs/parsing/check_map_content.c srcs/parsing/check_wall_texture_functions.c srcs/parsing/check_ceilling_floor_texture_functions.c srcs/parsing/map_to_list.c srcs/utils/free_functions.c srcs/utils/error_message.c $(LIBFT) $(LIBS) -o $(NAME) $(INCS)
+		./srcs/test/test_maps.sh $(VALGRIND)
+
 
 -include $(DEPS)
 

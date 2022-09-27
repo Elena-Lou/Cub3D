@@ -6,7 +6,7 @@
 /*   By: aweaver <aweaver@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 11:05:24 by aweaver           #+#    #+#             */
-/*   Updated: 2022/09/23 08:28:19 by aweaver          ###   ########.fr       */
+/*   Updated: 2022/09/26 09:31:45 by aweaver          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int	ft_check_path(char *path)
 	if (fd < 0)
 		return (NOT_FOUND);
 	line = get_next_line(fd);
-	if (line == NULL || ft_strcmp(line, "/* XPM */") != 0)
+	if (line == NULL || ft_strcmp(line, "/* XPM */\n") != 0)
 	{
 		free(line);
 		line = NULL;

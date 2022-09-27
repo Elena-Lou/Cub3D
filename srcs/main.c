@@ -6,7 +6,7 @@
 /*   By: elouisia <elouisia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/06 15:52:30 by elouisia          #+#    #+#             */
-/*   Updated: 2022/09/20 10:22:26 by aweaver          ###   ########.fr       */
+/*   Updated: 2022/09/26 10:22:44 by aweaver          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,6 @@ void	ft_init_data(t_cub_data *data)
 	data->we = NULL;
 	data->ceilling = -1;
 	data->floor = -1;
-	data->fd = -1;
 	data->error = 0;
 	data->lst_map = NULL;
 }

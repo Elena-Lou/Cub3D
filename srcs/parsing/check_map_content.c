@@ -6,7 +6,7 @@
 /*   By: aweaver <aweaver@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/16 13:06:38 by aweaver           #+#    #+#             */
-/*   Updated: 2022/09/28 10:46:37 by aweaver          ###   ########.fr       */
+/*   Updated: 2022/09/28 14:47:00 by aweaver          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,4 +72,5 @@ void	ft_check_map_content(t_cub_data *data)
 	ft_lstiter(data->lst_map, &ft_tokenise_map);
 	ft_lstiter(data->lst_map, &ft_check_map_header);
 	ft_check_texture_all_set(data);
+	ft_check_map_grid(data);
 }

@@ -6,7 +6,7 @@
 /*   By: elouisia <elouisia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/06 15:54:20 by elouisia          #+#    #+#             */
-/*   Updated: 2022/09/28 15:43:47 by elouisia         ###   ########.fr       */
+/*   Updated: 2022/09/28 12:14:23 by aweaver          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,7 @@ typedef struct s_cub_data
 	char	*we;
 	int		ceilling;
 	int		floor;
+	char	**grid;
 	t_list	*lst_map;
 }				t_cub_data;
 
@@ -101,6 +102,12 @@ int		ft_add_line_map(char *line, t_cub_data *data);
 int		ft_map_to_list(t_cub_data *data, char *map_file);
 void	ft_check_map_content(t_cub_data *data);
 int		ft_check_name(char *map_name);
+
+/*
+** CHECK_MAP_GRID.C
+*/
+
+int		ft_check_map_grid(t_cub_data *data);
 
 /*
 ** FREE_FUNCTIONS.C

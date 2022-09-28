@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main_map_tester.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: elouisia <elouisia@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aweaver <aweaver@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/06 15:52:30 by elouisia          #+#    #+#             */
-/*   Updated: 2022/09/26 10:45:27 by aweaver          ###   ########.fr       */
+/*   Created: 2022/09/06 15:52:30 by aweaver           #+#    #+#             */
+/*   Updated: 2022/09/28 10:54:08 by aweaver          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ void	ft_init_data(t_cub_data *data)
 	data->we = NULL;
 	data->ceilling = -1;
 	data->floor = -1;
-	data->error = 0;
 	data->lst_map = NULL;
 }
 

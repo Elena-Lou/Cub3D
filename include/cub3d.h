@@ -63,7 +63,6 @@ typedef struct s_cub_data
 	char	*we;
 	int		ceilling;
 	int		floor;
-	int		error;
 	t_list	*lst_map;
 }				t_cub_data;
 

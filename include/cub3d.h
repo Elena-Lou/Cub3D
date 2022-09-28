@@ -6,7 +6,7 @@
 /*   By: elouisia <elouisia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/06 15:54:20 by elouisia          #+#    #+#             */
-/*   Updated: 2022/10/05 17:11:12 by aweaver          ###   ########.fr       */
+/*   Updated: 2022/10/05 15:25:00 by elouisia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,6 +85,7 @@ typedef struct s_cub_data
 	char		**grid;
 	t_list		*lst_map;
 	t_cub_img	img;
+	t_cub_img	minimap;
 	t_player	player;
 }				t_cub_data;
 
@@ -150,6 +151,8 @@ void	ft_exit_check_grid(t_cub_data *data, char *error_msg);
 **	IMAGE_UTILS.C
 */
 
+void	ft_create_minimap(t_cub_data *data);
+void	ft_render_minimap(t_cub_data *data, int colour);
 void	ft_put_pix_img(t_cub_img *img, int x, int y, int colour);
 void	ft_render_player(t_cub_data *data, int colour);
 void	ft_render_background(t_cub_data *data, int colour);

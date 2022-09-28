@@ -50,7 +50,11 @@ SRCS	=	main.c \
 				error_message.c\
 			)\
 			$(addprefix image/, \
-				image_utils.c)
+				image_utils.c\
+				window_utils.c\
+				key_checks.c\
+				rendition.c\
+				minimap.c)
 
 SRCS_DIR = ./srcs/
 

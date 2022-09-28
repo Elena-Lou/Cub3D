@@ -1,21 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   image_utils.c                                      :+:      :+:    :+:   */
+/*   key_checks.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: elouisia <elouisia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/21 15:53:05 by elouisia          #+#    #+#             */
-/*   Updated: 2022/09/29 11:15:56 by elouisia         ###   ########.fr       */
+/*   Created: 2022/09/28 16:32:30 by elouisia          #+#    #+#             */
+/*   Updated: 2022/10/02 15:09:56 by elouisia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void	ft_put_pix_img(t_cub_img *img, int x, int y, int colour)
+int	ft_key_check(int key, t_cub_data *data)
 {
-	char	*pixel;
-
-	pixel = img->addr + (y * img->line_len + x *(img->bpp / 8));
-	*(int *)pixel = colour;
+	if (key == XK_Escape)
+		ft_close_window(data);
+	else if (key == XK_w)
+		data->player.y -= 5;
+	else if (key == XK_s)
+		data->player.y += 5;
+	else if (key == XK_a)
+		data->player.x -= 5;
+	else if (key == XK_d)
+		data->player.x += 5;
+	else
+		printf("%d\n", key);
+	ft_render_img(data);
+	return (0);
 }

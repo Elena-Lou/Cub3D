@@ -80,7 +80,7 @@ $(OBJS_DIR)%.o:	$(SRCS_DIR)%.c
 		@mkdir -p $(dir $@)
 		$(CC) $(CFLAGS) -o $@ -c $< $(DEPSFLAGS) $(INCS)
 
-$(LIBFT):
+$(LIBFT): $(LIBFT_PATH)
 		@make $(SILENT) -C ./libft/ all
 		@echo "$(PURPLE)\nLibft $(CYAN)compiled\n$(NO_COLOUR)"
 

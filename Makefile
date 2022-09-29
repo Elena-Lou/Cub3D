@@ -42,6 +42,7 @@ SRCS	=	main.c \
 				check_map_name.c\
 				check_wall_texture_functions.c\
 				check_ceilling_floor_texture_functions.c\
+				check_map_grid.c\
 			)\
 			$(addprefix utils/, \
 				free_functions.c\

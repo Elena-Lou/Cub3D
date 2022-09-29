@@ -6,7 +6,7 @@
 /*   By: aweaver <aweaver@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/16 14:51:37 by aweaver           #+#    #+#             */
-/*   Updated: 2022/09/23 08:28:32 by aweaver          ###   ########.fr       */
+/*   Updated: 2022/09/29 11:30:11 by aweaver          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ void	ft_clear_data(t_cub_data *data)
 	data->ea = NULL;
 	free(data->we);
 	data->we = NULL;
+	ft_free_strptr(data->grid);
 	ft_lstclear(&(data->lst_map), ft_clear_map);
 }
 

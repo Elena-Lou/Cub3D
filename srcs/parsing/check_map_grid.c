@@ -6,7 +6,7 @@
 /*   By: aweaver <aweaver@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/28 11:11:14 by aweaver           #+#    #+#             */
-/*   Updated: 2022/09/29 11:18:15 by aweaver          ###   ########.fr       */
+/*   Updated: 2022/09/29 11:44:55 by aweaver          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,6 @@ t_list	*ft_skip_header(t_cub_data *data)
 				break ;
 			else if ((map->line[i]) == '0' || map->line[i] == '1')
 				return (list);
-			i++;
 		}
 		list = list->next;
 	}
@@ -60,7 +59,34 @@ int	ft_create_str(char **tab, int tab_size, int length)
 	return (0);
 }
 
-int	ft_malloc_grid(t_list *list, char **tab, int tab_size)
+void	ft_fill_grid(t_list *list, int length)
+{
+	t_map_data	*map;
+	t_cub_data	*data;
+	int			i;
+	int			j;
+
+	map = (t_map_data *)list->content;
+	data = map->data;
+	i = 0;
+	while (list)
+	{
+		map = (t_map_data *)list->content;
+		j = -1;
+		while (map->line[++j])
+			data->grid[i][j] = map->line[j];
+		while (j < length)
+		{
+			data->grid[i][j] = '\0';
+			j++;
+		}
+		data->grid[i][j] = '\0';
+		i++;
+		list = list->next;
+	}
+}
+
+int	ft_malloc_grid(t_list *list, t_list *start, char **tab, int tab_size)
 {
 	int			max_length;
 	int			length;
@@ -68,6 +94,7 @@ int	ft_malloc_grid(t_list *list, char **tab, int tab_size)
 	int			i;
 
 	i = 0;
+	max_length = 0;
 	while (list)
 	{
 		map = (t_map_data *) list->content;
@@ -79,6 +106,7 @@ int	ft_malloc_grid(t_list *list, char **tab, int tab_size)
 	}
 	if (ft_create_str(tab, tab_size, max_length) == 1)
 		return (WRONG_MALLOC);
+	ft_fill_grid(start, max_length);
 	return (0);
 }
 
@@ -90,11 +118,12 @@ int	ft_check_map_grid(t_cub_data *data)
 
 	list = ft_skip_header(data);
 	tab_size = ft_lstsize(list);
-	tab = malloc(sizeof(*tab) * (tab_size + 1)); //secure malloc here
+	tab = malloc(sizeof(*tab) * (tab_size + 1));
 	if (tab == NULL)
-		return (1); //clean exit here
-	if (ft_malloc_grid(list, tab, tab_size) == WRONG_MALLOC)
-		return (1); //clean exit here
+		return (ft_wrong_map_exit(data->lst_map, "Malloc: ", "Error"), 1);
+	data->grid = tab;
+	if (ft_malloc_grid(list, list, tab, tab_size) == WRONG_MALLOC)
+		return (ft_wrong_map_exit(data->lst_map, "Malloc: ", "Error"), 1);
 	data->grid = tab;
 	return (0);
 }

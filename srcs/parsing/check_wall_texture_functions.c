@@ -6,7 +6,7 @@
 /*   By: aweaver <aweaver@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 11:05:24 by aweaver           #+#    #+#             */
-/*   Updated: 2022/09/26 09:31:45 by aweaver          ###   ########.fr       */
+/*   Updated: 2022/09/28 10:46:52 by aweaver          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,10 +46,7 @@ int	ft_check_no(t_map_data *map)
 	int	ret;
 
 	if (ft_strptr_len(map->flag_and_path) != 2)
-	{
 		ft_wrong_map_exit(map->data->lst_map, "Texture NO: ", "wrong file");
-		map->data->error = 1;
-	}
 	ret = ft_check_path(map->flag_and_path[1]);
 	if (ret == NOT_FOUND)
 		ft_wrong_map_exit(map->data->lst_map, "Texture NO: ", strerror(errno));
@@ -69,10 +66,7 @@ int	ft_check_so(t_map_data *map)
 	int	ret;
 
 	if (ft_strptr_len(map->flag_and_path) != 2)
-	{
 		ft_wrong_map_exit(map->data->lst_map, "Texture SO: ", "wrong file");
-		map->data->error = 1;
-	}
 	ret = ft_check_path(map->flag_and_path[1]);
 	if (ret == NOT_FOUND)
 		ft_wrong_map_exit(map->data->lst_map, "Texture SO: ", strerror(errno));
@@ -92,11 +86,8 @@ int	ft_check_ea(t_map_data *map)
 	int	ret;
 
 	if (ft_strptr_len(map->flag_and_path) != 2)
-	{
 		ft_wrong_map_exit(map->data->lst_map, "Texture EA: ",
 			"wrong file name");
-		map->data->error = 1;
-	}
 	ret = ft_check_path(map->flag_and_path[1]);
 	if (ret == NOT_FOUND)
 		ft_wrong_map_exit(map->data->lst_map, "Texture EA: ", strerror(errno));
@@ -116,10 +107,7 @@ int	ft_check_we(t_map_data *map)
 	int	ret;
 
 	if (ft_strptr_len(map->flag_and_path) != 2)
-	{
 		ft_wrong_map_exit(map->data->lst_map, "Texture WE: ", "wrong file");
-		map->data->error = 1;
-	}
 	ret = ft_check_path(map->flag_and_path[1]);
 	if (ret == NOT_FOUND)
 		ft_wrong_map_exit(map->data->lst_map, "Texture WE: ", strerror(errno));

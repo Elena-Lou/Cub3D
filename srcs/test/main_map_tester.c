@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main_map_tester.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: elouisia <elouisia@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aweaver <aweaver@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/06 15:52:30 by elouisia          #+#    #+#             */
-/*   Updated: 2022/09/26 10:45:27 by aweaver          ###   ########.fr       */
+/*   Created: 2022/09/06 15:52:30 by aweaver           #+#    #+#             */
+/*   Updated: 2022/09/29 11:51:00 by aweaver          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@ void	ft_init_data(t_cub_data *data)
 	data->we = NULL;
 	data->ceilling = -1;
 	data->floor = -1;
-	data->error = 0;
 	data->lst_map = NULL;
+	data->grid = NULL;
 }
 
 int	main(int ac, char **av)
@@ -36,10 +36,11 @@ int	main(int ac, char **av)
 		return (1);
 	}
 	ft_init_data(&data);
-	if (map_to_list(&data, av[1]))
+	if (ft_map_to_list(&data, av[1]))
 		return (0);
 	ft_check_map_content(&data);
 	printf("Main would have started a mlx window\n");
+	ft_free_strptr(data.grid);
 	ft_lstclear(&(data.lst_map), ft_clear_map);
 	return (0);
 }

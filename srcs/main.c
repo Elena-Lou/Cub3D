@@ -6,7 +6,7 @@
 /*   By: elouisia <elouisia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/06 15:52:30 by elouisia          #+#    #+#             */
-/*   Updated: 2022/09/28 15:50:14 by elouisia         ###   ########.fr       */
+/*   Updated: 2022/09/29 11:32:49 by aweaver          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ int	ft_close_window(t_cub_data *data)
 	mlx_destroy_window(data->mlx_ptr, data->win_ptr);
 	mlx_destroy_display(data->mlx_ptr);
 	free(data->mlx_ptr);
+	ft_free_strptr(data->grid);
 	ft_lstclear(&(data->lst_map), ft_clear_map);
 	exit (0);
 }
@@ -40,8 +41,8 @@ void	ft_init_data(t_cub_data *data)
 	data->we = NULL;
 	data->ceilling = -1;
 	data->floor = -1;
-	data->error = 0;
 	data->lst_map = NULL;
+	data->grid = NULL;
 }
 
 int	main(int ac, char **av)

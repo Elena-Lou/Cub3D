@@ -6,7 +6,7 @@
 /*   By: elouisia <elouisia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/07 16:04:09 by elouisia          #+#    #+#             */
-/*   Updated: 2022/09/28 15:41:13 by elouisia         ###   ########.fr       */
+/*   Updated: 2022/09/28 10:42:14 by aweaver          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,12 +41,11 @@ int	ft_map_to_list(t_cub_data *data, char *map_file)
 	char		*line;
 	int			fd;
 
-	fd = open(map_file, O_RDONLY);
 	if (ft_check_name(map_file) == WRONG_MAP_NAME)
 		return (WRONG_MAP_NAME);
+	fd = open(map_file, O_RDONLY);
 	if (fd < 1)
 		return (ft_err_msg(strerror(errno)));
-	ft_check_map_content(data);
 	line = get_next_line(fd);
 	if (line == NULL)
 		return (close(fd), ft_err_msg("Empty map."));

@@ -6,7 +6,7 @@
 /*   By: aweaver <aweaver@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/16 13:06:38 by aweaver           #+#    #+#             */
-/*   Updated: 2022/09/23 09:31:31 by aweaver          ###   ########.fr       */
+/*   Updated: 2022/09/28 14:47:00 by aweaver          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,8 @@ void	ft_check_map_header(void *arg)
 	{
 		if (ft_strcmp(*map->flag_and_path, comp[i]) == 0)
 		{
-			if ((*ft_check[i])(map) == 1)
-				return ;
-			break ;
+			ft_check[i](map);
+			return ;
 		}
 		i++;
 	}
@@ -54,14 +53,17 @@ static int	ft_check_texture_all_set(t_cub_data *data)
 	const char	*texture[4] = {data->no, data->so, data->ea, data->we};
 	int			i;
 
-	i = -1;
-	while (++i < 4)
+	i = 0;
+	while (i < 4)
+	{
 		if (texture[i] == NULL)
-			return (1);
-	else if (data->floor == -1)
-		return (1);
+			ft_wrong_map_exit(data->lst_map, "Texture: ", "not set.");
+		i++;
+	}
+	if (data->floor == -1)
+		ft_wrong_map_exit(data->lst_map, "Floor: ", "not set.");
 	else if (data->ceilling == -1)
-		return (1);
+		ft_wrong_map_exit(data->lst_map, "Ceilling: ", "not set.");
 	return (0);
 }
 
@@ -70,4 +72,5 @@ void	ft_check_map_content(t_cub_data *data)
 	ft_lstiter(data->lst_map, &ft_tokenise_map);
 	ft_lstiter(data->lst_map, &ft_check_map_header);
 	ft_check_texture_all_set(data);
+	ft_check_map_grid(data);
 }

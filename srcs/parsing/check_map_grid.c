@@ -6,7 +6,7 @@
 /*   By: aweaver <aweaver@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/28 11:11:14 by aweaver           #+#    #+#             */
-/*   Updated: 2022/09/29 09:41:48 by aweaver          ###   ########.fr       */
+/*   Updated: 2022/09/29 11:18:15 by aweaver          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@ t_list	*ft_skip_header(t_cub_data *data)
 		{
 			if (ft_iswhitespace(map->line[i]))
 				i++;
+			else if (ft_isalpha(map->line[i]))
+				break ;
 			else if ((map->line[i]) == '0' || map->line[i] == '1')
 				return (list);
 			i++;

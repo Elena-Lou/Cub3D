@@ -6,7 +6,7 @@
 /*   By: elouisia <elouisia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/06 15:54:20 by elouisia          #+#    #+#             */
-/*   Updated: 2022/10/05 15:25:00 by elouisia         ###   ########.fr       */
+/*   Updated: 2022/10/05 15:25:46 by elouisia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@
 # include <stdio.h>
 # include <X11/keysym.h>
 # include <errno.h>
+# include <math.h>
+# include <limits.h>
 
 /*
 ** DEFINES
@@ -55,6 +57,14 @@
 
 # ifndef WIDTH
 #  define WIDTH 1000
+# endif
+
+# ifndef PI
+#  define PI 3.14159265359
+# endif
+
+# ifndef FOV
+#  define FOV (66 * PI / 180)
 # endif
 
 typedef struct s_player

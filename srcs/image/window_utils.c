@@ -6,7 +6,7 @@
 /*   By: elouisia <elouisia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/28 16:29:07 by elouisia          #+#    #+#             */
-/*   Updated: 2022/10/02 15:07:55 by elouisia         ###   ########.fr       */
+/*   Updated: 2022/10/03 10:10:03 by elouisia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ int	ft_close_window(t_cub_data *data)
 	mlx_destroy_window(data->mlx_ptr, data->win_ptr);
 	mlx_destroy_display(data->mlx_ptr);
 	free(data->mlx_ptr);
+	ft_free_strptr(data->grid);
 	ft_lstclear(&(data->lst_map), ft_clear_map);
 	exit (0);
 }

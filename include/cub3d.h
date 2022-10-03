@@ -6,7 +6,7 @@
 /*   By: elouisia <elouisia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/06 15:54:20 by elouisia          #+#    #+#             */
-/*   Updated: 2022/09/28 12:14:23 by aweaver          ###   ########.fr       */
+/*   Updated: 2022/10/03 13:32:16 by aweaver          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,7 +107,8 @@ int		ft_check_name(char *map_name);
 ** CHECK_MAP_GRID.C
 */
 
-int		ft_check_map_grid(t_cub_data *data);
+int		ft_create_map_grid(t_cub_data *data);
+int		ft_check_map_grid(t_cub_data *data, char **grid);
 
 /*
 ** FREE_FUNCTIONS.C
@@ -122,5 +123,6 @@ void	ft_clear_data(t_cub_data *data);
 
 void	ft_wrong_map_exit(t_list *list, char *texture, char *error_msg);
 int		ft_err_msg(char *str);
+void	ft_exit_check_grid(t_cub_data *data, char *error_msg);
 
 #endif

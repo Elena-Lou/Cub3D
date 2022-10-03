@@ -18,6 +18,12 @@ echo "Tester returned $?"
 echo -e "\n\nTESTING INCORRECT MAP 1"
 $@ ./cub3D ./maps/broken.cub
 echo "Tester returned $?"
+echo -e "\n\nTESTING INCORRECT PLAYER POSITION"
+$@ ./cub3D ./maps/wrong_player.cub
+echo "Tester returned $?"
+echo -e "\n\nTESTING MULTIPLE PLAYER SPAWNS"
+$@ ./cub3D ./maps/multiple_players.cub
+echo "Tester returned $?"
 echo "======= THE FOLLOWING SHOULD SUCCEED ======="
 echo -e "\n\nTESTING CORRECT MAP"
 $@ ./cub3D ./maps/default.cub

@@ -6,7 +6,7 @@
 /*   By: aweaver <aweaver@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/28 11:11:14 by aweaver           #+#    #+#             */
-/*   Updated: 2022/09/29 11:44:55 by aweaver          ###   ########.fr       */
+/*   Updated: 2022/10/03 09:11:15 by aweaver          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,7 +110,7 @@ int	ft_malloc_grid(t_list *list, t_list *start, char **tab, int tab_size)
 	return (0);
 }
 
-int	ft_check_map_grid(t_cub_data *data)
+int	ft_create_map_grid(t_cub_data *data)
 {
 	t_list		*list;
 	int			tab_size;

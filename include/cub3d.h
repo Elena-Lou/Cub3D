@@ -6,7 +6,7 @@
 /*   By: elouisia <elouisia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/06 15:54:20 by elouisia          #+#    #+#             */
-/*   Updated: 2022/09/28 12:14:23 by aweaver          ###   ########.fr       */
+/*   Updated: 2022/10/03 09:19:03 by aweaver          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,6 +107,7 @@ int		ft_check_name(char *map_name);
 ** CHECK_MAP_GRID.C
 */
 
+int		ft_create_map_grid(t_cub_data *data);
 int		ft_check_map_grid(t_cub_data *data);
 
 /*

@@ -6,7 +6,7 @@
 /*   By: elouisia <elouisia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/02 15:40:38 by elouisia          #+#    #+#             */
-/*   Updated: 2022/10/02 16:24:43 by elouisia         ###   ########.fr       */
+/*   Updated: 2022/10/03 16:56:52 by elouisia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ A_ Cast a ray
 - d_y, the height of a grid cell == 1.
 
 - delta_x : the distance between each horizontal intersection
--> delta_x = d_y / tan(FOV / 2)
+-> delta_x = d_y / tan(FOV)
 
 - if there is a wall on the cell, stop to calculate the distance
 
@@ -29,14 +29,14 @@ A_ Cast a ray
     Xnew = Xold + delta_x
     Ynew = Yold + d_y
 
-    2_ Find Horizontal intersections
+    2_ Find vertical intersections
     
 - find coordinates of the first intersection
 
 - d_x, the width of a grid cell == 1
 
 - delta_y : the distance between each vertical intersection
--> delta_y = d_x * tan(FOV / 2)
+-> delta_y = d_x * tan(FOV)
 
 - if there is a wall, stop to calculate the distance
 
@@ -44,3 +44,73 @@ A_ Cast a ray
     Xnew = Xold + d_x
     Ynew = Yold + delta_y
 */
+typedef struct s_dda
+{
+    double	d_x;
+    double	d_y;
+    double	step_x;
+    double	step_y;
+    double	inter_x;
+    double	inter_y;
+    double	pos_x;
+    double	pos_y;
+    int		dir_x;
+    int		dir_y;
+	double	theta;
+	int		hit_x;
+	int		hit_y;
+}       t_dda;
+
+// void	ft_launch_no_ea(t_cub_data *data, t_dda *ray, double tan)
+// {
+// 	while (1)
+// 	{
+// 		while (ray->inter_y)
+// 	}
+// }
+
+void	ft_ray_launcher(t_cub_data *data, t_dda *ray, double tan)
+{
+	if (ray->dir_x == 1 && ray->dir_y == -1)
+		ft_launch_no_ea(data, ray, tan);
+	else if (ray->dir_x == -1 && ray->dir_y == -1)
+		ft_launch_no_we(data, ray, tan);
+	else if (ray->dir_x == -1 && ray->dir_y == 1)
+		ft_launch_so_we(data, ray, tan);
+	else
+		ft_launch_no_ea(data, ray, tan);
+}
+
+void	ft_set_dir(t_dda *ray, double tan)
+{
+	if (ray->theta > WEST || ray->theta < EAST)
+		ray->dir_y = -1;
+	else
+		ray->dir_y = 1;
+	if (ray->theta > NORTH || ray->theta < SOUTH)
+		ray->dir_x = 1;
+	else
+		ray->dir_x = -1;
+}
+
+void	ft_set_ray_data(t_cub_data *data)
+{
+    t_dda	ray;
+    double	theta;
+    double	tan_theta;
+    
+	ray.pos_x = data->player.x;
+	ray.pos_y = data->player.y;
+	ray.theta = data->player.pov - (FOV / 2);
+	tan_theta = tan(theta);
+	// ray.inter_x = ray.pos_x + ray.d_x + (ray.d_y / tan_theta);
+	// ray.inter_y = ray.pos_y + ray.d_y + (ray.d_x * tan_theta);
+	ray.inter_x = ray.pos_x + (ray.d_y / tan_theta);
+	ray.inter_y = ray.pos_y + (ray.d_x * tan_theta);
+	ft_set_dir(&ray, tan_theta);
+	ray.step_x = ray.dir_x * tan_theta;
+	ray.step_y = ray.dir_y / tan_theta;
+	ft_ray_launcher(data, &ray, tan_theta);
+}
+
+

@@ -6,7 +6,7 @@
 /*   By: elouisia <elouisia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/06 15:54:20 by elouisia          #+#    #+#             */
-/*   Updated: 2022/10/05 15:25:46 by elouisia         ###   ########.fr       */
+/*   Updated: 2022/10/05 15:31:20 by elouisia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,13 +64,30 @@
 # endif
 
 # ifndef FOV
-#  define FOV (66 * PI / 180)
+#  define FOV 1.151917306
+# endif
+
+# ifndef EAST
+#  define EAST 0
+# endif
+
+# ifndef NORTH
+#  define NORTH 4.71238898
+# endif
+
+# ifndef WEST
+#  define WEST PI
+# endif
+
+# ifndef SOUTH
+#  define SOUTH 1.570796327
 # endif
 
 typedef struct s_player
 {
 	int			x;
 	int			y;
+	double		pov;
 }			t_player;
 
 typedef struct s_cub_img

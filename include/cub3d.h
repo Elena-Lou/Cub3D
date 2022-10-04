@@ -6,7 +6,7 @@
 /*   By: elouisia <elouisia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/06 15:54:20 by elouisia          #+#    #+#             */
-/*   Updated: 2022/10/05 15:31:20 by elouisia         ###   ########.fr       */
+/*   Updated: 2022/10/05 16:57:36 by elouisia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,11 +83,30 @@
 #  define SOUTH 1.570796327
 # endif
 
+typedef struct s_dda
+{
+	double	d_x;
+	double	d_y;
+	double	step_x;
+	double	step_y;
+	double	inter_x;
+	double	inter_y;
+	double	pos_x;
+	double	pos_y;
+	int		dir_x;
+	int		dir_y;
+	double	theta;
+	int		hit_x;
+	int		hit_y;
+}			t_dda;
+
 typedef struct s_player
 {
 	int			x;
 	int			y;
 	double		pov;
+	int			tile_x;
+	int			tile_y;
 }			t_player;
 
 typedef struct s_cub_img
@@ -186,5 +205,11 @@ void	ft_render_background(t_cub_data *data, int colour);
 int		ft_render_img(t_cub_data *data);
 int		ft_window_init(t_cub_data *data);
 int		ft_close_window(t_cub_data *data);
+
+/*
+** DDA.C
+*/
+
+void	ft_set_ray_data(t_cub_data *data);
 
 #endif

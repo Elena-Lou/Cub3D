@@ -6,7 +6,7 @@
 /*   By: elouisia <elouisia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/02 15:40:38 by elouisia          #+#    #+#             */
-/*   Updated: 2022/10/03 16:56:52 by elouisia         ###   ########.fr       */
+/*   Updated: 2022/10/05 16:55:43 by elouisia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,22 +44,6 @@ A_ Cast a ray
     Xnew = Xold + d_x
     Ynew = Yold + delta_y
 */
-typedef struct s_dda
-{
-    double	d_x;
-    double	d_y;
-    double	step_x;
-    double	step_y;
-    double	inter_x;
-    double	inter_y;
-    double	pos_x;
-    double	pos_y;
-    int		dir_x;
-    int		dir_y;
-	double	theta;
-	int		hit_x;
-	int		hit_y;
-}       t_dda;
 
 // void	ft_launch_no_ea(t_cub_data *data, t_dda *ray, double tan)
 // {
@@ -95,16 +79,16 @@ void	ft_set_dir(t_dda *ray, double tan)
 
 void	ft_set_ray_data(t_cub_data *data)
 {
-    t_dda	ray;
-    double	theta;
-    double	tan_theta;
-    
+	t_dda	ray;
+	double	theta;
+	double	tan_theta;
+
 	ray.pos_x = data->player.x;
 	ray.pos_y = data->player.y;
+	data->player.tile_x = data->player.x >> 6;
+	data->player.tile_y = data->player.y >> 6;
 	ray.theta = data->player.pov - (FOV / 2);
 	tan_theta = tan(theta);
-	// ray.inter_x = ray.pos_x + ray.d_x + (ray.d_y / tan_theta);
-	// ray.inter_y = ray.pos_y + ray.d_y + (ray.d_x * tan_theta);
 	ray.inter_x = ray.pos_x + (ray.d_y / tan_theta);
 	ray.inter_y = ray.pos_y + (ray.d_x * tan_theta);
 	ft_set_dir(&ray, tan_theta);
@@ -112,5 +96,3 @@ void	ft_set_ray_data(t_cub_data *data)
 	ray.step_y = ray.dir_y / tan_theta;
 	ft_ray_launcher(data, &ray, tan_theta);
 }
-
-

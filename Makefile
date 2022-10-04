@@ -54,7 +54,11 @@ SRCS	=	main.c \
 				window_utils.c\
 				key_checks.c\
 				rendition.c\
-				minimap.c)
+				minimap.c\
+				)\
+			$(addprefix raycasting/, \
+				dda.c\
+			)
 
 SRCS_DIR = ./srcs/
 

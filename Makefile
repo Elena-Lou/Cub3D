@@ -48,6 +48,16 @@ SRCS	=	main.c \
 			$(addprefix utils/, \
 				free_functions.c\
 				error_message.c\
+			)\
+			$(addprefix image/, \
+				image_utils.c\
+				window_utils.c\
+				key_checks.c\
+				rendition.c\
+				minimap.c\
+				)\
+			$(addprefix raycasting/, \
+				dda.c\
 			)
 
 SRCS_DIR = ./srcs/

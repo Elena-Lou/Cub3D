@@ -6,7 +6,7 @@
 /*   By: elouisia <elouisia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/06 15:54:20 by elouisia          #+#    #+#             */
-/*   Updated: 2022/10/03 13:32:16 by aweaver          ###   ########.fr       */
+/*   Updated: 2022/10/05 16:57:36 by elouisia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@
 # include <stdio.h>
 # include <X11/keysym.h>
 # include <errno.h>
+# include <math.h>
+# include <limits.h>
 
 /*
 ** DEFINES
@@ -49,22 +51,88 @@
 #  define DEBUG 1
 # endif
 
-/*
-** TYPEDEF
-*/
+# ifndef HEIGHT
+#  define HEIGHT 800
+# endif
+
+# ifndef WIDTH
+#  define WIDTH 1000
+# endif
+
+# ifndef PI
+#  define PI 3.14159265359
+# endif
+
+# ifndef FOV
+#  define FOV 1.151917306
+# endif
+
+# ifndef EAST
+#  define EAST 0
+# endif
+
+# ifndef NORTH
+#  define NORTH 4.71238898
+# endif
+
+# ifndef WEST
+#  define WEST PI
+# endif
+
+# ifndef SOUTH
+#  define SOUTH 1.570796327
+# endif
+
+typedef struct s_dda
+{
+	double	d_x;
+	double	d_y;
+	double	step_x;
+	double	step_y;
+	double	inter_x;
+	double	inter_y;
+	double	pos_x;
+	double	pos_y;
+	int		dir_x;
+	int		dir_y;
+	double	theta;
+	int		hit_x;
+	int		hit_y;
+}			t_dda;
+
+typedef struct s_player
+{
+	int			x;
+	int			y;
+	double		pov;
+	int			tile_x;
+	int			tile_y;
+}			t_player;
+
+typedef struct s_cub_img
+{
+	void		*mlx_img;
+	char		*addr;
+	int			bpp;
+	int			line_len;
+	int			endian;
+}			t_cub_img;
 
 typedef struct s_cub_data
 {
-	void	*mlx_ptr;
-	void	*win_ptr;
-	char	*no;
-	char	*so;
-	char	*ea;
-	char	*we;
-	int		ceilling;
-	int		floor;
-	char	**grid;
-	t_list	*lst_map;
+	void		*mlx_ptr;
+	void		*win_ptr;
+	char		*no;
+	char		*so;
+	char		*ea;
+	char		*we;
+	int			ceilling;
+	int			floor;
+	char		**grid;
+	t_list		*lst_map;
+	t_cub_img	img;
+	t_cub_img	minimap;
+	t_player	player;
 }				t_cub_data;
 
 typedef struct s_map_data
@@ -91,8 +159,8 @@ int		ft_check_ceilling(t_map_data *map);
 **	MAIN.C
 */
 
+void	ft_init_player(t_cub_data *data);
 int		ft_key_check(int key, t_cub_data *data);
-int		ft_close_window(t_cub_data *data);
 
 /*
 **	MAP_CHECK.C
@@ -124,5 +192,24 @@ void	ft_clear_data(t_cub_data *data);
 void	ft_wrong_map_exit(t_list *list, char *texture, char *error_msg);
 int		ft_err_msg(char *str);
 void	ft_exit_check_grid(t_cub_data *data, char *error_msg);
+
+/*
+**	IMAGE_UTILS.C
+*/
+
+void	ft_create_minimap(t_cub_data *data);
+void	ft_render_minimap(t_cub_data *data, int colour);
+void	ft_put_pix_img(t_cub_img *img, int x, int y, int colour);
+void	ft_render_player(t_cub_data *data, int colour);
+void	ft_render_background(t_cub_data *data, int colour);
+int		ft_render_img(t_cub_data *data);
+int		ft_window_init(t_cub_data *data);
+int		ft_close_window(t_cub_data *data);
+
+/*
+** DDA.C
+*/
+
+void	ft_set_ray_data(t_cub_data *data);
 
 #endif

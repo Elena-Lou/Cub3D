@@ -6,30 +6,11 @@
 /*   By: elouisia <elouisia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/06 15:52:30 by elouisia          #+#    #+#             */
-/*   Updated: 2022/09/29 11:32:49 by aweaver          ###   ########.fr       */
+/*   Updated: 2022/10/04 17:05:17 by elouisia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
-
-int	ft_key_check(int key, t_cub_data *data)
-{
-	if (key == XK_Escape)
-		ft_close_window(data);
-	else
-		printf("%d\n", key);
-	return (0);
-}
-
-int	ft_close_window(t_cub_data *data)
-{
-	mlx_destroy_window(data->mlx_ptr, data->win_ptr);
-	mlx_destroy_display(data->mlx_ptr);
-	free(data->mlx_ptr);
-	ft_free_strptr(data->grid);
-	ft_lstclear(&(data->lst_map), ft_clear_map);
-	exit (0);
-}
 
 void	ft_init_data(t_cub_data *data)
 {
@@ -57,14 +38,12 @@ int	main(int ac, char **av)
 	ft_init_data(&data);
 	ft_map_to_list(&data, av[1]);
 	ft_check_map_content(&data);
-	data.mlx_ptr = mlx_init();
-	if (!data.mlx_ptr)
+	if (ft_window_init(&data))
 		return (ft_lstclear(&(data.lst_map), ft_clear_map), 1);
-	data.win_ptr = mlx_new_window(data.mlx_ptr, 1000, 800, "Cub3D");
-	if (!data.win_ptr)
-		return (ft_lstclear(&(data.lst_map), ft_clear_map), 1);
+	ft_init_player(&data);
+	ft_render_img(&data);
 	mlx_key_hook(data.win_ptr, &ft_key_check, &data);
-	mlx_hook(data.win_ptr, 17, 1L << 3, &ft_close_window, &data);
+	mlx_hook(data.win_ptr, 17, 1L << 0, &ft_close_window, &data);
 	mlx_loop(data.mlx_ptr);
 	ft_lstclear(&(data.lst_map), ft_clear_map);
 	return (0);

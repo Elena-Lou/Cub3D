@@ -1,7 +1,7 @@
 #!/bin/bash
 test_merge(){
 	echo "Running pre-merge-commit git-hook"
-	VAR1=$(norminette | grep Error! | cut -d ":" -f 1 | grep -v test)
+	VAR1=$(norminette `/bin/ls | grep -v minilibx` | grep -v "is not valid C or C header file" | grep Error! | cut -d ":" -f 1 | grep -v test)
 	if [[ "$VAR1" ]]
 	then	
 		echo -e "\033[31mNorminette Error\nUse git merge --abort if you first want to fix that!\033[m"

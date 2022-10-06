@@ -103,6 +103,18 @@
 #  define MMAP_BORDER_SIZE 5
 # endif
 
+# ifndef RAYS_NB
+#  define RAYS_NB 1000
+# endif
+
+# ifndef FALSE
+#  define FALSE 1
+# endif
+
+# ifndef TRUE
+#  define TRUE 0
+# endif
+
 typedef struct s_dda
 {
 	double	d_x;
@@ -118,6 +130,19 @@ typedef struct s_dda
 	double	theta;
 	int		hit_x;
 	int		hit_y;
+	int		hzt_x;
+	int		hzt_y;
+	int		vrt_x;
+	int		vrt_y;
+	double	distance;
+	int		hzt_hit;
+	int		vrt_hit;
+	int		facing_up;
+	int		facing_left;
+	double	tan_theta;
+	double	hzt_dist;
+	double	vrt_dist;
+	int		id;
 }			t_dda;
 
 typedef struct s_player
@@ -129,6 +154,7 @@ typedef struct s_player
 	int			tile_y;
 	int			dir_x;
 	int			dir_y;
+	double		dist_pp;
 }			t_player;
 
 typedef struct s_cub_img
@@ -235,6 +261,13 @@ int		ft_close_window(t_cub_data *data);
 */
 
 void	ft_set_ray_data(t_cub_data *data);
+void	ft_distance_to_projection_plane(t_player *player);
+void	ft_cast_ray(t_dda *ray, t_cub_data *data);
+void	ft_hzt_intersections(t_cub_data *data, t_dda *ray);
+void	ft_vrt_intersections(t_cub_data *data, t_dda *ray);
+double	ft_normalize_angle(double theta);
+void	ft_set_dir(t_dda *ray);
+double	ft_dist_btw_pts(double player_x, double player_y, double hit_x, double hit_y);
 
 /*
 ** PLAYER_MOVEMENT.C

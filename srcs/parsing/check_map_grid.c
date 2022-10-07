@@ -6,7 +6,7 @@
 /*   By: aweaver <aweaver@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 09:27:26 by aweaver           #+#    #+#             */
-/*   Updated: 2022/10/07 14:02:39 by aweaver          ###   ########.fr       */
+/*   Updated: 2022/10/07 16:53:40 by aweaver          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,12 +53,28 @@ void	ft_set_player_spawn(t_cub_data *data, int x, int y, int *spawn_counts)
 	*spawn_counts += 1;
 	data->player.x = x * 64;
 	data->player.y = y * 64;
-	data->player.dir_x = 1;
-	data->player.dir_y = 1;
-	if (data->grid[y][x] == 'N')
-		data->player.dir_y = -1;
-	if (data->grid[y][x] == 'w')
+	data->player.pov = NORTH;
+	data->player.dir_y = -1;
+	data->player.dir_x = 0;
+	if (data->grid[y][x] == 'S')
+	{
+		data->player.pov = SOUTH;
+		data->player.dir_y = 1;
+		data->player.dir_x = 0;
+	}
+	else if (data->grid[y][x] == 'E')
+	{
+		data->player.pov = EAST;
+		data->player.dir_y = 0;
+		data->player.dir_x = 1;
+	}
+	else if (data->grid[y][x] == 'W')
+	{
+		data->player.pov = WEST;
+		data->player.dir_y = 0;
+		data->player.dir_y = 0;
 		data->player.dir_x = -1;
+	}
 }
 
 int	ft_check_map_grid(t_cub_data *data, char **grid)

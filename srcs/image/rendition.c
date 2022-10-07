@@ -6,7 +6,7 @@
 /*   By: elouisia <elouisia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/28 16:32:52 by elouisia          #+#    #+#             */
-/*   Updated: 2022/10/02 15:09:08 by elouisia         ###   ########.fr       */
+/*   Updated: 2022/10/07 18:27:20 by aweaver          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,12 @@ void	ft_render_background(t_cub_data *data, int colour)
 		x = 0;
 		while (x < WIDTH)
 		{
-			ft_put_pix_img(&data->img, x, y, colour);
+			if (x % 64 == 0 || y % 64 == 0)
+				ft_put_pix_img(&data->img, x, y, 0x000000);
+			else if (data->grid[y >> 6][x >> 6] == '1')
+				ft_put_pix_img(&data->img, x, y, 0x12354d);
+			else
+				ft_put_pix_img(&data->img, x, y, colour);
 			x++;
 		}
 		y++;

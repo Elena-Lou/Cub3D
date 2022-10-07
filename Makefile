@@ -58,6 +58,7 @@ SRCS	=	main.c \
 				)\
 			$(addprefix movement/, \
 				player_movement.c\
+				player_rotation.c\
 			)\
 			$(addprefix raycasting/, \
 				dda.c\

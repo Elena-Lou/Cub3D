@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_map_grid.c                                   :+:      :+:    :+:   */
+/*   create_map_grid.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aweaver <aweaver@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/28 11:11:14 by aweaver           #+#    #+#             */
-/*   Updated: 2022/10/03 09:11:15 by aweaver          ###   ########.fr       */
+/*   Updated: 2022/10/07 13:26:06 by aweaver          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,9 +91,7 @@ int	ft_malloc_grid(t_list *list, t_list *start, char **tab, int tab_size)
 	int			max_length;
 	int			length;
 	t_map_data	*map;
-	int			i;
 
-	i = 0;
 	max_length = 0;
 	while (list)
 	{

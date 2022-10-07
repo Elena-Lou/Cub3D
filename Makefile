@@ -56,6 +56,9 @@ SRCS	=	main.c \
 				rendition.c\
 				minimap.c\
 				)\
+			$(addprefix movement/, \
+				player_movement.c\
+			)\
 			$(addprefix raycasting/, \
 				dda.c\
 			)

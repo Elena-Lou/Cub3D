@@ -6,7 +6,7 @@
 /*   By: elouisia <elouisia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/28 16:42:27 by elouisia          #+#    #+#             */
-/*   Updated: 2022/10/02 15:36:50 by elouisia         ###   ########.fr       */
+/*   Updated: 2022/10/07 15:03:39 by aweaver          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,12 +20,9 @@ void	ft_render_minimap(t_cub_data *data, int colour)
 	y = 0;
 	while (y < 10)
 	{
-		x = 0;
-		while (x <= 200)
-		{
+		x = -1;
+		while (++x <= 200)
 			ft_put_pix_img(&data->minimap, x, y, colour);
-			x++;
-		}
 		y++;
 	}
 	while (y < 141)

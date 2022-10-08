@@ -6,7 +6,7 @@
 /*   By: elouisia <elouisia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/06 15:54:20 by elouisia          #+#    #+#             */
-/*   Updated: 2022/10/05 16:57:36 by elouisia         ###   ########.fr       */
+/*   Updated: 2022/10/07 18:01:11 by aweaver          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,11 +76,19 @@
 # endif
 
 # ifndef WEST
-#  define WEST PI
+#  define WEST 3.14159265359
 # endif
 
 # ifndef SOUTH
 #  define SOUTH 1.570796327
+# endif
+
+# ifndef LEFT_ARROW
+#  define LEFT_ARROW 65361
+# endif
+
+# ifndef RIGHT_ARROW
+#  define RIGHT_ARROW 65363
 # endif
 
 typedef struct s_dda
@@ -107,6 +115,8 @@ typedef struct s_player
 	double		pov;
 	int			tile_x;
 	int			tile_y;
+	int			dir_x;
+	int			dir_y;
 }			t_player;
 
 typedef struct s_cub_img
@@ -211,5 +221,16 @@ int		ft_close_window(t_cub_data *data);
 */
 
 void	ft_set_ray_data(t_cub_data *data);
+
+/*
+** PLAYER_MOVEMENT.C
+*/
+
+int		ft_move_forward(t_cub_data *data);
+int		ft_move_backward(t_cub_data *data);
+int		ft_strafe_left(t_cub_data *data);
+int		ft_strafe_right(t_cub_data *data);
+int		ft_rotate_left(t_cub_data *data);
+int		ft_rotate_right(t_cub_data *data);
 
 #endif

@@ -1,0 +1,22 @@
+#!/bin/bash
+test_merge(){
+	echo "Running pre-merge-commit git-hook"
+	VAR1=$(norminette `/bin/ls | grep -v minilibx` | grep -v "is not valid C or C header file" | grep Error! | cut -d ":" -f 1 | grep -v test)
+	if [[ "$VAR1" ]]
+	then	
+		echo -e "\033[31mNorminette Error\nUse git merge --abort if you first want to fix that!\033[m"
+		exit "1"
+	fi
+	make >/dev/null 2>/dev/null
+	if [[ "$?" -eq "0" ]]
+	then
+		make fclean >/dev/null 2>/dev/null
+		echo "Norminette and compilation looking clean"
+		exit "0"
+	fi
+	make fclean >/dev/null 2>/dev/null
+	echo -e "\033[31mMakefile Error\nYour project does not compile ! use git merge --abort if you first want to fix that! \033[m"
+	exit "1"
+}
+
+test_merge

@@ -1,0 +1,24 @@
+#!/bin/bash
+test_commit()
+{
+	compare="master"
+	branch=$(git branch --show-current)
+	if [[ "$branch" = "$compare" ]]
+	then
+		VAR1=$(norminette | grep Error! | cut -d ":" -f 1 | grep -v test)
+		if [[ "$VAR1" ]]
+		then	
+			echo -e "\033[31mNorminette Error\nYou can't commit this on master!\033[m\nUse git commit --no-verify if you are sure you want to commit this on master."
+			exit "1"
+		fi
+		make >/dev/null 2>/dev/null
+		if [[ "$?" -ne "0" ]]
+		then
+			make fclean >/dev/null 2>/dev/null
+			echo -e "\033[31mMakefile Error\nYour project does not compile !\n\033[mUse git commit --no-verify if you are sure you want to commit this on master."
+			exit "1"
+		fi
+	fi
+}
+
+test_commit

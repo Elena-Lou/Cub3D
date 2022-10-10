@@ -14,6 +14,8 @@
 
 int	ft_key_check(int key, t_cub_data *data)
 {
+	printf("key_check: player.x = %d player_y = %d\n", data->player.x,
+		data->player.y);
 	if (key == XK_Escape)
 		ft_close_window(data);
 	else if (key == XK_w)

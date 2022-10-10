@@ -6,7 +6,7 @@
 /*   By: elouisia <elouisia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/06 15:54:20 by elouisia          #+#    #+#             */
-/*   Updated: 2022/10/10 10:07:19 by aweaver          ###   ########.fr       */
+/*   Updated: 2022/10/13 09:55:18 by aweaver          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,6 +89,31 @@
 
 # ifndef RIGHT_ARROW
 #  define RIGHT_ARROW 65363
+# endif
+
+# ifndef MMAP_SIZE
+#  define MMAP_SIZE 128
+# endif
+
+# ifndef MMAP_FOG
+#  define MMAP_FOG 4
+# endif
+
+/*
+# ifndef MMAP_SQUARE
+#  define MMAP_SQUARE 32
+# endif
+
+# ifndef MMAP_WIDTH
+#  define MMAP_WIDTH 192
+# endif
+
+# ifndef MMAP_HEIGHT
+#  define MMAP_HEIGHT 144
+# endif
+*/
+# ifndef MMAP_BORDER_SIZE
+#  define MMAP_BORDER_SIZE 5
 # endif
 
 typedef struct s_dda
@@ -233,4 +258,22 @@ int		ft_strafe_right(t_cub_data *data);
 int		ft_rotate_left(t_cub_data *data);
 int		ft_rotate_right(t_cub_data *data);
 
+/*
+** MINIMAP.C
+*/
+
+void	ft_create_minimap(t_cub_data *data);
+int		ft_get_player_offset_y(t_cub_data *data, int py);
+int		ft_get_player_offset_x(t_cub_data *data, int px);
+void	ft_fill_minimap(char minimap[(MMAP_FOG*2) + 2][(MMAP_FOG *2) + 2],
+			t_cub_data *data, int offset_x, int offset_y);
+
+/*
+** PRINT_MINIMAP.C
+*/
+
+void	ft_print_minimap(t_cub_data *data, char minimap[(MMAP_FOG *2) + 2]
+		[(MMAP_FOG *2) + 2], int x, int y);
+void	ft_print_minimap_pixel(t_cub_data *data, int x, int y, int colour);
+void	ft_render_minimap_borders(t_cub_data *data, int colour);
 #endif

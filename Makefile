@@ -54,6 +54,7 @@ SRCS	=	main.c \
 				window_utils.c\
 				rendition.c\
 				minimap.c\
+				print_minimap.c\
 				)\
 			$(addprefix movement/, \
 				player_movement.c\
@@ -123,7 +124,7 @@ re:		fclean
 		@make $(SILENT) all
 
 test:	re
-		./$(NAME) maps/big_and_boring.cub
+		./$(NAME) maps/default.cub
 
 vtest:	re
 		$(VALGRIND) ./$(NAME) maps/big_and_boring.cub

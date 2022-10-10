@@ -128,7 +128,7 @@ re:		fclean
 test:	all
 		./$(NAME) maps/default_north.cub
 
-vtest:	re
+vtest:	all
 		$(VALGRIND) ./$(NAME) maps/default_north.cub
 
 test_map:	$(LIBFT) $(MLX)

@@ -52,13 +52,13 @@ SRCS	=	main.c \
 			$(addprefix image/, \
 				image_utils.c\
 				window_utils.c\
-				key_checks.c\
 				rendition.c\
 				minimap.c\
 				)\
 			$(addprefix movement/, \
 				player_movement.c\
 				player_rotation.c\
+				key_checks.c\
 			)\
 			$(addprefix raycasting/, \
 				dda.c\

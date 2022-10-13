@@ -52,13 +52,14 @@ SRCS	=	main.c \
 			$(addprefix image/, \
 				image_utils.c\
 				window_utils.c\
-				key_checks.c\
 				rendition.c\
 				minimap.c\
+				print_minimap.c\
 				)\
 			$(addprefix movement/, \
 				player_movement.c\
 				player_rotation.c\
+				key_checks.c\
 			)\
 			$(addprefix raycasting/, \
 				dda.c\
@@ -126,7 +127,7 @@ test:	re
 		./$(NAME) maps/default.cub
 
 vtest:	re
-		$(VALGRIND) ./$(NAME) maps/default.cub
+		$(VALGRIND) ./$(NAME) maps/big_and_boring.cub
 
 test_map:	$(LIBFT) $(MLX)
 		$(CC) $(CFLAGS) srcs/test/main_map_tester.c srcs/parsing/check_map_name.c srcs/parsing/check_map_content.c srcs/parsing/check_wall_texture_functions.c srcs/parsing/check_ceilling_floor_texture_functions.c srcs/parsing/map_to_list.c srcs/utils/free_functions.c srcs/utils/error_message.c srcs/parsing/create_map_grid.c srcs/parsing/check_map_grid.c $(LIBFT) $(LIBS) -o $(NAME) $(INCS)

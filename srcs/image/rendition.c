@@ -6,7 +6,7 @@
 /*   By: elouisia <elouisia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/28 16:32:52 by elouisia          #+#    #+#             */
-/*   Updated: 2022/10/07 18:27:20 by aweaver          ###   ########.fr       */
+/*   Updated: 2022/10/12 16:37:42 by aweaver          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,26 +37,28 @@ void	ft_render_background(t_cub_data *data, int colour)
 
 void	ft_render_player(t_cub_data *data, int colour)
 {
-	int	i;
-	int	j;
+	int	y;
+	int	x;
 
-	i = data->player.y;
-	while (i < data->player.y + 10)
+	y = data->player.y;
+	while (y < data->player.y + 8)
 	{
-		j = data->player.x;
-		while (j < data->player.x + 10)
+		x = data->player.x;
+		while (x < data->player.x + 8)
 		{
-			ft_put_pix_img(&data->img, j, i, colour);
-			j++;
+			if (x < WIDTH && y < HEIGHT)
+				ft_put_pix_img(&data->img, x, y, colour);
+			x++;
 		}
-		i++;
+		y++;
 	}
 }
 
 void	ft_init_player(t_cub_data *data)
 {
-	data->player.x = WIDTH / 2;
-	data->player.y = HEIGHT / 2;
+	//data->player.x = WIDTH / 2;
+	//data->player.y = HEIGHT / 2;
+	(void)data;
 }
 
 int	ft_render_img(t_cub_data *data)

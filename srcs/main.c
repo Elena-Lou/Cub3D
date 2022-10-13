@@ -11,6 +11,8 @@
 /* ************************************************************************** */
 
 #include "cub3d.h"
+# include <X11/X.h>
+# include <X11/keysym.h>
 
 void	ft_init_data(t_cub_data *data)
 {
@@ -26,6 +28,16 @@ void	ft_init_data(t_cub_data *data)
 	data->grid = NULL;
 	data->map_height = 0;
 	data->map_width = 0;
+	data->player.move_x = 0;
+	data->player.move_y = 0;
+	data->player.rotate = 0;
+}
+
+void	ft_keypress(t_cub_data *data)
+{
+	mlx_hook(data->win_ptr, KeyPress, KeyPressMask, ft_key_press_check, data);
+	mlx_hook(data->win_ptr, KeyRelease, KeyReleaseMask, ft_key_release_check, data);
+	mlx_hook(data->win_ptr, ClientMessage, NoEventMask, ft_close_window, data);
 }
 
 int	main(int ac, char **av)
@@ -43,8 +55,14 @@ int	main(int ac, char **av)
 	ft_check_map_content(&data);
 	if (ft_window_init(&data))
 		return (ft_lstclear(&(data.lst_map), ft_clear_map), 1);
-	ft_render_img(&data);
-	mlx_key_hook(data.win_ptr, &ft_key_check, &data);
+	ft_keypress(&data);
+	mlx_loop_hook(data.mlx_ptr, ft_render_img, &data);
+	//mlx_hook(data.win_ptr, 2, 1L << 0, ft_key_press_check, &data);
+	//mlx_hook(data.win_ptr, 17, 1L << 0, &ft_close_window, &data);
+	mlx_loop(data.mlx_ptr);
+	printf("after loop");
+	//ft_render_img(&data);
+	//mlx_key_hook(data.win_ptr, &ft_key_check, &data);
 	mlx_hook(data.win_ptr, 17, 1L << 0, &ft_close_window, &data);
 	mlx_loop(data.mlx_ptr);
 	ft_lstclear(&(data.lst_map), ft_clear_map);

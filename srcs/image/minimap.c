@@ -6,7 +6,7 @@
 /*   By: elouisia <elouisia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/28 16:42:27 by elouisia          #+#    #+#             */
-/*   Updated: 2022/10/13 09:54:56 by aweaver          ###   ########.fr       */
+/*   Updated: 2022/10/13 10:01:23 by aweaver          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,6 @@ void	ft_create_minimap(t_cub_data *data)
 			/ (2 * MMAP_FOG));
 	data->minimap.addr = mlx_get_data_addr(data->minimap.mlx_img,
 			&data->minimap.bpp, &data->minimap.line_len, &data->minimap.endian);
-	printf("offset_x = %d offset_y =%d\n", offset_x, offset_y);
 	ft_fill_minimap(minimap, data, offset_x, offset_y);
 	ft_print_minimap(data, minimap, 0, -1);
 	ft_render_minimap_borders(data, 0x2874A6);

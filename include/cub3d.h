@@ -6,7 +6,7 @@
 /*   By: elouisia <elouisia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/06 15:54:20 by elouisia          #+#    #+#             */
-/*   Updated: 2022/10/13 09:55:18 by aweaver          ###   ########.fr       */
+/*   Updated: 2022/10/13 10:05:35 by aweaver          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,19 +99,6 @@
 #  define MMAP_FOG 4
 # endif
 
-/*
-# ifndef MMAP_SQUARE
-#  define MMAP_SQUARE 32
-# endif
-
-# ifndef MMAP_WIDTH
-#  define MMAP_WIDTH 192
-# endif
-
-# ifndef MMAP_HEIGHT
-#  define MMAP_HEIGHT 144
-# endif
-*/
 # ifndef MMAP_BORDER_SIZE
 #  define MMAP_BORDER_SIZE 5
 # endif

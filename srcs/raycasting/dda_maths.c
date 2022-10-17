@@ -6,7 +6,7 @@
 /*   By: elouisia <elouisia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/17 15:19:23 by elouisia          #+#    #+#             */
-/*   Updated: 2022/10/17 15:21:33 by elouisia         ###   ########.fr       */
+/*   Updated: 2022/10/17 16:48:04 by elouisia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 void	ft_distance_to_projection_plane(t_player *player)
 {
 	player->dist_pp = (WIDTH / 2) / tan(FOV / 2);
-	printf("dist_pp = %f\n", player->dist_pp);
 }
 
 double	ft_dist_btw_pts(double plr_x, double plr_y, double hit_x, double hit_y)

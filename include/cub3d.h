@@ -6,7 +6,7 @@
 /*   By: elouisia <elouisia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/06 15:54:20 by elouisia          #+#    #+#             */
-/*   Updated: 2022/10/17 11:47:49 by aweaver          ###   ########.fr       */
+/*   Updated: 2022/10/17 16:48:16 by elouisia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,10 +101,6 @@
 
 # ifndef MMAP_BORDER_SIZE
 #  define MMAP_BORDER_SIZE 5
-# endif
-
-# ifndef RAYS_NB
-#  define RAYS_NB 1000
 # endif
 
 # ifndef FALSE
@@ -267,7 +263,7 @@ void	ft_hzt_intersections(t_cub_data *data, t_dda *ray);
 void	ft_vrt_intersections(t_cub_data *data, t_dda *ray);
 double	ft_normalize_angle(double theta);
 void	ft_set_dir(t_dda *ray);
-double	ft_dist_btw_pts(double player_x, double player_y, double hit_x, double hit_y);
+double	ft_dist_btw_pts(double plr_x, double plr_y, double hit_x, double hit_y);
 
 /*
 ** PLAYER_MOVEMENT.C

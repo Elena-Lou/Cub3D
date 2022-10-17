@@ -6,7 +6,7 @@
 /*   By: elouisia <elouisia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/02 15:40:38 by elouisia          #+#    #+#             */
-/*   Updated: 2022/10/17 16:03:55 by elouisia         ###   ########.fr       */
+/*   Updated: 2022/10/17 16:53:57 by elouisia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ double	ft_normalize_angle(double theta)
 
 void	ft_set_ray_data(t_cub_data *data)
 {
-	t_dda	ray[RAYS_NB];
+	t_dda	ray[WIDTH];
 	int		i;
 
 	i = 0;
@@ -44,7 +44,7 @@ void	ft_set_ray_data(t_cub_data *data)
 		ray[i].theta = data->player.pov - (FOV / 2);
 		ft_cast_ray(&ray[i], data);
 		i++;
-		ray[i].theta += FOV / RAYS_NB;
+		ray[i].theta += FOV / WIDTH;
 	}
 	data->player.tile_x = data->player.x >> 6;
 	data->player.tile_y = data->player.y >> 6;

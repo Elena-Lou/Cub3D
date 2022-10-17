@@ -6,7 +6,7 @@
 /*   By: elouisia <elouisia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/28 16:32:30 by elouisia          #+#    #+#             */
-/*   Updated: 2022/10/17 13:57:55 by aweaver          ###   ########.fr       */
+/*   Updated: 2022/10/17 14:33:58 by aweaver          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,8 @@ int	ft_move(t_cub_data *data)
 		moved += ft_rotate_right(data);
 	if (data->player.rotate == 1)
 		moved += ft_rotate_left(data);
+	if (moved)
+		ft_render_img(data);
 	return (moved);
 }
 
@@ -41,9 +43,9 @@ int	ft_key_release_check(int key, t_cub_data *data)
 	if (data->player.move_y == -1 && key == XK_s)
 		data->player.move_y = 0;
 	if (data->player.move_x == -1 && key == XK_a)
-		data->player.move_x = 0;
+		data->player.move_x += 1;
 	if (data->player.move_x == 1 && key == XK_d)
-		data->player.move_x = 0;
+		data->player.move_x -= 1;
 	if (data->player.rotate == 1 && key == LEFT_ARROW)
 		data->player.rotate = 0;
 	if (data->player.rotate == -1 && key == RIGHT_ARROW)

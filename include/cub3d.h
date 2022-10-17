@@ -68,7 +68,7 @@
 # endif
 
 # ifndef EAST
-#  define EAST 0
+#  define EAST 0.0
 # endif
 
 # ifndef NORTH

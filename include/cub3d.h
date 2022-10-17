@@ -6,7 +6,7 @@
 /*   By: elouisia <elouisia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/06 15:54:20 by elouisia          #+#    #+#             */
-/*   Updated: 2022/10/13 10:05:35 by aweaver          ###   ########.fr       */
+/*   Updated: 2022/10/17 11:47:49 by aweaver          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -151,6 +151,8 @@ typedef struct s_cub_data
 	int			ceilling;
 	int			floor;
 	char		**grid;
+	int			map_height;
+	int			map_width;
 	t_list		*lst_map;
 	t_cub_img	img;
 	t_cub_img	minimap;

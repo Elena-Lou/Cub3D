@@ -6,7 +6,7 @@
 /*   By: elouisia <elouisia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/06 15:52:30 by elouisia          #+#    #+#             */
-/*   Updated: 2022/10/07 14:49:43 by aweaver          ###   ########.fr       */
+/*   Updated: 2022/10/17 11:48:17 by aweaver          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@ void	ft_init_data(t_cub_data *data)
 	data->floor = -1;
 	data->lst_map = NULL;
 	data->grid = NULL;
+	data->map_height = 0;
+	data->map_width = 0;
 }
 
 int	main(int ac, char **av)

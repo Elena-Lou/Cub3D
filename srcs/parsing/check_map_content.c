@@ -6,7 +6,7 @@
 /*   By: elouisia <elouisia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/16 13:06:38 by aweaver           #+#    #+#             */
-/*   Updated: 2022/10/05 17:11:50 by aweaver          ###   ########.fr       */
+/*   Updated: 2022/10/17 11:49:19 by aweaver          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,4 +74,6 @@ void	ft_check_map_content(t_cub_data *data)
 	ft_check_texture_all_set(data);
 	ft_create_map_grid(data);
 	ft_check_map_grid(data, data->grid);
+	data->map_width = ft_strlen_int(*data->grid);
+	data->map_height = ft_strptr_len(data->grid);
 }

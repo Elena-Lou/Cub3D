@@ -6,7 +6,7 @@
 /*   By: aweaver <aweaver@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/07 11:44:16 by aweaver           #+#    #+#             */
-/*   Updated: 2022/10/07 17:27:49 by aweaver          ###   ########.fr       */
+/*   Updated: 2022/10/17 11:50:16 by aweaver          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,13 @@
 
 int	ft_is_valid_move(t_cub_data *data, int x, int y)
 {
-	int	map_height;
-	int	map_width;
 	int	new_tile_x;
 	int	new_tile_y;
 
-	map_height = ft_strptr_len(data->grid);
-	map_width = ft_strlen_int(*data->grid);
 	new_tile_x = x >> 6;
 	new_tile_y = y >> 6;
-	if (new_tile_x < 0 || new_tile_y < 0 || new_tile_x > map_width
-		|| new_tile_y > map_height)
+	if (new_tile_x < 0 || new_tile_y < 0 || new_tile_x > data->map_width
+		|| new_tile_y > data->map_height)
 		return (0);
 	if (data->grid[new_tile_y][new_tile_x] == '1'
 		|| data->grid[new_tile_y][new_tile_x] == ' '

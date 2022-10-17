@@ -6,7 +6,7 @@
 /*   By: aweaver <aweaver@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/07 11:44:16 by aweaver           #+#    #+#             */
-/*   Updated: 2022/10/17 14:51:13 by aweaver          ###   ########.fr       */
+/*   Updated: 2022/10/17 17:51:40 by aweaver          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,8 @@ int	ft_strafe_left(t_cub_data *data)
 	int	y;
 
 	moved = 0;
-	x = 0.5 + data->player.x - (1.0 * cos(data->player.pov + SOUTH));
-	y = 0.5 + data->player.y - (1.0 * sin(data->player.pov + SOUTH));
+	x = 0.5 + (double)data->player.x - (1.0 * cos(data->player.pov + SOUTH));
+	y = 0.5 + (double)data->player.y - (1.0 * sin(data->player.pov + SOUTH));
 	if (ft_is_valid_move(data, x, data->player.y))
 	{
 		data->player.x = x;
@@ -58,8 +58,8 @@ int	ft_strafe_right(t_cub_data *data)
 	int	y;
 
 	moved = 0;
-	x = 0.5 + data->player.x + (1.0 * cos(data->player.pov + SOUTH));
-	y = 0.5 + data->player.y + (1.0 * sin(data->player.pov + SOUTH));
+	x = 0.5 + (double)data->player.x + (1.0 * cos(data->player.pov + SOUTH));
+	y = 0.5 + (double)data->player.y + (1.0 * sin(data->player.pov + SOUTH));
 	if (ft_is_valid_move(data, x, data->player.y))
 	{
 		data->player.x = x;
@@ -80,8 +80,8 @@ int	ft_move_backward(t_cub_data *data)
 	int	y;
 
 	moved = 0;
-	x = 0.5 + data->player.x - (1.0 * cos(data->player.pov));
-	y = 0.5 + data->player.y - (1.0 * sin(data->player.pov));
+	x = 0.5 + (double)data->player.x - (1.0 * cos(data->player.pov));
+	y = 0.5 + (double)data->player.y - (1.0 * sin(data->player.pov));
 	if (ft_is_valid_move(data, x, data->player.y))
 	{
 		data->player.x = x;
@@ -102,8 +102,8 @@ int	ft_move_forward(t_cub_data *data)
 	int	y;
 
 	moved = 0;
-	x = 0.5 + data->player.x + (1.0 * cos(data->player.pov));
-	y = 0.5 + data->player.y + (1.0 * sin(data->player.pov));
+	x = 0.5 + (double)data->player.x + (1.0 * cos(data->player.pov));
+	y = 0.5 + (double)data->player.y + (1.0 * sin(data->player.pov));
 	if (ft_is_valid_move(data, x, data->player.y))
 	{
 		data->player.x = x;

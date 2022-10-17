@@ -6,7 +6,7 @@
 /*   By: elouisia <elouisia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/28 16:32:52 by elouisia          #+#    #+#             */
-/*   Updated: 2022/10/17 16:46:41 by aweaver          ###   ########.fr       */
+/*   Updated: 2022/10/17 16:51:10 by aweaver          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,11 +58,14 @@ int	ft_render_img(t_cub_data *data)
 {
 	if (ft_move(data))
 	{
+		ft_render_minimap(data);
 		ft_render_background(data, 0xA9A9A9);
 		ft_render_player(data, 0x8E1600);
 		mlx_put_image_to_window(data->mlx_ptr, data->win_ptr,
 			data->img.mlx_img, 0, 0);
-		ft_render_minimap(data);
+		mlx_put_image_to_window(data->mlx_ptr, data->win_ptr,
+			data->minimap.mlx_img, 5, 640);
+		mlx_destroy_image(data->mlx_ptr, data->minimap.mlx_img);
 	}
 	return (0);
 }

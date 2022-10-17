@@ -6,7 +6,7 @@
 /*   By: elouisia <elouisia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/06 15:52:30 by elouisia          #+#    #+#             */
-/*   Updated: 2022/10/17 15:17:26 by aweaver          ###   ########.fr       */
+/*   Updated: 2022/10/17 16:47:40 by aweaver          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ int	main(int ac, char **av)
 	ft_render_background(&data, 0xA9A9A9);
 	ft_render_player(&data, 0x8E1600);
 	mlx_put_image_to_window(data.mlx_ptr, data.win_ptr,
-			data.img.mlx_img, 0, 0);
+		data.img.mlx_img, 0, 0);
 	ft_render_minimap(&data);
 	ft_keypress_hook(&data);
 	mlx_loop_hook(data.mlx_ptr, ft_render_img, &data);

@@ -63,6 +63,8 @@ SRCS	=	main.c \
 			)\
 			$(addprefix raycasting/, \
 				dda.c\
+				dda_maths.c\
+				dda_rays.c\
 			)
 
 SRCS_DIR = ./srcs/
@@ -123,7 +125,7 @@ fclean: clean
 re:		fclean
 		@make $(SILENT) all
 
-test:	re
+test:	all
 		./$(NAME) maps/default.cub
 
 vtest:	re

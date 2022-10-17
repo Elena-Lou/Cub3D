@@ -68,5 +68,6 @@ int	ft_render_img(t_cub_data *data)
 	mlx_put_image_to_window(data->mlx_ptr, data->win_ptr,
 		data->img.mlx_img, 0, 0);
 	ft_create_minimap(data);
+	ft_set_ray_data(data);
 	return (0);
 }

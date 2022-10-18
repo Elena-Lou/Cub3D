@@ -35,6 +35,24 @@ void	ft_render_background(t_cub_data *data, int colour)
 	}
 }
 
+void	ft_blackout(t_cub_data *data, int colour)
+{
+	int	x;
+	int	y;
+
+	y = 0;
+	while (y < HEIGHT)
+	{
+		x = 0;
+		while (x < WIDTH)
+		{
+			ft_put_pix_img(&data->img, x, y, colour);
+			x++;
+		}
+		y++;
+	}
+}
+
 void	ft_render_player(t_cub_data *data, int colour)
 {
 	int	y;

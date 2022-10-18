@@ -6,7 +6,7 @@
 /*   By: elouisia <elouisia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/17 15:20:07 by elouisia          #+#    #+#             */
-/*   Updated: 2022/10/17 15:31:00 by elouisia         ###   ########.fr       */
+/*   Updated: 2022/10/18 22:48:42 by elouisia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 void	ft_hzt_init(t_cub_data *data, t_dda *ray)
 {
+	// printf("HZT INIT\n");
 	ray->inter_y = floor(data->player.y / 64) * 64;
 	if (ray->facing_up == FALSE)
 		ray->inter_y += 64;
@@ -35,27 +36,33 @@ void	ft_hzt_init(t_cub_data *data, t_dda *ray)
 
 void	ft_hzt_intersections(t_cub_data *data, t_dda *ray)
 {
+	// printf("HZT INTERSECTION\n");
 	ft_hzt_init(data, ray);
-	while (ray->hzt_x >= 0 && ray->hzt_x >> 6 <= data->map_width
-		&& ray->hzt_y >= 0 && ray->hzt_y >> 6 <= data->map_height)
+	// printf("hzt intersection after init\n");
+	while (ray->hzt_x >= 0 && ray->hzt_x >> 6 <= data->map_width && ray->hzt_y >= 0 && ray->hzt_y >> 6 <= data->map_height)
 	{
-		if (ray->facing_up)
-			ray->hzt_y -= 1;
+		// printf("hzt intersection while\n");
+		// printf("hzt_x : %d - hzt_y : %d\n", ray->hzt_x, ray->hzt_y);
 		if (data->grid[ray->hzt_y >> 6][ray->hzt_x >> 6] == '1')
 		{
+			// printf("hzt intersection if \n");
 			ray->hzt_hit = TRUE;
 			break ;
 		}
 		else
 		{
+			// printf("hzt intersection else \n");
 			ray->hzt_x += ray->step_x;
 			ray->hzt_y += ray->step_y;
 		}
+		// printf("HEY !\n");
 	}
+	// printf("end of hzt intersection \n");
 }
 
 void	ft_vrt_init(t_cub_data *data, t_dda *ray)
 {
+	// printf("VRT INIT\n");
 	ray->inter_x = floor(data->player.x / 64) * 64;
 	if (ray->facing_left == FALSE)
 		ray->inter_x += 64;
@@ -77,30 +84,40 @@ void	ft_vrt_init(t_cub_data *data, t_dda *ray)
 
 void	ft_vrt_intersections(t_cub_data *data, t_dda *ray)
 {
+	// printf("VRT INTERSECTION\n");
 	ft_vrt_init(data, ray);
-	while (ray->vrt_x >= 0 && ray->vrt_x >> 6 <= data->map_width
-		&& ray->vrt_y >= 0 && ray->vrt_y >> 6 <= data->map_height)
+	// printf("vrt intersection after init\n");
+	while (ray->vrt_x >= 0 && ray->vrt_x >> 6 <= data->map_width && ray->vrt_y >= 0 && ray->vrt_y >> 6 <= data->map_height)
 	{
+		// printf("vrt while\n");
+		// printf("vrt_x : %d - vrt_y : %d\n", ray->vrt_x, ray->vrt_y);
+		// printf("hit : [%c]\n", data->grid[ray->vrt_y >> 6][ray->vrt_x >> 6]);
 		if (data->grid[ray->vrt_y >> 6][ray->vrt_x >> 6] == '1')
 		{
+			// printf("vrt if\n");
 			ray->vrt_hit = TRUE;
 			break ;
 		}
 		else
 		{
+			// printf("vrt else\n");
 			ray->vrt_x += ray->step_x;
 			ray->vrt_y += ray->step_y;
 		}
+		// printf("BOUH !\n");
 	}
+	// printf("end of vrt intersection ft\n");
 }
 
-void	ft_cast_ray(t_dda *ray, t_cub_data *data)
+void	ft_cast_ray(t_cub_data *data, t_dda *ray)
 {
-	ray->theta = ft_normalize_angle(ray->theta);
+	// printf("FT CAST RAY\n");
+	// ray->theta = ft_normalize_angle(ray->theta);
 	ray->tan_theta = tan(ray->theta);
 	ft_set_dir(ray);
 	ft_hzt_intersections(data, ray);
 	ft_vrt_intersections(data, ray);
+	// printf("cast ray, after intersections\n");
 	ray->hzt_dist = ft_dist_btw_pts((double)data->player.x,
 			(double)data->player.y, (double)ray->hzt_x, (double)ray->hzt_y);
 	ray->vrt_dist = ft_dist_btw_pts((double)data->player.x,

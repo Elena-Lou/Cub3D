@@ -66,6 +66,7 @@ SRCS	=	main.c \
 				dda.c\
 				dda_maths.c\
 				dda_rays.c\
+				wall_projection.c\
 			)
 
 SRCS_DIR = ./srcs/

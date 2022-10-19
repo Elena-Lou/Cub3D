@@ -68,7 +68,7 @@
 # endif
 
 # ifndef EAST
-#  define EAST 0
+#  define EAST 0.0
 # endif
 
 # ifndef NORTH
@@ -151,6 +151,9 @@ typedef struct s_player
 	int			dir_x;
 	int			dir_y;
 	double		dist_pp;
+	int			move_x;
+	int			move_y;
+	int			rotate;
 }			t_player;
 
 typedef struct s_cub_img
@@ -206,7 +209,8 @@ int		ft_check_ceilling(t_map_data *map);
 */
 
 void	ft_init_player(t_cub_data *data);
-int		ft_key_check(int key, t_cub_data *data);
+int		ft_key_press_check(int key, t_cub_data *data);
+int		ft_key_release_check(int key, t_cub_data *data);
 
 /*
 **	MAP_CHECK.C
@@ -243,8 +247,7 @@ void	ft_exit_check_grid(t_cub_data *data, char *error_msg);
 **	IMAGE_UTILS.C
 */
 
-void	ft_create_minimap(t_cub_data *data);
-void	ft_render_minimap(t_cub_data *data, int colour);
+void	ft_render_minimap(t_cub_data *data);
 void	ft_put_pix_img(t_cub_img *img, int x, int y, int colour);
 void	ft_render_player(t_cub_data *data, int colour);
 void	ft_render_background(t_cub_data *data, int colour);
@@ -269,6 +272,8 @@ double	ft_dist_btw_pts(double plr_x, double plr_y, double hit_x, double hit_y);
 ** PLAYER_MOVEMENT.C
 */
 
+int		ft_move(t_cub_data *data);
+int		ft_is_valid_move(t_cub_data *data, int x, int y);
 int		ft_move_forward(t_cub_data *data);
 int		ft_move_backward(t_cub_data *data);
 int		ft_strafe_left(t_cub_data *data);
@@ -293,5 +298,5 @@ void	ft_fill_minimap(char minimap[(MMAP_FOG*2) + 2][(MMAP_FOG *2) + 2],
 void	ft_print_minimap(t_cub_data *data, char minimap[(MMAP_FOG *2) + 2]
 		[(MMAP_FOG *2) + 2], int x, int y);
 void	ft_print_minimap_pixel(t_cub_data *data, int x, int y, int colour);
-void	ft_render_minimap_borders(t_cub_data *data, int colour);
+void	ft_print_minimap_borders(t_cub_data *data, int colour);
 #endif

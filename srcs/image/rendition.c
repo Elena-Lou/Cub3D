@@ -6,7 +6,7 @@
 /*   By: elouisia <elouisia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/28 16:32:52 by elouisia          #+#    #+#             */
-/*   Updated: 2022/10/12 16:37:42 by aweaver          ###   ########.fr       */
+/*   Updated: 2022/10/17 16:51:10 by aweaver          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,20 +54,18 @@ void	ft_render_player(t_cub_data *data, int colour)
 	}
 }
 
-void	ft_init_player(t_cub_data *data)
-{
-	//data->player.x = WIDTH / 2;
-	//data->player.y = HEIGHT / 2;
-	(void)data;
-}
-
 int	ft_render_img(t_cub_data *data)
 {
-	ft_render_background(data, 0xA9A9A9);
-	ft_render_player(data, 0x8E1600);
-	mlx_put_image_to_window(data->mlx_ptr, data->win_ptr,
-		data->img.mlx_img, 0, 0);
-	ft_create_minimap(data);
-	ft_set_ray_data(data);
+	if (ft_move(data))
+	{
+		ft_render_minimap(data);
+		ft_render_background(data, 0xA9A9A9);
+		ft_render_player(data, 0x8E1600);
+		mlx_put_image_to_window(data->mlx_ptr, data->win_ptr,
+			data->img.mlx_img, 0, 0);
+		mlx_put_image_to_window(data->mlx_ptr, data->win_ptr,
+			data->minimap.mlx_img, 5, 640);
+		mlx_destroy_image(data->mlx_ptr, data->minimap.mlx_img);
+	}
 	return (0);
 }

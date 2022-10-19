@@ -6,13 +6,13 @@
 /*   By: aweaver <aweaver@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/13 09:51:48 by aweaver           #+#    #+#             */
-/*   Updated: 2022/10/13 09:51:50 by aweaver          ###   ########.fr       */
+/*   Updated: 2022/10/13 11:53:26 by aweaver          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void	ft_render_minimap_borders(t_cub_data *data, int colour)
+void	ft_print_minimap_borders(t_cub_data *data, int colour)
 {
 	int	size;
 	int	x;

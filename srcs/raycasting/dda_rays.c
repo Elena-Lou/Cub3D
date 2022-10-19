@@ -6,7 +6,7 @@
 /*   By: elouisia <elouisia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/17 15:20:07 by elouisia          #+#    #+#             */
-/*   Updated: 2022/10/18 22:48:42 by elouisia         ###   ########.fr       */
+/*   Updated: 2022/10/19 11:23:11 by elouisia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void	ft_hzt_intersections(t_cub_data *data, t_dda *ray)
 	// printf("HZT INTERSECTION\n");
 	ft_hzt_init(data, ray);
 	// printf("hzt intersection after init\n");
-	while (ray->hzt_x >= 0 && ray->hzt_x >> 6 <= data->map_width && ray->hzt_y >= 0 && ray->hzt_y >> 6 <= data->map_height)
+	while (ray->hzt_x >= 0 && ray->hzt_x >> 6 < data->map_width && ray->hzt_y >= 0 && ray->hzt_y >> 6 < data->map_height)
 	{
 		// printf("hzt intersection while\n");
 		// printf("hzt_x : %d - hzt_y : %d\n", ray->hzt_x, ray->hzt_y);
@@ -87,7 +87,7 @@ void	ft_vrt_intersections(t_cub_data *data, t_dda *ray)
 	// printf("VRT INTERSECTION\n");
 	ft_vrt_init(data, ray);
 	// printf("vrt intersection after init\n");
-	while (ray->vrt_x >= 0 && ray->vrt_x >> 6 <= data->map_width && ray->vrt_y >= 0 && ray->vrt_y >> 6 <= data->map_height)
+	while (ray->vrt_x >= 0 && ray->vrt_x >> 6 < data->map_width && ray->vrt_y >= 0 && ray->vrt_y >> 6 < data->map_height)
 	{
 		// printf("vrt while\n");
 		// printf("vrt_x : %d - vrt_y : %d\n", ray->vrt_x, ray->vrt_y);

@@ -6,7 +6,7 @@
 /*   By: elouisia <elouisia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 17:53:23 by elouisia          #+#    #+#             */
-/*   Updated: 2022/10/18 21:59:18 by elouisia         ###   ########.fr       */
+/*   Updated: 2022/10/19 11:58:28 by elouisia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,16 +41,14 @@ static void	ft_render_wall(t_cub_data *data, int top, int bottom, t_dda *ray)
 	y = top;
 	while (y < bottom)
 	{
-		ft_put_pix_img(&data->img, x, y, 0x12354d);
+		ft_put_pix_img(&data->img, x, y, 0xA061D1);
 		y++;
 	}
 }
 
 void	ft_wall_scaling(t_cub_data *data, t_dda *ray)
 {
-    // printf("WALL SCALING\n");
 	ray->strip_height = (64 / ray->distance) * data->player.dist_pp;
-	// printf("Yo\n");
 }
 
 void	ft_wall_projection(t_cub_data *data, t_dda *ray)
@@ -58,17 +56,12 @@ void	ft_wall_projection(t_cub_data *data, t_dda *ray)
 	int	wall_top;
 	int	wall_bottom;
     
-    // printf("WALL PROJECTION\n");
 	ft_wall_scaling(data, ray);
 	wall_top = (HEIGHT / 2) - (ray->strip_height / 2);
 	if (wall_top < 0)
 		wall_top = 0;
-	// printf("top : %d\n", wall_top);
 	wall_bottom = (HEIGHT / 2) + (ray->strip_height / 2);
 	if (wall_bottom > HEIGHT)
-		wall_bottom = HEIGHT;
-	// printf("bottom : %d\n", wall_bottom);
-    // printf("top = %d - bottom = %d\n", wall_top, wall_bottom);
+		wall_bottom = HEIGHT;;
 	ft_render_wall(data, wall_top, wall_bottom, ray);
-	// printf("end of function\n");
 }

@@ -6,7 +6,7 @@
 /*   By: elouisia <elouisia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/06 15:52:30 by elouisia          #+#    #+#             */
-/*   Updated: 2022/10/17 11:48:17 by aweaver          ###   ########.fr       */
+/*   Updated: 2022/10/19 10:05:14 by aweaver          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,8 @@ int	main(int ac, char **av)
 		return (1);
 	}
 	ft_init_data(&data);
-	ft_map_to_list(&data, av[1]);
+	if (ft_map_to_list(&data, av[1]))
+		return (1);
 	ft_check_map_content(&data);
 	if (ft_window_init(&data))
 		return (ft_lstclear(&(data.lst_map), ft_clear_map), 1);

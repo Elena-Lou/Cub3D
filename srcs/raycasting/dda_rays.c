@@ -6,7 +6,7 @@
 /*   By: elouisia <elouisia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/17 15:20:07 by elouisia          #+#    #+#             */
-/*   Updated: 2022/10/19 12:02:03 by elouisia         ###   ########.fr       */
+/*   Updated: 2022/10/19 12:45:47 by elouisia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,6 +102,8 @@ void	ft_cast_ray(t_cub_data *data, t_dda *ray)
 			(double)data->player.y, (double)ray->vrt_x, (double)ray->vrt_y);
 	if (ray->vrt_dist < ray->hzt_dist)
 		ray->distance = ray->vrt_dist;
+	else if (ray->hzt_dist == ray->vrt_dist)
+		ray->distance = ray->hzt_dist;
 	else
 		ray->distance = ray->hzt_dist;
 }

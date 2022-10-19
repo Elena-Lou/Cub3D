@@ -6,7 +6,7 @@
 /*   By: elouisia <elouisia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 17:53:23 by elouisia          #+#    #+#             */
-/*   Updated: 2022/10/19 11:58:28 by elouisia         ###   ########.fr       */
+/*   Updated: 2022/10/19 12:18:14 by elouisia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,9 +46,20 @@ static void	ft_render_wall(t_cub_data *data, int top, int bottom, t_dda *ray)
 	}
 }
 
+double	ft_glasses_for_fish(t_cub_data *data, t_dda *ray)
+{
+	double	correct_dist;
+
+	correct_dist = ray->distance * cos(ray->theta - data->player.pov);
+	return (correct_dist);
+}
+
 void	ft_wall_scaling(t_cub_data *data, t_dda *ray)
 {
-	ray->strip_height = (64 / ray->distance) * data->player.dist_pp;
+	double	distance;
+	
+	distance = ft_glasses_for_fish(data, ray);
+	ray->strip_height = (64 / distance) * data->player.dist_pp;
 }
 
 void	ft_wall_projection(t_cub_data *data, t_dda *ray)

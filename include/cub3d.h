@@ -6,7 +6,7 @@
 /*   By: elouisia <elouisia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/06 15:54:20 by elouisia          #+#    #+#             */
-/*   Updated: 2022/10/17 16:48:16 by elouisia         ###   ########.fr       */
+/*   Updated: 2022/10/20 13:34:29 by aweaver          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -143,8 +143,8 @@ typedef struct s_dda
 
 typedef struct s_player
 {
-	int			x;
-	int			y;
+	double		x;
+	double		y;
 	double		pov;
 	int			tile_x;
 	int			tile_y;
@@ -226,7 +226,7 @@ int		ft_check_name(char *map_name);
 */
 
 int		ft_create_map_grid(t_cub_data *data);
-int		ft_check_map_grid(t_cub_data *data, char **grid);
+void	ft_check_map_grid(t_cub_data *data, char **grid);
 
 /*
 ** FREE_FUNCTIONS.C

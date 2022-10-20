@@ -6,7 +6,7 @@
 /*   By: elouisia <elouisia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/28 16:42:27 by elouisia          #+#    #+#             */
-/*   Updated: 2022/10/17 16:49:09 by aweaver          ###   ########.fr       */
+/*   Updated: 2022/10/20 11:34:05 by aweaver          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ void	ft_fill_minimap(char minimap[(MMAP_FOG*2) + 2][(MMAP_FOG *2) + 2]
 		x = -1;
 		while (++x < ((MMAP_FOG * 2) + 1) && x < map_width)
 		{
-			if (data->player.x >> 6 == (x + offset_x) && data->player.y >> 6
+			if (data->player.tile_x == (x + offset_x) && data->player.tile_y
 				== (y + offset_y))
 				minimap[y][x] = 'P';
 			else if (data->grid[offset_y + y][offset_x + x] == '1')
@@ -75,8 +75,8 @@ void	ft_render_minimap(t_cub_data *data)
 	int		offset_x;
 	int		offset_y;
 
-	offset_x = ft_get_player_offset_x(data, data->player.x >> 6);
-	offset_y = ft_get_player_offset_y(data, data->player.y >> 6);
+	offset_x = ft_get_player_offset_x(data, data->player.tile_x);
+	offset_y = ft_get_player_offset_y(data, data->player.tile_y);
 	data->minimap.mlx_img = mlx_new_image(data->mlx_ptr, MMAP_SIZE
 			+ (MMAP_SIZE / (2 * MMAP_FOG)), MMAP_SIZE + MMAP_SIZE
 			/ (2 * MMAP_FOG));

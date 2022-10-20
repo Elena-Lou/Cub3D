@@ -35,7 +35,7 @@
 static void	ft_render_wall(t_cub_data *data, int top, int bottom, t_dda *ray)
 {
 	int	y;
-	int x;
+	int	x;
 
 	x = ray->id;
 	y = top;
@@ -57,22 +57,22 @@ double	ft_glasses_for_fish(t_cub_data *data, t_dda *ray)
 void	ft_wall_scaling(t_cub_data *data, t_dda *ray)
 {
 	double	distance;
-	
+
 	distance = ft_glasses_for_fish(data, ray);
-	ray->strip_height = (64 / distance) * data->player.dist_pp;
+	ray->strip_height = (64.0 / distance) * data->player.dist_pp;
 }
 
 void	ft_wall_projection(t_cub_data *data, t_dda *ray)
 {
 	int	wall_top;
 	int	wall_bottom;
-    
+
 	ft_wall_scaling(data, ray);
 	wall_top = (HEIGHT / 2) - (ray->strip_height / 2);
 	if (wall_top < 0)
 		wall_top = 0;
 	wall_bottom = (HEIGHT / 2) + (ray->strip_height / 2);
 	if (wall_bottom > HEIGHT)
-		wall_bottom = HEIGHT;;
+		wall_bottom = HEIGHT;
 	ft_render_wall(data, wall_top, wall_bottom, ray);
 }

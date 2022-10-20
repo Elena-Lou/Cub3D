@@ -14,9 +14,7 @@
 
 void	ft_distance_to_projection_plane(t_player *player)
 {
-	// printf("DIST TO PP\n");
 	player->dist_pp = (WIDTH / 2) / tan(FOV / 2);
-	// printf("END OF DIST TO PP\n");
 }
 
 double	ft_dist_btw_pts(double plr_x, double plr_y, double hit_x, double hit_y)

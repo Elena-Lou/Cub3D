@@ -35,24 +35,6 @@ void	ft_render_background(t_cub_data *data, int colour)
 	}
 }
 
-void	ft_blackout(t_cub_data *data, int colour)
-{
-	int	x;
-	int	y;
-
-	y = 0;
-	while (y < HEIGHT)
-	{
-		x = 0;
-		while (x < WIDTH)
-		{
-			ft_put_pix_img(&data->img, x, y, colour);
-			x++;
-		}
-		y++;
-	}
-}
-
 void	ft_render_player(t_cub_data *data, int colour)
 {
 	int	y;
@@ -80,9 +62,13 @@ int	ft_render_img(t_cub_data *data)
 	ft_move(data, &moved);
 	if (moved)
 	{
+		if (data->img.mlx_img != NULL)
+			mlx_destroy_image(data->mlx_ptr, data->img.mlx_img);
+		data->img.mlx_img = mlx_new_image(data->mlx_ptr, WIDTH, HEIGHT);
+		if (!data->img.mlx_img)
+			return (1);
 		ft_render_minimap(data);
-		ft_render_background(data, 0xA9A9A9);
-		ft_render_player(data, 0x8E1600);
+		ft_set_ray_data(data);
 		mlx_put_image_to_window(data->mlx_ptr, data->win_ptr,
 			data->img.mlx_img, 0, 0);
 		mlx_put_image_to_window(data->mlx_ptr, data->win_ptr,

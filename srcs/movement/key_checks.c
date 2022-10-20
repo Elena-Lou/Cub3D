@@ -6,7 +6,7 @@
 /*   By: elouisia <elouisia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/28 16:32:30 by elouisia          #+#    #+#             */
-/*   Updated: 2022/10/17 18:03:10 by aweaver          ###   ########.fr       */
+/*   Updated: 2022/10/20 07:11:25 by aweaver          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,11 +30,15 @@ int	ft_move(t_cub_data *data)
 		data->player.rotate--;
 		if (data->player.rotate % 600 == 0)
 			moved += ft_rotate_right(data);
+		else if (moved)
+			moved += ft_rotate_right(data);
 	}
 	if (data->player.rotate > 0)
 	{
 		data->player.rotate++;
 		if (data->player.rotate % 600 == 0)
+			moved += ft_rotate_left(data);
+		else if (moved)
 			moved += ft_rotate_left(data);
 	}
 	return (moved);

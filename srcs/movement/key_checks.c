@@ -6,11 +6,35 @@
 /*   By: elouisia <elouisia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/28 16:32:30 by elouisia          #+#    #+#             */
-/*   Updated: 2022/10/17 18:03:10 by aweaver          ###   ########.fr       */
+/*   Updated: 2022/10/20 14:14:21 by aweaver          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+
+static int	ft_rotate(t_cub_data *data)
+{
+	int	moved;
+
+	moved = 0;
+	if (data->player.rotate < 0)
+	{
+		data->player.rotate--;
+		if (data->player.rotate % 600 == 0)
+			moved += ft_rotate_right(data);
+		else if (moved)
+			moved += ft_rotate_right(data);
+	}
+	if (data->player.rotate > 0)
+	{
+		data->player.rotate++;
+		if (data->player.rotate % 600 == 0)
+			moved += ft_rotate_left(data);
+		else if (moved)
+			moved += ft_rotate_left(data);
+	}
+	return (moved);
+}
 
 int	ft_move(t_cub_data *data)
 {
@@ -25,18 +49,7 @@ int	ft_move(t_cub_data *data)
 		moved += ft_strafe_left(data);
 	if (data->player.move_x == 1)
 		moved += ft_strafe_right(data);
-	if (data->player.rotate < 0)
-	{
-		data->player.rotate--;
-		if (data->player.rotate % 600 == 0)
-			moved += ft_rotate_right(data);
-	}
-	if (data->player.rotate > 0)
-	{
-		data->player.rotate++;
-		if (data->player.rotate % 600 == 0)
-			moved += ft_rotate_left(data);
-	}
+	moved += ft_rotate(data);
 	return (moved);
 }
 

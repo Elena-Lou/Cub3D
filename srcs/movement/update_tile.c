@@ -1,29 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   player_rotation.c                                  :+:      :+:    :+:   */
+/*   update_tile.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aweaver <aweaver@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/07 17:41:24 by aweaver           #+#    #+#             */
-/*   Updated: 2022/10/20 14:14:32 by aweaver          ###   ########.fr       */
+/*   Created: 2022/10/20 11:56:29 by aweaver           #+#    #+#             */
+/*   Updated: 2022/10/20 11:57:46 by aweaver          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-int	ft_rotate_left(t_cub_data *data)
+void	ft_update_player_tile(t_cub_data *data, int x, int y)
 {
-	data->player.pov -= ((double)PI / 180.0);
-	if (data->player.pov < 0.0)
-		data->player.pov = (double)PI * 2.0 + data->player.pov;
-	return (1);
-}
-
-int	ft_rotate_right(t_cub_data *data)
-{
-	data->player.pov += ((double)PI / 180.0);
-	if (data->player.pov > ((double)PI * 2.0))
-		data->player.pov = ((double)PI * 2.0) - data->player.pov;
-	return (1);
+	data->player.tile_x = x;
+	data->player.tile_y = y;
 }

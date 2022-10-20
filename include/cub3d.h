@@ -282,6 +282,12 @@ int		ft_rotate_left(t_cub_data *data);
 int		ft_rotate_right(t_cub_data *data);
 
 /*
+** UPDATE_TILE.C
+*/
+
+void	ft_update_player_tile(t_cub_data *data, int x, int y);
+
+/*
 ** MINIMAP.C
 */
 

@@ -60,6 +60,7 @@ SRCS	=	main.c \
 				player_movement.c\
 				player_rotation.c\
 				key_checks.c\
+				update_tile.c\
 			)\
 			$(addprefix raycasting/, \
 				dda.c\

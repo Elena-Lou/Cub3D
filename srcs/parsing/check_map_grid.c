@@ -6,7 +6,7 @@
 /*   By: aweaver <aweaver@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 09:27:26 by aweaver           #+#    #+#             */
-/*   Updated: 2022/10/07 16:53:40 by aweaver          ###   ########.fr       */
+/*   Updated: 2022/10/20 13:47:56 by aweaver          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,8 +51,9 @@ static int	ft_is_valid_map_char(char c)
 void	ft_set_player_spawn(t_cub_data *data, int x, int y, int *spawn_counts)
 {
 	*spawn_counts += 1;
-	data->player.x = x * 64;
-	data->player.y = y * 64;
+	data->player.x = (double)x * 64.0;
+	data->player.y = (double)y * 64.0;
+	ft_update_player_tile(data, x, y);
 	data->player.pov = NORTH;
 	data->player.dir_y = -1;
 	data->player.dir_x = 0;
@@ -77,7 +78,7 @@ void	ft_set_player_spawn(t_cub_data *data, int x, int y, int *spawn_counts)
 	}
 }
 
-int	ft_check_map_grid(t_cub_data *data, char **grid)
+void	ft_check_map_grid(t_cub_data *data, char **grid)
 {
 	int	player;
 	int	x;
@@ -95,13 +96,12 @@ int	ft_check_map_grid(t_cub_data *data, char **grid)
 			if (ft_is_valid_map_char(grid[y][x]))
 				ft_is_valid_map_pattern(data, grid, x, y);
 			else
-				return (1);
+				ft_exit_check_grid(data, "Map contains wrong data.");
 			x++;
 		}
 	}
 	if (player < 1)
 		ft_exit_check_grid(data, "No spawn for player.");
 	if (player > 1)
-		ft_exit_check_grid(data, "Redefining player spawn position.\n");
-	return (0);
+		ft_exit_check_grid(data, "Redefining player spawn position.");
 }

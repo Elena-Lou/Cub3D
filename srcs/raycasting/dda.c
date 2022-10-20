@@ -38,7 +38,7 @@ void	ft_set_ray_data(t_cub_data *data)
 		ft_cast_ray(data, &ray[i]);
 		ft_wall_projection(data, &ray[i]);
 		if (i + 1 < WIDTH)
-			ray[i + 1].theta = ray[i].theta	+ (FOV / WIDTH);
+			ray[i + 1].theta = ray[i].theta + (FOV / WIDTH);
 		i++;
 	}
 }

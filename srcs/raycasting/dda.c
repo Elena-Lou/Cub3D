@@ -31,14 +31,12 @@ void	ft_set_ray_data(t_cub_data *data)
 
 	i = 0;
 	ft_distance_to_projection_plane(&data->player);
-	ray[0].theta = data->player.pov - (FOV / 2);
 	while (i < WIDTH)
 	{
 		ray[i].id = i;
+		ray[i].theta = data->player.pov + atan((i - WIDTH / 2) / data->player.dist_pp);
 		ft_cast_ray(data, &ray[i]);
 		ft_wall_projection(data, &ray[i]);
-		if (i + 1 < WIDTH)
-			ray[i + 1].theta = ray[i].theta + (FOV / WIDTH);
 		i++;
 	}
 }

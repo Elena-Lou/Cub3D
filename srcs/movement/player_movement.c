@@ -6,7 +6,7 @@
 /*   By: aweaver <aweaver@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/07 11:44:16 by aweaver           #+#    #+#             */
-/*   Updated: 2022/10/20 15:19:35 by aweaver          ###   ########.fr       */
+/*   Updated: 2022/10/21 11:37:38 by aweaver          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ int	ft_strafe_left(t_cub_data *data)
 		data->player.tile_x = (int)x >> 6;
 		moved = 1;
 	}
-	if (ft_is_valid_move(data, (int)data->player.x >> 6, data->player.tile_y))
+	if (ft_is_valid_move(data, data->player.tile_x, (int)y >> 6))
 	{
 		data->player.y = y;
 		data->player.tile_y = (int)y >> 6;

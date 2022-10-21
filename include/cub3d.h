@@ -6,7 +6,7 @@
 /*   By: elouisia <elouisia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/06 15:54:20 by elouisia          #+#    #+#             */
-/*   Updated: 2022/10/20 13:34:29 by aweaver          ###   ########.fr       */
+/*   Updated: 2022/10/21 09:56:11 by aweaver          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -272,7 +272,7 @@ double	ft_dist_btw_pts(double plr_x, double plr_y, double hit_x, double hit_y);
 ** PLAYER_MOVEMENT.C
 */
 
-int		ft_move(t_cub_data *data);
+int		ft_move(t_cub_data *data, int *moved);
 int		ft_is_valid_move(t_cub_data *data, int x, int y);
 int		ft_move_forward(t_cub_data *data);
 int		ft_move_backward(t_cub_data *data);
@@ -285,7 +285,7 @@ int		ft_rotate_right(t_cub_data *data);
 ** UPDATE_TILE.C
 */
 
-void	ft_update_player_tile(t_cub_data *data, int x, int y);
+void	ft_update_player_tile(t_cub_data *data, int tile_x, int tile_y);
 
 /*
 ** MINIMAP.C

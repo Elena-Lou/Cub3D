@@ -6,7 +6,7 @@
 /*   By: elouisia <elouisia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/28 16:32:52 by elouisia          #+#    #+#             */
-/*   Updated: 2022/10/17 16:51:10 by aweaver          ###   ########.fr       */
+/*   Updated: 2022/10/21 09:42:04 by aweaver          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,11 @@ void	ft_render_player(t_cub_data *data, int colour)
 
 int	ft_render_img(t_cub_data *data)
 {
-	if (ft_move(data))
+	int	moved;
+
+	moved = 0;
+	ft_move(data, &moved);
+	if (moved)
 	{
 		ft_render_minimap(data);
 		ft_render_background(data, 0xA9A9A9);

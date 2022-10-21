@@ -6,7 +6,7 @@
 /*   By: aweaver <aweaver@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 09:27:26 by aweaver           #+#    #+#             */
-/*   Updated: 2022/10/20 13:47:56 by aweaver          ###   ########.fr       */
+/*   Updated: 2022/10/21 09:55:34 by aweaver          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,8 +51,6 @@ static int	ft_is_valid_map_char(char c)
 void	ft_set_player_spawn(t_cub_data *data, int x, int y, int *spawn_counts)
 {
 	*spawn_counts += 1;
-	data->player.x = (double)x * 64.0;
-	data->player.y = (double)y * 64.0;
 	ft_update_player_tile(data, x, y);
 	data->player.pov = NORTH;
 	data->player.dir_y = -1;

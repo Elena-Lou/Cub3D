@@ -6,7 +6,7 @@
 /*   By: aweaver <aweaver@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/07 11:44:16 by aweaver           #+#    #+#             */
-/*   Updated: 2022/10/20 14:14:53 by aweaver          ###   ########.fr       */
+/*   Updated: 2022/10/20 15:19:35 by aweaver          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,13 +105,13 @@ int	ft_move_forward(t_cub_data *data)
 	moved = 0;
 	x = data->player.x + (1.0 * cos(data->player.pov));
 	y = data->player.y + (1.0 * sin(data->player.pov));
-	if (ft_is_valid_move(data, x / 64, data->player.tile_y))
+	if (ft_is_valid_move(data, (int)x >> 6, data->player.tile_y))
 	{
 		data->player.x = x;
 		data->player.tile_x = (int)x >> 6;
 		moved = 1;
 	}
-	if (ft_is_valid_move(data, data->player.tile_x, y / 64))
+	if (ft_is_valid_move(data, data->player.tile_x, (int)y >> 6))
 	{
 		data->player.y = y;
 		data->player.tile_y = (int)y >> 6;

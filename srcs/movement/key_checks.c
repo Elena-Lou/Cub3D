@@ -6,29 +6,27 @@
 /*   By: elouisia <elouisia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/28 16:32:30 by elouisia          #+#    #+#             */
-/*   Updated: 2022/10/20 14:14:21 by aweaver          ###   ########.fr       */
+/*   Updated: 2022/10/21 09:58:08 by aweaver          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-static int	ft_rotate(t_cub_data *data)
+int	ft_rotate(t_cub_data *data)
 {
 	int	moved;
 
 	moved = 0;
 	if (data->player.rotate < 0)
 	{
-		data->player.rotate--;
-		if (data->player.rotate % 600 == 0)
+		if (data->player.rotate-- && data->player.rotate % 600 == 0)
 			moved += ft_rotate_right(data);
 		else if (moved)
 			moved += ft_rotate_right(data);
 	}
 	if (data->player.rotate > 0)
 	{
-		data->player.rotate++;
-		if (data->player.rotate % 600 == 0)
+		if (data->player.rotate++ && data->player.rotate % 600 == 0)
 			moved += ft_rotate_left(data);
 		else if (moved)
 			moved += ft_rotate_left(data);
@@ -36,21 +34,31 @@ static int	ft_rotate(t_cub_data *data)
 	return (moved);
 }
 
-int	ft_move(t_cub_data *data)
+int	ft_move(t_cub_data *data, int *moved)
 {
-	int	moved;
-
-	moved = 0;
 	if (data->player.move_y == 1)
-		moved += ft_move_forward(data);
+		*moved += ft_move_forward(data);
 	if (data->player.move_y == -1)
-		moved += ft_move_backward(data);
+		*moved += ft_move_backward(data);
 	if (data->player.move_x == -1)
-		moved += ft_strafe_left(data);
+		*moved += ft_strafe_left(data);
 	if (data->player.move_x == 1)
-		moved += ft_strafe_right(data);
-	moved += ft_rotate(data);
-	return (moved);
+		*moved += ft_strafe_right(data);
+	if (data->player.rotate < 0)
+	{
+		if (data->player.rotate-- && data->player.rotate % 600 == 0)
+			*moved += ft_rotate_right(data);
+		else if (moved)
+			*moved += ft_rotate_right(data);
+	}
+	if (data->player.rotate > 0)
+	{
+		if (data->player.rotate++ && data->player.rotate % 600 == 0)
+			*moved += ft_rotate_left(data);
+		else if (moved)
+			*moved += ft_rotate_left(data);
+	}
+	return (*moved);
 }
 
 int	ft_key_release_check(int key, t_cub_data *data)

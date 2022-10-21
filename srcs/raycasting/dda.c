@@ -34,7 +34,8 @@ void	ft_set_ray_data(t_cub_data *data)
 	while (i < WIDTH)
 	{
 		ray[i].id = i;
-		ray[i].theta = data->player.pov + atan((i - WIDTH / 2) / data->player.dist_pp);
+		ray[i].theta = data->player.pov + atan((i - WIDTH / 2)
+				/ data->player.dist_pp);
 		ft_cast_ray(data, &ray[i]);
 		ft_wall_projection(data, &ray[i]);
 		i++;

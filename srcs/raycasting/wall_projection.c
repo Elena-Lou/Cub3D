@@ -36,22 +36,24 @@ static void	ft_render_wall(t_cub_data *data, int top, int bottom, t_dda *ray)
 {
 	int	y;
 	int	x;
-	int	i;
 
 	x = ray->id;
-	y = top;
-	i = 0;
-	while (i < y)
+	y = 0;
+	while (y < top)
 	{
-		ft_put_pix_img(&data->img, x, i, data->ceilling);
-		i++;
+		ft_put_pix_img(&data->img, x, y, data->ceilling);
+		y++;
 	}
 	while (y < bottom)
 	{
-		if (ray->vrt_hit == TRUE)
-			ft_put_pix_img(&data->img, x, y, 0xA061D1);
+		if (ray->hzt_hit == TRUE && ray->facing_up == TRUE)
+			ft_put_pix_img(&data->img, x, y, 0x734F5A);
+		else if (ray->hzt_hit == TRUE && ray->facing_up == FALSE)
+			ft_put_pix_img(&data->img, x, y, 0x941C2F);
+		else if (ray->vrt_hit == TRUE && ray->facing_left == TRUE)
+			ft_put_pix_img(&data->img, x, y, 0xE76F51);
 		else
-			ft_put_pix_img(&data->img, x, y, 0x7332A8);
+			ft_put_pix_img(&data->img, x, y, 0xC05761);
 		y++;
 	}
 	while (y < HEIGHT)

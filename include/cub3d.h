@@ -242,6 +242,7 @@ void	ft_exit_check_grid(t_cub_data *data, char *error_msg);
 **	IMAGE_UTILS.C
 */
 
+void	ft_draw_line(t_cub_data *data, double angle, double len, int colour);
 void	ft_render_minimap(t_cub_data *data);
 void	ft_put_pix_img(t_cub_img *img, int x, int y, int colour);
 void	ft_render_player(t_cub_data *data, int colour);

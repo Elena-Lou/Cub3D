@@ -103,9 +103,18 @@ void	ft_cast_ray(t_cub_data *data, t_dda *ray)
 	ray->vrt_dist = ft_dist_btw_pts(data->player.x,
 			data->player.y, ray->vrt_x, ray->vrt_y);
 	if (ray->vrt_dist < ray->hzt_dist)
+	{
 		ray->distance = ray->vrt_dist;
+		ray->hzt_hit = FALSE;
+	}
 	else if (ray->hzt_dist == ray->vrt_dist)
+	{
 		ray->distance = ray->hzt_dist;
+		ray->vrt_hit = FALSE;
+	}
 	else
+	{
 		ray->distance = ray->hzt_dist;
+		ray->vrt_hit = FALSE;
+	}
 }

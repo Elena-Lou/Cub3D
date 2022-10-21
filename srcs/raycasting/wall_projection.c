@@ -48,7 +48,10 @@ static void	ft_render_wall(t_cub_data *data, int top, int bottom, t_dda *ray)
 	}
 	while (y < bottom)
 	{
-		ft_put_pix_img(&data->img, x, y, 0xA061D1);
+		if (ray->vrt_hit == TRUE)
+			ft_put_pix_img(&data->img, x, y, 0xA061D1);
+		else
+			ft_put_pix_img(&data->img, x, y, 0x7332A8);
 		y++;
 	}
 	while (y < HEIGHT)

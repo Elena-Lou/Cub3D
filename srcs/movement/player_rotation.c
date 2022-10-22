@@ -6,7 +6,7 @@
 /*   By: aweaver <aweaver@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/07 17:41:24 by aweaver           #+#    #+#             */
-/*   Updated: 2022/10/20 14:14:32 by aweaver          ###   ########.fr       */
+/*   Updated: 2022/10/22 12:41:35 by aweaver          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,6 @@ int	ft_rotate_right(t_cub_data *data)
 {
 	data->player.pov += ((double)PI / 180.0);
 	if (data->player.pov > ((double)PI * 2.0))
-		data->player.pov = ((double)PI * 2.0) - data->player.pov;
+		data->player.pov -= ((double)PI * 2.0);
 	return (1);
 }

@@ -84,8 +84,8 @@ int	ft_render_img(t_cub_data *data)
 		if (!data->img.mlx_img)
 			return (1);
 		ft_render_minimap(data);
-		ft_render_background(data, 0x796f80);
-		ft_render_player(data, 0x8fde40);
+		// ft_render_background(data, 0x796f80);
+		// ft_render_player(data, 0x8fde40);
 		ft_set_ray_data(data);
 		mlx_put_image_to_window(data->mlx_ptr, data->win_ptr,
 			data->img.mlx_img, 0, 0);

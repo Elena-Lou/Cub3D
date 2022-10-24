@@ -58,7 +58,7 @@ int	main(int ac, char **av)
 	if (ft_window_init(&data))
 		return (ft_lstclear(&(data.lst_map), ft_clear_map), 1);
 	ft_render_minimap(&data);
-	// ft_set_ray_data(&data);
+	ft_set_ray_data(&data);
 	mlx_put_image_to_window(data.mlx_ptr, data.win_ptr,
 		data.img.mlx_img, 0, 0);
 	ft_keypress_hook(&data);

@@ -260,7 +260,7 @@ void	ft_distance_to_projection_plane(t_player *player);
 void	ft_cast_ray(t_cub_data *data, t_dda *ray);
 void	ft_hzt_intersections(t_cub_data *data, t_dda *ray);
 void	ft_vrt_intersections(t_cub_data *data, t_dda *ray);
-double	ft_normalize_angle(double theta);
+double	ft_normalise_angle(double theta);
 void	ft_set_dir(t_dda *ray);
 double	ft_dist_btw_pts(double plr_x, double plr_y, double hit_x, double hit_y);
 void	ft_wall_scaling(t_cub_data *data, t_dda *ray);

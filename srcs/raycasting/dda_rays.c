@@ -102,7 +102,6 @@ void	ft_cast_ray(t_cub_data *data, t_dda *ray)
 			data->player.y, ray->hzt_x, ray->hzt_y);
 	ray->vrt_dist = ft_dist_btw_pts(data->player.x,
 			data->player.y, ray->vrt_x, ray->vrt_y);
-	// ft_draw_line(data, ray->theta, ray->vrt_dist, 0xFFAFCC);
 	if (ray->vrt_dist < ray->hzt_dist)
 	{
 		ray->distance = ray->vrt_dist;
@@ -118,5 +117,5 @@ void	ft_cast_ray(t_cub_data *data, t_dda *ray)
 		ray->distance = ray->hzt_dist;
 		ray->vrt_hit = FALSE;
 	}
-	ft_draw_line(data, ray->theta, ray->distance, 0xE36414);
+	// ft_draw_line(data, ray->theta, ray->distance, 0xE36414);
 }

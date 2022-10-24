@@ -34,10 +34,11 @@ void	ft_set_ray_data(t_cub_data *data)
 	while (i < WIDTH)
 	{
 		ray[i].id = i;
-		ray[i].theta = data->player.pov + atan((i - WIDTH / 2)
+		ray[i].theta = data->player.pov + atan(((double)i - (double)WIDTH / 2.0)
 				/ data->player.dist_pp);
+		ray[i].theta = ft_normalise_angle(ray[i].theta);
 		ft_cast_ray(data, &ray[i]);
-		// ft_wall_projection(data, &ray[i]);
+		ft_wall_projection(data, &ray[i]);
 		i++;
 	}
 }

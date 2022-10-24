@@ -12,6 +12,22 @@
 
 #include "cub3d.h"
 
+void	ft_draw_line(t_cub_data *data, double angle, double len, int colour)
+{
+	double	distance;
+	double	coord_x;
+	double	coord_y;
+
+	distance = 0;
+	while (distance < len)
+	{
+		coord_x = data->player.x + distance * cos(angle);
+		coord_y = data->player.y + distance * sin(angle);
+		ft_put_pix_img(&data->img, coord_x, coord_y, colour);
+		distance++;
+	}
+}
+
 void	ft_render_background(t_cub_data *data, int colour)
 {
 	int	x;
@@ -62,9 +78,15 @@ int	ft_render_img(t_cub_data *data)
 	ft_move(data, &moved);
 	if (moved)
 	{
+		if (data->img.mlx_img != NULL)
+			mlx_destroy_image(data->mlx_ptr, data->img.mlx_img);
+		data->img.mlx_img = mlx_new_image(data->mlx_ptr, WIDTH, HEIGHT);
+		if (!data->img.mlx_img)
+			return (1);
 		ft_render_minimap(data);
-		ft_render_background(data, 0xA9A9A9);
-		ft_render_player(data, 0x8E1600);
+		// ft_render_background(data, 0x796f80);
+		// ft_render_player(data, 0x8fde40);
+		ft_set_ray_data(data);
 		mlx_put_image_to_window(data->mlx_ptr, data->win_ptr,
 			data->img.mlx_img, 0, 0);
 		mlx_put_image_to_window(data->mlx_ptr, data->win_ptr,

@@ -6,11 +6,19 @@
 /*   By: elouisia <elouisia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/17 15:19:23 by elouisia          #+#    #+#             */
-/*   Updated: 2022/10/17 16:48:04 by elouisia         ###   ########.fr       */
+/*   Updated: 2022/10/18 21:59:27 by elouisia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+
+double	ft_normalise_angle(double theta)
+{
+	theta = remainder(theta, 2.0 * PI);
+	if (theta < 0)
+		theta = (2.0 * PI) + theta;
+	return (theta);
+}
 
 void	ft_distance_to_projection_plane(t_player *player)
 {

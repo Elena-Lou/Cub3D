@@ -113,19 +113,13 @@
 
 typedef struct s_dda
 {
-	double	d_x;
-	double	d_y;
 	double	step_x;
 	double	step_y;
 	double	inter_x;
 	double	inter_y;
-	double	pos_x;
-	double	pos_y;
+	double	theta;
 	int		dir_x;
 	int		dir_y;
-	double	theta;
-	int		hit_x;
-	int		hit_y;
 	int		hzt_x;
 	int		hzt_y;
 	int		vrt_x;
@@ -138,6 +132,7 @@ typedef struct s_dda
 	double	tan_theta;
 	double	hzt_dist;
 	double	vrt_dist;
+	double	strip_height;
 	int		id;
 }			t_dda;
 
@@ -247,6 +242,7 @@ void	ft_exit_check_grid(t_cub_data *data, char *error_msg);
 **	IMAGE_UTILS.C
 */
 
+void	ft_draw_line(t_cub_data *data, double angle, double len, int colour);
 void	ft_render_minimap(t_cub_data *data);
 void	ft_put_pix_img(t_cub_img *img, int x, int y, int colour);
 void	ft_render_player(t_cub_data *data, int colour);
@@ -261,12 +257,14 @@ int		ft_close_window(t_cub_data *data);
 
 void	ft_set_ray_data(t_cub_data *data);
 void	ft_distance_to_projection_plane(t_player *player);
-void	ft_cast_ray(t_dda *ray, t_cub_data *data);
+void	ft_cast_ray(t_cub_data *data, t_dda *ray);
 void	ft_hzt_intersections(t_cub_data *data, t_dda *ray);
 void	ft_vrt_intersections(t_cub_data *data, t_dda *ray);
-double	ft_normalize_angle(double theta);
+double	ft_normalise_angle(double theta);
 void	ft_set_dir(t_dda *ray);
 double	ft_dist_btw_pts(double plr_x, double plr_y, double hit_x, double hit_y);
+void	ft_wall_scaling(t_cub_data *data, t_dda *ray);
+void	ft_wall_projection(t_cub_data *data, t_dda *ray);
 
 /*
 ** PLAYER_MOVEMENT.C

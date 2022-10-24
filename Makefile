@@ -128,7 +128,7 @@ re:		fclean
 		@make $(SILENT) all
 
 test:	all
-		./$(NAME) maps/default_north.cub
+		./$(NAME) maps/small.cub
 
 vtest:	all
 		$(VALGRIND) ./$(NAME) maps/default_north.cub

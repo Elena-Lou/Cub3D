@@ -6,7 +6,7 @@
 /*   By: elouisia <elouisia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/28 16:29:07 by elouisia          #+#    #+#             */
-/*   Updated: 2022/10/03 10:10:03 by elouisia         ###   ########.fr       */
+/*   Updated: 2022/10/24 16:50:48 by aweaver          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 int	ft_close_window(t_cub_data *data)
 {
+	mlx_destroy_image(data->mlx_ptr, data->minimap.mlx_img);
 	mlx_destroy_image(data->mlx_ptr, data->img.mlx_img);
 	mlx_destroy_window(data->mlx_ptr, data->win_ptr);
 	mlx_destroy_display(data->mlx_ptr);

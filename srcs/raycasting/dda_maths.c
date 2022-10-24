@@ -12,6 +12,14 @@
 
 #include "cub3d.h"
 
+double	ft_normalise_angle(double theta)
+{
+	theta = remainder(theta, 2.0 * PI);
+	if (theta < 0)
+		theta = (2.0 * PI) + theta;
+	return (theta);
+}
+
 void	ft_distance_to_projection_plane(t_player *player)
 {
 	player->dist_pp = (WIDTH / 2) / tan(FOV / 2);

@@ -6,7 +6,7 @@
 /*   By: elouisia <elouisia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/06 15:54:20 by elouisia          #+#    #+#             */
-/*   Updated: 2022/10/26 09:42:16 by aweaver          ###   ########.fr       */
+/*   Updated: 2022/10/26 19:50:17 by elouisia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,6 +111,26 @@
 #  define TRUE 0
 # endif
 
+# ifndef NO
+#  define NO 0
+# endif
+
+# ifndef SO
+#  define SO 1
+# endif
+
+# ifndef EA
+#  define EA 2
+# endif
+
+# ifndef WE
+#  define WE 3
+# endif
+
+# ifndef TEX_SIZE
+#  define TEX_SIZE 64
+# endif
+
 typedef struct s_dda
 {
 	double	step_x;
@@ -167,6 +187,10 @@ typedef struct s_texture
 	char		*path;
 	int			width;
 	int			height;
+	char		*addr;
+	int			bpp;
+	int			line_len;
+	int			endian;
 }				t_texture;
 
 typedef struct s_cub_data
@@ -304,4 +328,13 @@ void	ft_print_minimap(t_cub_data *data, char minimap[(MMAP_FOG *2) + 2]
 		[(MMAP_FOG *2) + 2], int x, int y);
 void	ft_print_minimap_pixel(t_cub_data *data, int x, int y, int colour);
 void	ft_print_minimap_borders(t_cub_data *data, int colour);
+
+/*
+**	APPLY_TEXTURES.C
+*/
+
+void	ft_render_wall(t_cub_data *data, int top, int bottom, t_dda *ray);
+int		ft_texture_x_offset(t_dda *ray);
+int		ft_texture_y_offset(t_dda *ray, int y);
+void	ft_init_textures(t_cub_data *data);
 #endif

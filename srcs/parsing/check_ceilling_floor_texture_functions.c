@@ -6,7 +6,7 @@
 /*   By: aweaver <aweaver@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 11:31:41 by aweaver           #+#    #+#             */
-/*   Updated: 2022/09/26 10:44:21 by aweaver          ###   ########.fr       */
+/*   Updated: 2022/10/26 08:49:13 by aweaver          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,12 +66,13 @@ int	ft_check_value(char *str, int *colour)
 	return (0);
 }
 
-int	ft_check_floor(t_map_data *map)
+int	ft_check_floor(t_map_data *map, char **target, char *cmp)
 {
 	char	*tmp;
 	int		rgb[3];
 	int		i;
 
+	(void)target;
 	tmp = ft_strptr_to_str(&(map->flag_and_path[1]));
 	map->flag_and_path = ft_free_strptr(map->flag_and_path);
 	map->flag_and_path = ft_split(tmp, ',');
@@ -80,43 +81,45 @@ int	ft_check_floor(t_map_data *map)
 	if (ft_strptr_len(map->flag_and_path) != 3)
 	{
 		ft_free_strptr(map->flag_and_path);
-		ft_wrong_map_exit(map->data->lst_map, "F: ", "not a valid colour");
+		ft_wrong_map_exit(map->data->lst_map, cmp, ": not a valid colour");
 	}
 	i = -1;
 	while (++i < 3)
 	{
 		if (ft_check_value(map->flag_and_path[i], &rgb[i]) == 1)
-			return (ft_wrong_map_exit(map->data->lst_map, "Texture F: ",
-					"not a valid colour"), 1);
+			return (ft_wrong_map_exit(map->data->lst_map, cmp,
+					": not a valid colour"), 1);
 	}
-	ft_check_redefinition(map, "F: ", &(map->data->floor),
+	ft_check_redefinition(map, cmp, &(map->data->floor),
 		ft_get_argb(0, rgb[0], rgb[1], rgb[2]));
 	return (0);
 }
 
-int	ft_check_ceilling(t_map_data *map)
+int	ft_check_ceilling(t_map_data *map, char **target, char *cmp)
 {
 	char	*tmp;
 	int		rgb[3];
 	int		i;
 
+	(void)target;
 	tmp = ft_strptr_to_str(&(map->flag_and_path[1]));
 	map->flag_and_path = ft_free_strptr(map->flag_and_path);
 	map->flag_and_path = ft_split(tmp, ',');
 	free(tmp);
+	tmp = NULL;
 	if (ft_strptr_len(map->flag_and_path) != 3)
 	{
 		ft_free_strptr(map->flag_and_path);
-		ft_wrong_map_exit(map->data->lst_map, "C: ", "not a valid colour");
+		ft_wrong_map_exit(map->data->lst_map, cmp, ": not a valid colour");
 	}
 	i = -1;
 	while (++i < 3)
 	{
 		if (ft_check_value(map->flag_and_path[i], &rgb[i]) == 1)
-			return (ft_wrong_map_exit(map->data->lst_map, "Texture C: ",
-					"not a valid colour"), 1);
+			return (ft_wrong_map_exit(map->data->lst_map, cmp,
+					": not a valid colour"), 1);
 	}
-	ft_check_redefinition(map, "C: ", &(map->data->ceilling),
+	ft_check_redefinition(map, cmp, &(map->data->ceilling),
 		ft_get_argb(0, rgb[0], rgb[1], rgb[2]));
 	return (0);
 }

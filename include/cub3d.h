@@ -6,7 +6,7 @@
 /*   By: elouisia <elouisia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/06 15:54:20 by elouisia          #+#    #+#             */
-/*   Updated: 2022/10/21 09:56:11 by aweaver          ###   ########.fr       */
+/*   Updated: 2022/10/26 08:39:16 by aweaver          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -160,6 +160,14 @@ typedef struct s_cub_img
 	int			endian;
 }			t_cub_img;
 
+typedef struct s_texture
+{
+	void		*img;
+	char		*path;
+	int			width;
+	int			height;
+}				t_texture;
+
 typedef struct s_cub_data
 {
 	void		*mlx_ptr;
@@ -176,6 +184,7 @@ typedef struct s_cub_data
 	t_list		*lst_map;
 	t_cub_img	img;
 	t_cub_img	minimap;
+	t_texture	tex[4];
 	t_player	player;
 }				t_cub_data;
 
@@ -190,14 +199,15 @@ typedef struct s_map_data
 **	FUNCTION POINTERS
 */
 
-typedef int	(*t_check)(t_map_data *map);
+typedef int	(*t_check)(t_map_data *map, char **target, char *cmp);
 
+int		ft_check_texture(t_map_data *map, char **target, char *cmp);
+int		ft_check_floor(t_map_data *map, char **target, char *cmp);
+int		ft_check_ceilling(t_map_data *map, char **target, char *cmp);
 int		ft_check_no(t_map_data *map);
 int		ft_check_so(t_map_data *map);
 int		ft_check_ea(t_map_data *map);
 int		ft_check_we(t_map_data *map);
-int		ft_check_floor(t_map_data *map);
-int		ft_check_ceilling(t_map_data *map);
 
 /*
 **	MAIN.C

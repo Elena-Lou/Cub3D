@@ -6,7 +6,7 @@
 /*   By: elouisia <elouisia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/06 15:52:30 by elouisia          #+#    #+#             */
-/*   Updated: 2022/10/25 14:33:39 by aweaver          ###   ########.fr       */
+/*   Updated: 2022/10/26 08:30:29 by aweaver          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,10 @@ void	ft_init_data(t_cub_data *data)
 	data->mlx_ptr = NULL;
 	data->win_ptr = NULL;
 	data->minimap.mlx_img = NULL;
-	data->no = NULL;
-	data->so = NULL;
-	data->ea = NULL;
-	data->we = NULL;
+	data->tex[0].path = NULL;
+	data->tex[1].path = NULL;
+	data->tex[2].path = NULL;
+	data->tex[3].path = NULL;
 	data->ceilling = -1;
 	data->floor = -1;
 	data->lst_map = NULL;
@@ -54,9 +54,9 @@ int	main(int ac, char **av)
 	ft_init_data(&data);
 	if (ft_map_to_list(&data, av[1]))
 		return (1);
-	ft_check_map_content(&data);
 	if (ft_window_init(&data))
 		return (ft_lstclear(&(data.lst_map), ft_clear_map), 1);
+	ft_check_map_content(&data);
 	ft_render_minimap(&data);
 	ft_set_ray_data(&data);
 	mlx_put_image_to_window(data.mlx_ptr, data.win_ptr,

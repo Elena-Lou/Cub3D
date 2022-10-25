@@ -133,6 +133,7 @@ typedef struct s_dda
 	double	hzt_dist;
 	double	vrt_dist;
 	double	strip_height;
+	int		wall_impact;
 	int		id;
 }			t_dda;
 
@@ -254,6 +255,7 @@ int		ft_close_window(t_cub_data *data);
 ** DDA.C
 */
 
+void	ft_set_closest_distance(t_dda *ray);
 void	ft_set_ray_data(t_cub_data *data);
 void	ft_distance_to_projection_plane(t_player *player);
 void	ft_cast_ray(t_cub_data *data, t_dda *ray);

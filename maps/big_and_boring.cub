@@ -1,11 +1,10 @@
+NO images/bluestone.xpm
+SO images/mossy.xpm
+WE images/purplestone.xpm
+EA images/eagle.xpm
 
-NO images/blue_wall.xpm
-SO images/red_brick.xpm
-WE images/brown_wall.xpm
-EA images/grey_wall.xpm
-
-F 220,100,0
-C 225,30,0
+F 18,53,77
+C 153,204,255
 
 11111111111111111111111111111111111111111111111111111111111111111111111111111111
 10000000000000000000000000000000000000000000000000000000000000000000000000000001

@@ -6,7 +6,7 @@
 /*   By: elouisia <elouisia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/17 15:19:23 by elouisia          #+#    #+#             */
-/*   Updated: 2022/10/18 21:59:27 by elouisia         ###   ########.fr       */
+/*   Updated: 2022/10/28 16:12:22 by elouisia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,19 +17,16 @@ void	ft_set_closest_distance(t_dda *ray)
 	if (ray->vrt_dist < ray->hzt_dist)
 	{
 		ray->distance = ray->vrt_dist;
-		ray->wall_impact = (int)ray->vrt_x % 64;
 		ray->hzt_hit = FALSE;
 	}
 	else if (ray->hzt_dist == ray->vrt_dist)
 	{
 		ray->distance = ray->hzt_dist;
-		ray->wall_impact = (int)ray->hzt_x % 64;
 		ray->vrt_hit = FALSE;
 	}
 	else
 	{
 		ray->distance = ray->hzt_dist;
-		ray->wall_impact = (int)ray->hzt_x % 64;
 		ray->vrt_hit = FALSE;
 	}
 }

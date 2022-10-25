@@ -6,7 +6,7 @@
 /*   By: elouisia <elouisia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 17:53:23 by elouisia          #+#    #+#             */
-/*   Updated: 2022/10/19 12:18:14 by elouisia         ###   ########.fr       */
+/*   Updated: 2022/10/25 14:34:03 by aweaver          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,12 +38,9 @@ static void	ft_render_wall(t_cub_data *data, int top, int bottom, t_dda *ray)
 	int	x;
 
 	x = ray->id;
-	y = 0;
-	while (y < top)
-	{
+	y = -1;
+	while (++y < top)
 		ft_put_pix_img(&data->img, x, y, data->ceilling);
-		y++;
-	}
 	while (y < bottom)
 	{
 		if (ray->hzt_hit == TRUE && ray->facing_up == TRUE)

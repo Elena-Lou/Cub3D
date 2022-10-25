@@ -6,7 +6,7 @@
 /*   By: elouisia <elouisia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/17 15:20:07 by elouisia          #+#    #+#             */
-/*   Updated: 2022/10/19 12:45:47 by elouisia         ###   ########.fr       */
+/*   Updated: 2022/10/25 14:36:37 by aweaver          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,5 +124,6 @@ void	ft_cast_ray(t_cub_data *data, t_dda *ray)
 		ray->distance = ray->hzt_dist;
 		ray->vrt_hit = FALSE;
 	}
-	// ft_draw_line(data, ray->theta, ray->distance, 0xE36414);
 }
+	// ft_draw_line(data, ray->theta, ray->distance, 0xE36414);
+	// debug function to print rays in 2D

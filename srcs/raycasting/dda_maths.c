@@ -12,6 +12,28 @@
 
 #include "cub3d.h"
 
+void	ft_set_closest_distance(t_dda *ray)
+{
+	if (ray->vrt_dist < ray->hzt_dist)
+	{
+		ray->distance = ray->vrt_dist;
+		ray->wall_impact = (int)ray->vrt_x % 64;
+		ray->hzt_hit = FALSE;
+	}
+	else if (ray->hzt_dist == ray->vrt_dist)
+	{
+		ray->distance = ray->hzt_dist;
+		ray->wall_impact = (int)ray->hzt_x % 64;
+		ray->vrt_hit = FALSE;
+	}
+	else
+	{
+		ray->distance = ray->hzt_dist;
+		ray->wall_impact = (int)ray->hzt_x % 64;
+		ray->vrt_hit = FALSE;
+	}
+}
+
 double	ft_normalise_angle(double theta)
 {
 	theta = remainder(theta, 2.0 * PI);

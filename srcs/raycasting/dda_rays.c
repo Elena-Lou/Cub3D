@@ -109,21 +109,7 @@ void	ft_cast_ray(t_cub_data *data, t_dda *ray)
 			data->player.y, ray->hzt_x, ray->hzt_y);
 	ray->vrt_dist = ft_dist_btw_pts(data->player.x,
 			data->player.y, ray->vrt_x, ray->vrt_y);
-	if (ray->vrt_dist < ray->hzt_dist)
-	{
-		ray->distance = ray->vrt_dist;
-		ray->hzt_hit = FALSE;
-	}
-	else if (ray->hzt_dist == ray->vrt_dist)
-	{
-		ray->distance = ray->hzt_dist;
-		ray->vrt_hit = FALSE;
-	}
-	else
-	{
-		ray->distance = ray->hzt_dist;
-		ray->vrt_hit = FALSE;
-	}
+	ft_set_closest_distance(ray);
 }
 	// ft_draw_line(data, ray->theta, ray->distance, 0xE36414);
 	// debug function to print rays in 2D

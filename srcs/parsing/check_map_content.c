@@ -6,7 +6,7 @@
 /*   By: elouisia <elouisia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/16 13:06:38 by aweaver           #+#    #+#             */
-/*   Updated: 2022/10/26 08:46:10 by aweaver          ###   ########.fr       */
+/*   Updated: 2022/10/26 09:40:51 by aweaver          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,6 @@ void	ft_check_map_header(void *arg)
 {
 	t_map_data			*map;
 	const char			*comp[] = {"NO", "SO", "EA", "WE", "F", "C"};
-	const t_check		ft_check[] = {&ft_check_texture, &ft_check_texture,
-		&ft_check_texture, &ft_check_texture, &ft_check_floor,
-		&ft_check_ceilling};
 	int					i;
 
 	i = 0;
@@ -29,7 +26,14 @@ void	ft_check_map_header(void *arg)
 	{
 		if (ft_strcmp(*map->flag_and_path, comp[i]) == 0)
 		{
-			ft_check[i](map, &map->data->tex[i].path, (char *)comp[i]);
+			if (i < 4)
+				ft_check_texture(map, &map->data->tex[i].path, (char *)comp[i]);
+			else if (i == 4)
+				ft_check_floor_ceilling(map,
+					&map->data->floor, (char *)comp[i]);
+			else
+				ft_check_floor_ceilling(map,
+					&map->data->ceilling, (char *)comp[i]);
 			return ;
 		}
 		i++;

@@ -6,7 +6,7 @@
 /*   By: elouisia <elouisia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/06 15:54:20 by elouisia          #+#    #+#             */
-/*   Updated: 2022/10/26 08:39:16 by aweaver          ###   ########.fr       */
+/*   Updated: 2022/10/26 09:42:16 by aweaver          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -195,19 +195,8 @@ typedef struct s_map_data
 	t_cub_data	*data;
 }				t_map_data;
 
-/*
-**	FUNCTION POINTERS
-*/
-
-typedef int	(*t_check)(t_map_data *map, char **target, char *cmp);
-
 int		ft_check_texture(t_map_data *map, char **target, char *cmp);
-int		ft_check_floor(t_map_data *map, char **target, char *cmp);
-int		ft_check_ceilling(t_map_data *map, char **target, char *cmp);
-int		ft_check_no(t_map_data *map);
-int		ft_check_so(t_map_data *map);
-int		ft_check_ea(t_map_data *map);
-int		ft_check_we(t_map_data *map);
+int		ft_check_floor_ceilling(t_map_data *map, int *target, char *cmp);
 
 /*
 **	MAIN.C

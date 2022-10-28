@@ -71,6 +71,7 @@ SRCS	=	main.c \
 			$(addprefix textures/, \
 				apply_textures.c\
 				pick_colours.c\
+				set_textures.c\
 			)
 
 SRCS_DIR = ./srcs/

@@ -6,7 +6,7 @@
 /*   By: elouisia <elouisia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/16 13:06:38 by aweaver           #+#    #+#             */
-/*   Updated: 2022/10/26 09:40:51 by aweaver          ###   ########.fr       */
+/*   Updated: 2022/10/28 16:22:14 by aweaver          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,33 +70,11 @@ void	ft_check_texture_all_set(t_cub_data *data)
 		ft_wrong_map_exit(data->lst_map, "Ceilling: ", "not set.");
 }
 
-void	ft_set_texture(t_cub_data *data)
-{
-	int	i;
-
-	i = 0;
-	while (i < 4)
-	{
-		data->tex[i].img = mlx_xpm_file_to_image(data->mlx_ptr,
-				data->tex[i].path,
-				&data->tex[i].width,
-				&data->tex[i].height);
-		if (data->tex[i].img == NULL)
-		{
-			while (--i > 0)
-				mlx_destroy_image(data->mlx_ptr, data->tex[i].img);
-			ft_wrong_map_exit(data->lst_map, "Texture: ", "Incorrect.");
-		}
-		i++;
-	}
-}
-
 void	ft_check_map_content(t_cub_data *data)
 {
 	ft_lstiter(data->lst_map, &ft_tokenise_map);
 	ft_lstiter(data->lst_map, &ft_check_map_header);
 	ft_check_texture_all_set(data);
-	ft_set_texture(data);
 	ft_create_map_grid(data);
 	ft_check_map_grid(data, data->grid);
 	data->map_width = ft_strlen_int(*data->grid);

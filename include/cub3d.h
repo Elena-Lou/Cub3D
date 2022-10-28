@@ -6,7 +6,7 @@
 /*   By: elouisia <elouisia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/06 15:54:20 by elouisia          #+#    #+#             */
-/*   Updated: 2022/10/28 16:39:44 by aweaver          ###   ########.fr       */
+/*   Updated: 2022/10/28 19:23:31 by aweaver          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -247,6 +247,12 @@ int		ft_create_map_grid(t_cub_data *data);
 void	ft_check_map_grid(t_cub_data *data, char **grid);
 
 /*
+** CHECK_TILE.C
+*/
+
+int		ft_is_void(char c);
+
+/*
 ** FREE_FUNCTIONS.C
 */
 
@@ -337,6 +343,7 @@ void	ft_render_wall(t_cub_data *data, int top, int bottom, t_dda *ray);
 int		ft_texture_x_offset(t_dda *ray);
 int		ft_texture_y_offset(t_dda *ray, int y, int tex_height);
 void	ft_init_textures(t_cub_data *data);
+
 /*
 **	SET_TEXTURES.C
 */

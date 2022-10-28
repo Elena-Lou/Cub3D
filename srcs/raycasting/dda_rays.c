@@ -6,7 +6,7 @@
 /*   By: elouisia <elouisia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/17 15:20:07 by elouisia          #+#    #+#             */
-/*   Updated: 2022/10/26 19:16:15 by elouisia         ###   ########.fr       */
+/*   Updated: 2022/10/28 15:13:26 by elouisia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,6 @@ void	ft_vrt_init(t_cub_data *data, t_dda *ray)
 	ray->vrt_y = ray->inter_y;
 }
 
-/* superieur strict a peut-être modifié */
 void	ft_vrt_intersections(t_cub_data *data, t_dda *ray)
 {
 	ray->dir_x = 0;
@@ -111,5 +110,3 @@ void	ft_cast_ray(t_cub_data *data, t_dda *ray)
 			data->player.y, ray->vrt_x, ray->vrt_y);
 	ft_set_closest_distance(ray);
 }
-	// ft_draw_line(data, ray->theta, ray->distance, 0xE36414);
-	// debug function to print rays in 2D

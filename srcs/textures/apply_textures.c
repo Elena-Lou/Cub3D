@@ -6,7 +6,7 @@
 /*   By: elouisia <elouisia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/26 16:53:13 by elouisia          #+#    #+#             */
-/*   Updated: 2022/10/28 14:54:19 by elouisia         ###   ########.fr       */
+/*   Updated: 2022/10/28 15:06:05 by elouisia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ void	ft_render_wall(t_cub_data *data, int top, int bottom, t_dda *ray)
 	int	x;
 	int	x_offset;
 	int	y_offset;
-	unsigned int colour;
+	int	colour;
 
 	x = ray->id;
 	y = -1;

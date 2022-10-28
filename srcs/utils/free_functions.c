@@ -6,12 +6,18 @@
 /*   By: aweaver <aweaver@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/16 14:51:37 by aweaver           #+#    #+#             */
-/*   Updated: 2022/10/26 08:37:35 by aweaver          ###   ########.fr       */
+/*   Updated: 2022/10/28 16:39:23 by aweaver          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 #include <stdio.h>
+
+void	ft_clear_data_no_tex(t_cub_data *data)
+{
+	ft_free_strptr(data->grid);
+	ft_lstclear(&(data->lst_map), ft_clear_map);
+}
 
 void	ft_clear_data(t_cub_data *data)
 {

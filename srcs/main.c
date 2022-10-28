@@ -6,7 +6,7 @@
 /*   By: elouisia <elouisia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/06 15:52:30 by elouisia          #+#    #+#             */
-/*   Updated: 2022/10/26 08:30:29 by aweaver          ###   ########.fr       */
+/*   Updated: 2022/10/28 15:59:36 by elouisia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ int	main(int ac, char **av)
 
 	if (ac != 2)
 	{
-		printf("Usage : ./cub2D map.cub\n");
+		printf("Usage : %s maps/[map name].cub\n", av[0]);
 		return (1);
 	}
 	ft_init_data(&data);

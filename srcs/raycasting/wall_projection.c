@@ -6,7 +6,7 @@
 /*   By: elouisia <elouisia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 17:53:23 by elouisia          #+#    #+#             */
-/*   Updated: 2022/10/25 14:34:03 by aweaver          ###   ########.fr       */
+/*   Updated: 2022/10/28 15:13:56 by elouisia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,39 +26,11 @@
         |______________________________________
 
     strip_height is the scaled height of the wall.
-    wall_size is equal to 64 because it the size of the tiles
+    wall_size is equal to 64 because it is the size of the tiles
     ray->distance is the actual distance from the player to wall
     
     strip_height = wall_size / ray->distance * distance_to_pp
 */
-
-static void	ft_render_wall(t_cub_data *data, int top, int bottom, t_dda *ray)
-{
-	int	y;
-	int	x;
-
-	x = ray->id;
-	y = -1;
-	while (++y < top)
-		ft_put_pix_img(&data->img, x, y, data->ceilling);
-	while (y < bottom)
-	{
-		if (ray->hzt_hit == TRUE && ray->facing_up == TRUE)
-			ft_put_pix_img(&data->img, x, y, 0x734F5A);
-		else if (ray->hzt_hit == TRUE && ray->facing_up == FALSE)
-			ft_put_pix_img(&data->img, x, y, 0x941C2F);
-		else if (ray->vrt_hit == TRUE && ray->facing_left == TRUE)
-			ft_put_pix_img(&data->img, x, y, 0xE76F51);
-		else
-			ft_put_pix_img(&data->img, x, y, 0xC05761);
-		y++;
-	}
-	while (y < HEIGHT)
-	{
-		ft_put_pix_img(&data->img, x, y, data->floor);
-		y++;
-	}
-}
 
 double	ft_glasses_for_fish(t_cub_data *data, t_dda *ray)
 {

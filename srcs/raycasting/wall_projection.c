@@ -6,7 +6,7 @@
 /*   By: elouisia <elouisia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 17:53:23 by elouisia          #+#    #+#             */
-/*   Updated: 2022/10/26 20:14:21 by elouisia         ###   ########.fr       */
+/*   Updated: 2022/10/28 15:13:56 by elouisia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@
         |______________________________________
 
     strip_height is the scaled height of the wall.
-    wall_size is equal to 64 because it the size of the tiles
+    wall_size is equal to 64 because it is the size of the tiles
     ray->distance is the actual distance from the player to wall
     
     strip_height = wall_size / ray->distance * distance_to_pp

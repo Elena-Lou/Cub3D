@@ -6,7 +6,7 @@
 /*   By: aweaver <aweaver@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 09:27:26 by aweaver           #+#    #+#             */
-/*   Updated: 2022/10/21 09:55:34 by aweaver          ###   ########.fr       */
+/*   Updated: 2022/10/28 19:21:40 by aweaver          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,15 +23,15 @@ static void	ft_is_valid_map_pattern(t_cub_data *data, char **grid, int x, int y)
 {
 	if (grid[y][x] == '1' || grid[y][x] == ' ' || grid[y][x] == '\n')
 		return ;
-	else
+	else if (grid[y][x] == '0')
 	{
 		if (y == 0 || grid[y + 1] == NULL)
 			ft_exit_check_grid(data, "Map is not closed with walls.\n");
 		if (x == 0 || grid[y][x + 1] == '\n' || grid[y][x + 1] == '\0')
 			ft_exit_check_grid(data, "Map is not closed with walls.\n");
-		if (grid[y - 1][x] == ' ' || grid[y + 1][x] == ' '
-			|| grid[y][x - 1] == ' ' || grid[y][x + 1] == ' ')
-			ft_exit_check_grid(data, "Map is not closed with walls.\n");
+		if (ft_is_void(grid[y - 1][x]) || ft_is_void(grid[y + 1][x])
+				|| ft_is_void(grid[y][x - 1]) || ft_is_void(grid[y][x + 1]))
+			ft_exit_check_grid(data, "Map is not closed with walls!\n");
 	}
 }
 

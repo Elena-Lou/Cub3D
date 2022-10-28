@@ -6,7 +6,7 @@
 /*   By: elouisia <elouisia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/07 16:04:09 by elouisia          #+#    #+#             */
-/*   Updated: 2022/10/02 13:35:17 by elouisia         ###   ########.fr       */
+/*   Updated: 2022/10/28 16:28:10 by aweaver          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ int	ft_map_to_list(t_cub_data *data, char *map_file)
 		return (ft_err_msg(strerror(errno)));
 	line = get_next_line(fd);
 	if (line == NULL)
-		return (close(fd), ft_err_msg("Empty map."));
+		return (close(fd), ft_err_msg("Map is empty or is not a valid file."));
 	if (ft_add_line_map(line, data) == WRONG_MALLOC)
 		return (close(fd), ft_err_msg("Malloc error."));
 	while (line)

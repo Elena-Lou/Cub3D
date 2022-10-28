@@ -6,7 +6,7 @@
 /*   By: aweaver <aweaver@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 11:31:41 by aweaver           #+#    #+#             */
-/*   Updated: 2022/10/26 09:41:25 by aweaver          ###   ########.fr       */
+/*   Updated: 2022/10/28 19:37:22 by aweaver          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,10 +79,7 @@ int	ft_check_floor_ceilling(t_map_data *map, int *target, char *cmp)
 	free(tmp);
 	tmp = NULL;
 	if (ft_strptr_len(map->flag_and_path) != 3)
-	{
-		ft_free_strptr(map->flag_and_path);
 		ft_wrong_map_exit(map->data->lst_map, cmp, ": not a valid colour");
-	}
 	i = -1;
 	while (++i < 3)
 	{

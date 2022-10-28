@@ -6,7 +6,7 @@
 /*   By: aweaver <aweaver@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 15:22:15 by aweaver           #+#    #+#             */
-/*   Updated: 2022/10/03 13:28:29 by aweaver          ###   ########.fr       */
+/*   Updated: 2022/10/28 16:40:24 by aweaver          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	ft_wrong_map_exit(t_list *list, char *texture, char *error_msg)
 
 	map = (t_map_data *)list->content;
 	data = map->data;
-	ft_clear_data(data);
+	ft_clear_data_no_tex(data);
 	ft_putstr_fd("Error\n", 2);
 	ft_putstr_fd(texture, 2);
 	ft_putstr_fd(error_msg, 2);

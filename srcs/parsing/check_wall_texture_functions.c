@@ -6,7 +6,7 @@
 /*   By: aweaver <aweaver@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 11:05:24 by aweaver           #+#    #+#             */
-/*   Updated: 2022/10/26 08:45:41 by aweaver          ###   ########.fr       */
+/*   Updated: 2022/10/28 16:55:05 by aweaver          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,10 +46,12 @@ int	ft_check_texture(t_map_data *map, char **target, char *cmp)
 	int	ret;
 
 	if (ft_strptr_len(map->flag_and_path) != 2)
-		ft_wrong_map_exit(map->data->lst_map, cmp, "wrong file");
+		ft_wrong_map_exit(map->data->lst_map, cmp, ": wrong file");
 	ret = ft_check_path(map->flag_and_path[1]);
 	if (ret == NOT_FOUND)
-		ft_wrong_map_exit(map->data->lst_map, cmp, strerror(errno));
+	{
+		ft_wrong_map_exit(map->data->lst_map, cmp, ": no such file");
+	}
 	if (ret == NOT_XPM)
 		ft_wrong_map_exit(map->data->lst_map, cmp, "is not an xpm file");
 	if (*target == NULL)

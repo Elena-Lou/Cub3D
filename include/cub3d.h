@@ -6,7 +6,7 @@
 /*   By: elouisia <elouisia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/06 15:54:20 by elouisia          #+#    #+#             */
-/*   Updated: 2022/10/26 19:50:17 by elouisia         ###   ########.fr       */
+/*   Updated: 2022/10/28 14:55:50 by elouisia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -337,4 +337,10 @@ void	ft_render_wall(t_cub_data *data, int top, int bottom, t_dda *ray);
 int		ft_texture_x_offset(t_dda *ray);
 int		ft_texture_y_offset(t_dda *ray, int y);
 void	ft_init_textures(t_cub_data *data);
+
+/*
+** PICK_COLOURS.C
+*/
+
+int	ft_pick_colour(t_cub_data *data, t_dda *ray, int y_offset, int x_offset);
 #endif

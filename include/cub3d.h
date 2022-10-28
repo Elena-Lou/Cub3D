@@ -6,7 +6,7 @@
 /*   By: elouisia <elouisia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/06 15:54:20 by elouisia          #+#    #+#             */
-/*   Updated: 2022/10/29 15:22:08 by elouisia         ###   ########.fr       */
+/*   Updated: 2022/10/28 16:23:52 by aweaver          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -336,6 +336,11 @@ void	ft_render_wall(t_cub_data *data, int top, int bottom, t_dda *ray);
 int		ft_texture_x_offset(t_dda *ray);
 int		ft_texture_y_offset(t_dda *ray, int y, int tex_height);
 void	ft_init_textures(t_cub_data *data);
+/*
+**	SET_TEXTURES.C
+*/
+
+void	ft_set_texture(t_cub_data *data);
 
 /*
 ** PICK_COLOURS.C

@@ -6,7 +6,7 @@
 /*   By: elouisia <elouisia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/06 15:52:30 by elouisia          #+#    #+#             */
-/*   Updated: 2022/10/28 15:59:36 by elouisia         ###   ########.fr       */
+/*   Updated: 2022/10/28 16:24:23 by aweaver          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,9 +54,10 @@ int	main(int ac, char **av)
 	ft_init_data(&data);
 	if (ft_map_to_list(&data, av[1]))
 		return (1);
+	ft_check_map_content(&data);
 	if (ft_window_init(&data))
 		return (ft_lstclear(&(data.lst_map), ft_clear_map), 1);
-	ft_check_map_content(&data);
+	ft_set_texture(&data);
 	ft_render_minimap(&data);
 	ft_set_ray_data(&data);
 	mlx_put_image_to_window(data.mlx_ptr, data.win_ptr,

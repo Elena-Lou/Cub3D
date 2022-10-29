@@ -35,56 +35,98 @@ LIBS		=	-lm -lbsd -lX11 -lXext
 #								FILES										#
 #############################################################################
 
-SRCS	=	main.c \
-			$(addprefix parsing/, \
-				map_to_list.c\
-				check_map_content.c\
-				check_map_name.c\
-				check_wall_texture_functions.c\
-				check_ceilling_floor_texture_functions.c\
-				create_map_grid.c\
-				check_map_grid.c\
-				check_tile.c\
-			)\
-			$(addprefix utils/, \
-				free_functions.c\
-				error_message.c\
-			)\
-			$(addprefix image/, \
-				image_utils.c\
-				window_utils.c\
-				rendition.c\
-				minimap.c\
-				print_minimap.c\
+SRCS	=		main \
+				$(addprefix parsing/, \
+					map_to_list\
+					check_map_content\
+					check_map_name\
+					check_wall_texture_functions\
+					check_ceilling_floor_texture_functions\
+					create_map_grid\
+					check_map_grid\
+					check_tile\
 				)\
-			$(addprefix movement/, \
-				player_movement.c\
-				player_rotation.c\
-				key_checks.c\
-				update_tile.c\
-			)\
-			$(addprefix raycasting/, \
-				dda.c\
-				dda_maths.c\
-				dda_rays.c\
-				wall_projection.c\
-			)\
-			$(addprefix textures/, \
-				apply_textures.c\
-				pick_colours.c\
-				set_textures.c\
-			)
+				$(addprefix utils/, \
+					free_functions\
+					error_message\
+				)\
+				$(addprefix image/, \
+					image_utils\
+					window_utils\
+					rendition\
+					minimap\
+					print_minimap\
+					)\
+				$(addprefix movement/, \
+					player_movement\
+					player_rotation\
+					key_checks\
+					update_tile\
+				)\
+				$(addprefix raycasting/, \
+					dda\
+					dda_maths\
+					dda_rays\
+					wall_projection\
+				)\
+				$(addprefix textures/, \
+					apply_textures\
+					pick_colours\
+					set_textures\
+				)\
 
+#SRCS_B	=	$(addprefix bonus/, \
+#				main_bonus.c \
+#				$(addprefix parsing/, \
+#					map_to_list_bonus.c\
+#					check_map_content_bonus.c\
+#					check_map_name_bonus.c\
+#					check_wall_texture_functions_bonus.c\
+#					check_ceilling_floor_texture_functions_bonus.c\
+#					create_map_grid_bonus.c\
+#					check_map_grid_bonus.c\
+#					check_tile_bonus.c\
+#				)\
+#				$(addprefix utils/, \
+#					free_functions_bonus.c\
+#					error_message_bonus.c\
+#				)\
+#				$(addprefix image/, \
+#					image_utils_bonus.c\
+#					window_utils_bonus.c\
+#					rendition_bonus.c\
+#					minimap_bonus.c\
+#					print_minimap_bonus.c\
+#					)\
+#				$(addprefix movement/, \
+#					player_movement_bonus.c\
+#					player_rotation_bonus.c\
+#					key_checks_bonus.c\
+#					update_tile_bonus.c\
+#				)\
+#				$(addprefix raycasting/, \
+#					dda_bonus.c\
+#					dda_maths_bonus.c\
+#					dda_rays_bonus.c\
+#					wall_projection_bonus.c\
+#				)\
+#				$(addprefix textures/, \
+#					apply_textures_bonus.c\
+#					pick_colours_bonus.c\
+#					set_textures_bonus.c\
+#				)\
+#			)
+
+SRCS_BONUS = $(addsuffix _bonus.c , $(SRCS))
 SRCS_DIR = ./srcs/
 
 OBJS_DIR = ./objs/
 
-OBJS = $(addprefix $(OBJS_DIR), $(SRCS:.c=.o))
+OBJS = $(addsuffix .o, $(addprefix $(OBJS_DIR), $(SRCS)))
+OBJS_BONUS = $(addsuffix _bonus.o, $(addprefix $(OBJS_DIR), $(SRCS)))
 
-DEPS = $(addprefix $(OBJS_DIR), $(SRCS:.c=.d))
-
-
-
+DEPS = $(OBJS:.o=.d)
+DEPS_BONUS = $(OBJS_BONUS:.o=.d)
 
 #############################################################################
 #							COLOURS											#
@@ -115,6 +157,10 @@ $(MLX):
 		@make $(SILENT) -C ./minilibx/ all
 		@echo "$(CYAN)\nMiniLibX $(PURPLE)compiled\n$(NO_COLOUR)"
 
+bonus:	$(OBJS_BONUS) $(LIBFT) $(MLX)
+			$(CC) $(CFLAGS) $(OBJS_BONUS) -o $@ $(INCS) $(LIBFT) minilibx/libmlx_Linux.a $(LIBS)
+			@echo "$(ORANGE)cub3D$(CYAN) is ready$(NO_COLOUR)"
+
 $(NAME): $(OBJS) $(LIBFT) $(MLX)
 		$(CC) $(CFLAGS) $(OBJS) -o $@ $(INCS) $(LIBFT) minilibx/libmlx_Linux.a $(LIBS)
 		@echo "$(ORANGE)cub3D$(CYAN) is ready$(NO_COLOUR)"
@@ -139,15 +185,6 @@ test:	all
 vtest:	all
 		$(VALGRIND) ./$(NAME) maps/default_north.cub
 
-test_map:	$(LIBFT) $(MLX)
-		$(CC) $(CFLAGS) srcs/test/main_map_tester.c srcs/parsing/check_map_name.c srcs/parsing/check_map_content.c srcs/parsing/check_wall_texture_functions.c srcs/parsing/check_ceilling_floor_texture_functions.c srcs/parsing/map_to_list.c srcs/utils/free_functions.c srcs/utils/error_message.c srcs/parsing/create_map_grid.c srcs/parsing/check_map_grid.c $(LIBFT) $(LIBS) -o $(NAME) $(INCS)
-		./srcs/test/test_maps.sh
-
-vtest_map:	$(LIBFT) $(MLX)
-		$(CC) $(CFLAGS) srcs/test/main_map_tester.c srcs/parsing/check_map_name.c srcs/parsing/check_map_content.c srcs/parsing/check_wall_texture_functions.c srcs/parsing/check_ceilling_floor_texture_functions.c srcs/parsing/map_to_list.c srcs/utils/free_functions.c srcs/utils/error_message.c srcs/parsing/create_map_grid.c srcs/parsing/check_map_grid.c $(LIBFT) $(LIBS) -o $(NAME) $(INCS)
-		./srcs/test/test_maps.sh $(VALGRIND)
-
-
 -include $(DEPS)
 
-.PHONY: all clean fclean re test vtest test_map
+.PHONY: all clean fclean re test vtest bonus

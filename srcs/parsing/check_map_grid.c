@@ -6,13 +6,13 @@
 /*   By: aweaver <aweaver@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 09:27:26 by aweaver           #+#    #+#             */
-/*   Updated: 2022/10/29 16:16:26 by aweaver          ###   ########.fr       */
+/*   Updated: 2022/10/29 17:36:07 by aweaver          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-static int	ft_is_player_starting_position(char c)
+int	ft_is_player_starting_position(char c)
 {
 	if (c == 'N' || c == 'E' || c == 'W' || c == 'S')
 		return (1);
@@ -87,16 +87,17 @@ void	ft_check_map_grid(t_cub_data *data, char **grid)
 	player = 0;
 	while (grid[++y])
 	{
-		x = 0;
-		while (grid[y][x])
+		x = -1;
+		while (grid[y][++x])
 		{
+			if (ft_map_contains_newline(grid, x, y))
+				ft_exit_check_grid(data, "Map contains newlines.");
 			if (ft_is_player_starting_position(grid[y][x]))
 				ft_set_player_spawn(data, x, y, &player);
 			if (ft_is_valid_map_char(grid[y][x]))
 				ft_is_valid_map_pattern(data, grid, x, y);
 			else
 				ft_exit_check_grid(data, "Map contains wrong data.");
-			x++;
 		}
 	}
 	if (player < 1)

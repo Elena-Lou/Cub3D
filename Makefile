@@ -44,6 +44,7 @@ SRCS	=	main.c \
 				check_ceilling_floor_texture_functions.c\
 				create_map_grid.c\
 				check_map_grid.c\
+				check_tile.c\
 			)\
 			$(addprefix utils/, \
 				free_functions.c\
@@ -71,6 +72,7 @@ SRCS	=	main.c \
 			$(addprefix textures/, \
 				apply_textures.c\
 				pick_colours.c\
+				set_textures.c\
 			)
 
 SRCS_DIR = ./srcs/

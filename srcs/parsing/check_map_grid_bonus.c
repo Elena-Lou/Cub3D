@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: aweaver <aweaver@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/29 16:01:55 by aweaver           #+#    #+#             */
-/*   Updated: 2022/10/29 16:03:31 by aweaver          ###   ########.fr       */
+/*   Created: 2022/10/29 16:29:40 by aweaver           #+#    #+#             */
+/*   Updated: 2022/10/29 16:30:05 by aweaver          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ static void	ft_is_valid_map_pattern(t_cub_data *data, char **grid, int x, int y)
 {
 	if (grid[y][x] == '1' || grid[y][x] == ' ' || grid[y][x] == '\n')
 		return ;
-	else if (grid[y][x] == '0')
+	else if (grid[y][x] == '0' || ft_is_player_starting_position(grid[y][x]))
 	{
 		if (y == 0 || grid[y + 1] == NULL)
 			ft_exit_check_grid(data, "Map is not closed with walls.\n");
@@ -50,6 +50,7 @@ static int	ft_is_valid_map_char(char c)
 
 void	ft_set_player_spawn(t_cub_data *data, int x, int y, int *spawn_counts)
 {
+	ft_is_valid_map_pattern(data, data->grid, x, y);
 	*spawn_counts += 1;
 	ft_update_player_tile(data, x, y);
 	data->player.pov = NORTH;

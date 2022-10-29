@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: aweaver <aweaver@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/29 16:02:08 by aweaver           #+#    #+#             */
-/*   Updated: 2022/10/29 16:02:53 by aweaver          ###   ########.fr       */
+/*   Created: 2022/10/29 16:29:45 by aweaver           #+#    #+#             */
+/*   Updated: 2022/10/29 16:29:50 by aweaver          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,16 +20,20 @@ int	ft_texture_x_offset(t_dda *ray)
 		x_offset = (int)ray->hzt_x % 64;
 	else
 		x_offset = (int)ray->vrt_y % 64;
+	if (x_offset < 0)
+		x_offset = 0;
 	return (x_offset);
 }
 
-int	ft_texture_y_offset(t_dda *ray, int y)
+int	ft_texture_y_offset(t_dda *ray, int y, int tex_height)
 {
 	int	y_offset;
 	int	dist_from_top;
 
 	dist_from_top = y + ((ray->strip_height / 2) - (HEIGHT / 2));
-	y_offset = dist_from_top * ((double)TEX_SIZE / ray->strip_height);
+	y_offset = dist_from_top * ((double)tex_height / ray->strip_height);
+	if (y_offset < 0)
+		y_offset = 0;
 	return (y_offset);
 }
 
@@ -53,7 +57,6 @@ void	ft_render_wall(t_cub_data *data, int top, int bottom, t_dda *ray)
 	int	y;
 	int	x;
 	int	x_offset;
-	int	y_offset;
 	int	colour;
 
 	x = ray->id;
@@ -64,8 +67,7 @@ void	ft_render_wall(t_cub_data *data, int top, int bottom, t_dda *ray)
 		ft_put_pix_img(&data->img, x, y, data->ceilling);
 	while (y < bottom)
 	{
-		y_offset = ft_texture_y_offset(ray, y);
-		colour = ft_pick_colour(data, ray, y_offset, x_offset);
+		colour = ft_pick_colour(data, ray, y, x_offset);
 		ft_put_pix_img(&data->img, x, y, colour);
 		y++;
 	}

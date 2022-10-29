@@ -5,12 +5,27 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: aweaver <aweaver@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/29 16:02:11 by aweaver           #+#    #+#             */
-/*   Updated: 2022/10/29 16:03:29 by aweaver          ###   ########.fr       */
+/*   Created: 2022/10/29 16:29:34 by aweaver           #+#    #+#             */
+/*   Updated: 2022/10/29 16:30:03 by aweaver          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+
+static int	ft_p_or_zero(int tile)
+{
+	if (tile == '0')
+		return (1);
+	if (tile == 'N')
+		return (1);
+	if (tile == 'S')
+		return (1);
+	if (tile == 'E')
+		return (1);
+	if (tile == 'W')
+		return (1);
+	return (0);
+}
 
 int	ft_get_player_offset_x(t_cub_data *data, int px)
 {
@@ -61,7 +76,7 @@ void	ft_fill_minimap(char minimap[(MMAP_FOG*2) + 2][(MMAP_FOG *2) + 2]
 				minimap[y][x] = '1';
 			else if (data->grid[offset_y + y][offset_x + x] == ' ')
 				minimap[y][x] = ' ';
-			else if (data->grid[offset_y + y][offset_x + x] != '\n')
+			else if (ft_p_or_zero(data->grid[offset_y + y][offset_x + x]) == 1)
 				minimap[y][x] = '0';
 		}
 		minimap[y][x] = '\0';

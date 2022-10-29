@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   dda_rays_bonus.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aweaver <aweaver@student.42.fr>            +#+  +:+       +#+        */
+/*   By: elouisia <elouisia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/29 16:29:44 by aweaver           #+#    #+#             */
-/*   Updated: 2022/10/29 16:30:06 by aweaver          ###   ########.fr       */
+/*   Updated: 2022/10/29 19:30:18 by elouisia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void	ft_hzt_init(t_cub_data *data, t_dda *ray)
+static void	ft_hzt_init(t_cub_data *data, t_dda *ray)
 {
 	ray->inter_y = floor(data->player.y / 64.0) * 64.0;
 	if (ray->facing_up == FALSE)
@@ -54,7 +54,7 @@ void	ft_hzt_intersections(t_cub_data *data, t_dda *ray)
 	}
 }
 
-void	ft_vrt_init(t_cub_data *data, t_dda *ray)
+static void	ft_vrt_init(t_cub_data *data, t_dda *ray)
 {
 	ray->inter_x = floor(data->player.x / 64.0) * 64.0;
 	if (ray->facing_left == FALSE)

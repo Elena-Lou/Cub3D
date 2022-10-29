@@ -3,21 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   check_wall_texture_functions_bonus.c               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aweaver <aweaver@student.42.fr>            +#+  +:+       +#+        */
+/*   By: elouisia <elouisia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/29 16:29:41 by aweaver           #+#    #+#             */
-/*   Updated: 2022/10/29 16:30:05 by aweaver          ###   ########.fr       */
+/*   Updated: 2022/10/29 19:23:07 by elouisia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
 #include <fcntl.h>
-#include <errno.h>
 #include <string.h>
 #include "cub3d.h"
-#include "get_next_line.h"
 
-int	ft_check_path(char *path)
+static int	ft_check_path(char *path)
 {
 	int		fd;
 	char	*line;

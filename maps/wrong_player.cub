@@ -1,7 +1,7 @@
-NO images/blue_wall.xpm
-SO images/red_brick.xpm
-WE images/brown_wall.xpm
-EA images/grey_wall.xpm
+NO images/wood.xpm
+SO images/mossy.xpm
+WE images/mossy.xpm
+EA images/mossy.xpm
 
 F 220,100,0
 C 225,30,0

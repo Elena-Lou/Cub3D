@@ -6,7 +6,7 @@
 /*   By: elouisia <elouisia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/28 16:29:07 by elouisia          #+#    #+#             */
-/*   Updated: 2022/10/27 14:29:04 by elouisia         ###   ########.fr       */
+/*   Updated: 2022/10/29 19:34:52 by elouisia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,7 @@
 
 int	ft_close_window(t_cub_data *data)
 {
-	int	i;
-
-	i = 0;
-	while (i < 4)
-	{
-		mlx_destroy_image(data->mlx_ptr, data->tex[i].img);
-		i++;
-	}
+	ft_clear_textures(data);
 	mlx_destroy_image(data->mlx_ptr, data->minimap.mlx_img);
 	mlx_destroy_image(data->mlx_ptr, data->img.mlx_img);
 	mlx_destroy_window(data->mlx_ptr, data->win_ptr);

@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   check_map_grid_bonus.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aweaver <aweaver@student.42.fr>            +#+  +:+       +#+        */
+/*   By: elouisia <elouisia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/29 16:29:40 by aweaver           #+#    #+#             */
-/*   Updated: 2022/10/29 16:30:05 by aweaver          ###   ########.fr       */
+/*   Updated: 2022/10/29 19:43:05 by elouisia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-static int	ft_is_player_starting_position(char c)
+int	ft_is_player_starting_position(char c)
 {
 	if (c == 'N' || c == 'E' || c == 'W' || c == 'S')
 		return (1);

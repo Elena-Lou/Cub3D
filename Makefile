@@ -45,6 +45,7 @@ SRCS	=		main \
 					create_map_grid\
 					check_map_grid\
 					check_tile\
+					check_newlines\
 				)\
 				$(addprefix utils/, \
 					free_functions\

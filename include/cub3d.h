@@ -6,7 +6,7 @@
 /*   By: elouisia <elouisia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/06 15:54:20 by elouisia          #+#    #+#             */
-/*   Updated: 2022/10/29 16:31:35 by aweaver          ###   ########.fr       */
+/*   Updated: 2022/10/29 17:35:20 by aweaver          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -244,9 +244,15 @@ void	ft_check_map_content(t_cub_data *data);
 int		ft_check_name(char *map_name);
 
 /*
+** CHECK_NEWLINES.C
+*/
+
+int		ft_map_contains_newline(char **grid, int x, int y);
+/*
 ** CHECK_MAP_GRID.C
 */
 
+int		ft_is_player_starting_position(char c);
 int		ft_create_map_grid(t_cub_data *data);
 void	ft_check_map_grid(t_cub_data *data, char **grid);
 

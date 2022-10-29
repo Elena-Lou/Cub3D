@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   map_to_list.c                                      :+:      :+:    :+:   */
+/*   map_to_list_bonus.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: elouisia <elouisia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/07 16:04:09 by elouisia          #+#    #+#             */
-/*   Updated: 2022/10/28 16:28:10 by aweaver          ###   ########.fr       */
+/*   Updated: 2022/10/29 15:17:09 by aweaver          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,8 @@ int	ft_map_to_list(t_cub_data *data, char *map_file)
 		if (line && ft_add_line_map(line, data) == WRONG_MALLOC)
 			return (get_next_line(GNL_FLUSH), ft_err_msg("Malloc error."));
 	}
-	ft_lstiter(data->lst_map, &ft_print_lst_map);
+	if (SHOW_MAP)
+		ft_lstiter(data->lst_map, &ft_print_lst_map);
 	ft_putstr_fd("\n", 1);
 	close(fd);
 	return (0);

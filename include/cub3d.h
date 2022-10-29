@@ -6,7 +6,7 @@
 /*   By: elouisia <elouisia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/06 15:54:20 by elouisia          #+#    #+#             */
-/*   Updated: 2022/10/28 19:23:31 by aweaver          ###   ########.fr       */
+/*   Updated: 2022/10/29 15:16:37 by aweaver          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,10 @@
 */
 
 /* MAP_TO_LIST */
+
+# ifndef SHOW_MAP
+#  define SHOW_MAP 0
+# endif
 
 # ifndef WRONG_MAP_NAME
 #  define WRONG_MAP_NAME 1

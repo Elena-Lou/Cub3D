@@ -1,5 +1,5 @@
 NAME = cub3D
-
+BONUS = cub3D_bonus
 
 #############################################################################
 #							COMPILATION										#
@@ -75,48 +75,6 @@ SRCS	=		main \
 					set_textures\
 				)\
 
-#SRCS_B	=	$(addprefix bonus/, \
-#				main_bonus.c \
-#				$(addprefix parsing/, \
-#					map_to_list_bonus.c\
-#					check_map_content_bonus.c\
-#					check_map_name_bonus.c\
-#					check_wall_texture_functions_bonus.c\
-#					check_ceilling_floor_texture_functions_bonus.c\
-#					create_map_grid_bonus.c\
-#					check_map_grid_bonus.c\
-#					check_tile_bonus.c\
-#				)\
-#				$(addprefix utils/, \
-#					free_functions_bonus.c\
-#					error_message_bonus.c\
-#				)\
-#				$(addprefix image/, \
-#					image_utils_bonus.c\
-#					window_utils_bonus.c\
-#					rendition_bonus.c\
-#					minimap_bonus.c\
-#					print_minimap_bonus.c\
-#					)\
-#				$(addprefix movement/, \
-#					player_movement_bonus.c\
-#					player_rotation_bonus.c\
-#					key_checks_bonus.c\
-#					update_tile_bonus.c\
-#				)\
-#				$(addprefix raycasting/, \
-#					dda_bonus.c\
-#					dda_maths_bonus.c\
-#					dda_rays_bonus.c\
-#					wall_projection_bonus.c\
-#				)\
-#				$(addprefix textures/, \
-#					apply_textures_bonus.c\
-#					pick_colours_bonus.c\
-#					set_textures_bonus.c\
-#				)\
-#			)
-
 SRCS_BONUS = $(addsuffix _bonus.c , $(SRCS))
 SRCS_DIR = ./srcs/
 
@@ -143,47 +101,50 @@ NO_COLOUR	= \033[m
 #############################################################################
 
 all: $(NAME)
-	@make $(NAME) -q && echo "$(GREEN)All Good Here !$(NO_COLOUR)"
+			@make $(NAME) -q && echo "$(GREEN)All Good Here !$(NO_COLOUR)"
+
+bonus:		$(BONUS)
+			@make $(BONUS) -q && echo "$(GREEN)All Good Here !$(NO_COLOUR)"
 
 $(OBJS_DIR)%.o:	$(SRCS_DIR)%.c
-		@mkdir -p $(dir $@)
-		$(CC) $(CFLAGS) -o $@ -c $< $(DEPSFLAGS) $(INCS)
+			@mkdir -p $(dir $@)
+			$(CC) $(CFLAGS) -o $@ -c $< $(DEPSFLAGS) $(INCS)
 
 $(LIBFT):
-		@make $(SILENT) -C ./libft/ all
-		@echo "$(PURPLE)\nLibft $(CYAN)compiled\n$(NO_COLOUR)"
+			@make $(SILENT) -C ./libft/ all
+			@echo "$(PURPLE)\nLibft $(CYAN)compiled\n$(NO_COLOUR)"
 
 $(MLX):
-		@make $(SILENT) -C ./minilibx/ all
-		@echo "$(CYAN)\nMiniLibX $(PURPLE)compiled\n$(NO_COLOUR)"
+			@make $(SILENT) -C ./minilibx/ all
+			@echo "$(CYAN)\nMiniLibX $(PURPLE)compiled\n$(NO_COLOUR)"
 
-bonus:	$(OBJS_BONUS) $(LIBFT) $(MLX)
+$(NAME): $(OBJS) $(LIBFT) $(MLX)
+			$(CC) $(CFLAGS) $(OBJS) -o $@ $(INCS) $(LIBFT) minilibx/libmlx_Linux.a $(LIBS)
+			@echo "$(ORANGE)cub3D$(CYAN) is ready$(NO_COLOUR)"
+
+$(BONUS):	$(OBJS_BONUS) $(LIBFT) $(MLX)
 			$(CC) $(CFLAGS) $(OBJS_BONUS) -o $@ $(INCS) $(LIBFT) minilibx/libmlx_Linux.a $(LIBS)
 			@echo "$(ORANGE)cub3D$(CYAN) is ready$(NO_COLOUR)"
 
-$(NAME): $(OBJS) $(LIBFT) $(MLX)
-		$(CC) $(CFLAGS) $(OBJS) -o $@ $(INCS) $(LIBFT) minilibx/libmlx_Linux.a $(LIBS)
-		@echo "$(ORANGE)cub3D$(CYAN) is ready$(NO_COLOUR)"
-
 clean:
-		@make $(SILENT) -C $(LIBFT_PATH) clean
-		@make $(SILENT) -C $(MLX_PATH) clean
-		$(RM) $(OBJS_DIR)
+			@make $(SILENT) -C $(LIBFT_PATH) clean
+			@make $(SILENT) -C $(MLX_PATH) clean
+			$(RM) $(OBJS_DIR)
 
 fclean: clean
-		$(RM) minilibx/libmlx.a
-		$(RM) $(NAME)
-		@make $(SILENT) -C $(LIBFT_PATH) fclean
-		@rm -f $(MLX)
+			$(RM) minilibx/libmlx.a
+			$(RM) $(NAME)
+			@make $(SILENT) -C $(LIBFT_PATH) fclean
+			@rm -f $(MLX)
 
 re:		fclean
-		@make $(SILENT) all
+			@make $(SILENT) all
 
 test:	all
-		./$(NAME) maps/small.cub
+			./$(NAME) maps/small.cub
 
 vtest:	all
-		$(VALGRIND) ./$(NAME) maps/default_north.cub
+			$(VALGRIND) ./$(NAME) maps/default_north.cub
 
 -include $(DEPS)
 

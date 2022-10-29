@@ -6,13 +6,13 @@
 /*   By: elouisia <elouisia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/16 13:06:38 by aweaver           #+#    #+#             */
-/*   Updated: 2022/10/28 16:22:14 by aweaver          ###   ########.fr       */
+/*   Updated: 2022/10/29 19:10:32 by elouisia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void	ft_check_map_header(void *arg)
+static void	ft_check_map_header(void *arg)
 {
 	t_map_data			*map;
 	const char			*comp[] = {"NO", "SO", "EA", "WE", "F", "C"};
@@ -29,10 +29,10 @@ void	ft_check_map_header(void *arg)
 			if (i < 4)
 				ft_check_texture(map, &map->data->tex[i].path, (char *)comp[i]);
 			else if (i == 4)
-				ft_check_floor_ceilling(map,
+				ft_check_floor_ceiling(map,
 					&map->data->floor, (char *)comp[i]);
 			else
-				ft_check_floor_ceilling(map,
+				ft_check_floor_ceiling(map,
 					&map->data->ceilling, (char *)comp[i]);
 			return ;
 		}
@@ -40,7 +40,7 @@ void	ft_check_map_header(void *arg)
 	}
 }
 
-void	ft_tokenise_map(void *arg)
+static void	ft_tokenise_map(void *arg)
 {
 	t_map_data	*map_data;
 
@@ -53,7 +53,7 @@ void	ft_tokenise_map(void *arg)
 		map_data->flag_and_path = ft_free_strptr(map_data->flag_and_path);
 }
 
-void	ft_check_texture_all_set(t_cub_data *data)
+static void	ft_check_texture_all_set(t_cub_data *data)
 {
 	int			i;
 

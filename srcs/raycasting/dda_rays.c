@@ -6,13 +6,13 @@
 /*   By: elouisia <elouisia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/17 15:20:07 by elouisia          #+#    #+#             */
-/*   Updated: 2022/10/28 15:13:26 by elouisia         ###   ########.fr       */
+/*   Updated: 2022/10/29 19:30:00 by elouisia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void	ft_hzt_init(t_cub_data *data, t_dda *ray)
+static void	ft_hzt_init(t_cub_data *data, t_dda *ray)
 {
 	ray->inter_y = floor(data->player.y / 64.0) * 64.0;
 	if (ray->facing_up == FALSE)
@@ -54,7 +54,7 @@ void	ft_hzt_intersections(t_cub_data *data, t_dda *ray)
 	}
 }
 
-void	ft_vrt_init(t_cub_data *data, t_dda *ray)
+static void	ft_vrt_init(t_cub_data *data, t_dda *ray)
 {
 	ray->inter_x = floor(data->player.x / 64.0) * 64.0;
 	if (ray->facing_left == FALSE)

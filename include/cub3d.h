@@ -6,7 +6,7 @@
 /*   By: elouisia <elouisia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/06 15:54:20 by elouisia          #+#    #+#             */
-/*   Updated: 2022/10/29 17:35:20 by aweaver          ###   ########.fr       */
+/*   Updated: 2022/10/29 20:00:51 by elouisia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include <stdio.h>
+# include <X11/X.h>
 # include <X11/keysym.h>
 # include <errno.h>
 # include <math.h>
@@ -223,38 +224,47 @@ typedef struct s_map_data
 	t_cub_data	*data;
 }				t_map_data;
 
-int		ft_check_texture(t_map_data *map, char **target, char *cmp);
-int		ft_check_floor_ceilling(t_map_data *map, int *target, char *cmp);
-
-/*
-**	MAIN.C
-*/
-
-void	ft_init_player(t_cub_data *data);
-int		ft_key_press_check(int key, t_cub_data *data);
-int		ft_key_release_check(int key, t_cub_data *data);
-
-/*
-**	MAP_CHECK.C
-*/
-
-int		ft_add_line_map(char *line, t_cub_data *data);
-int		ft_map_to_list(t_cub_data *data, char *map_file);
-void	ft_check_map_content(t_cub_data *data);
-int		ft_check_name(char *map_name);
-
 /*
 ** CHECK_NEWLINES.C
 */
 
 int		ft_map_contains_newline(char **grid, int x, int y);
+
+/*
+**	CHECK_CEILING_FLOOR_FUNCTIONS.C
+*/
+
+int		ft_check_floor_ceiling(t_map_data *map, int *target, char *cmp);
+
+/*
+** CHECK_MAP_CONTENT.C
+*/
+
+void	ft_check_map_content(t_cub_data *data);
+int		ft_check_texture(t_map_data *map, char **target, char *cmp);
+
 /*
 ** CHECK_MAP_GRID.C
 */
 
+void	ft_set_player_spawn(t_cub_data *data, int x, int y, int *spawn_counts);
 int		ft_is_player_starting_position(char c);
 int		ft_create_map_grid(t_cub_data *data);
 void	ft_check_map_grid(t_cub_data *data, char **grid);
+int		ft_malloc_grid(t_list *list, t_list *start, char **tab, int tab_size);
+
+/*
+**	CHECK_MAP_NAME.C
+*/
+
+int		ft_check_name(char *map_name);
+
+/*
+** MAP_TO_LIST.C
+*/
+
+int		ft_add_line_map(char *line, t_cub_data *data);
+int		ft_map_to_list(t_cub_data *data, char *map_file);
 
 /*
 ** CHECK_TILE.C
@@ -269,6 +279,7 @@ int		ft_is_void(char c);
 void	ft_clear_data_no_tex(t_cub_data *data);
 void	ft_clear_data(t_cub_data *data);
 void	ft_clear_map(void *list_elem);
+void	ft_clear_textures(t_cub_data *data);
 
 /*
 ** ERROR_MESSAGE.C
@@ -282,28 +293,60 @@ void	ft_exit_check_grid(t_cub_data *data, char *error_msg);
 **	IMAGE_UTILS.C
 */
 
-void	ft_draw_line(t_cub_data *data, double angle, double len, int colour);
-void	ft_render_minimap(t_cub_data *data);
 void	ft_put_pix_img(t_cub_img *img, int x, int y, int colour);
+
+/*
+**	WINDOW_UTILS.C
+*/
+
+int		ft_window_init(t_cub_data *data);
+int		ft_close_window(t_cub_data *data);
+
+/*
+**	RENDITION.C
+*/
+
+void	ft_draw_line(t_cub_data *data, double angle, double len, int colour);
 void	ft_render_player(t_cub_data *data, int colour);
 void	ft_render_background(t_cub_data *data, int colour);
 int		ft_render_img(t_cub_data *data);
-int		ft_window_init(t_cub_data *data);
-int		ft_close_window(t_cub_data *data);
+
+/*
+**	KEYS_CHECKS.C
+*/
+
+int		ft_key_press_check(int key, t_cub_data *data);
+int		ft_key_release_check(int key, t_cub_data *data);
+int		ft_move(t_cub_data *data, int *moved);
 
 /*
 ** DDA.C
 */
 
-void	ft_set_closest_distance(t_dda *ray);
+void	ft_set_dir(t_dda *ray);
 void	ft_set_ray_data(t_cub_data *data);
+
+/*
+** DDA_MATHS.C
+*/
+
+void	ft_set_closest_distance(t_dda *ray);
+double	ft_normalise_angle(double theta);
 void	ft_distance_to_projection_plane(t_player *player);
+double	ft_dist_btw_pts(double plr_x, double plr_y, double hit_x, double hit_y);
+
+/*
+** DDA_RAYS.C
+*/
+
 void	ft_cast_ray(t_cub_data *data, t_dda *ray);
 void	ft_hzt_intersections(t_cub_data *data, t_dda *ray);
 void	ft_vrt_intersections(t_cub_data *data, t_dda *ray);
-double	ft_normalise_angle(double theta);
-void	ft_set_dir(t_dda *ray);
-double	ft_dist_btw_pts(double plr_x, double plr_y, double hit_x, double hit_y);
+
+/*
+** WALL_PROJECTION.C
+*/
+
 void	ft_wall_scaling(t_cub_data *data, t_dda *ray);
 void	ft_wall_projection(t_cub_data *data, t_dda *ray);
 
@@ -311,12 +354,16 @@ void	ft_wall_projection(t_cub_data *data, t_dda *ray);
 ** PLAYER_MOVEMENT.C
 */
 
-int		ft_move(t_cub_data *data, int *moved);
 int		ft_is_valid_move(t_cub_data *data, int x, int y);
 int		ft_move_forward(t_cub_data *data);
 int		ft_move_backward(t_cub_data *data);
 int		ft_strafe_left(t_cub_data *data);
 int		ft_strafe_right(t_cub_data *data);
+
+/*
+** PLAYER_MOVEMENT.C
+*/
+
 int		ft_rotate_left(t_cub_data *data);
 int		ft_rotate_right(t_cub_data *data);
 
@@ -335,6 +382,7 @@ int		ft_get_player_offset_y(t_cub_data *data, int py);
 int		ft_get_player_offset_x(t_cub_data *data, int px);
 void	ft_fill_minimap(char minimap[(MMAP_FOG*2) + 2][(MMAP_FOG *2) + 2],
 			t_cub_data *data, int offset_x, int offset_y);
+void	ft_render_minimap(t_cub_data *data);
 
 /*
 ** PRINT_MINIMAP.C

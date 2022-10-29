@@ -31,6 +31,7 @@ objects/*
 
 # Executables
 cub3D
+cub3D_bonus
 *.exe
 *.out
 *.app

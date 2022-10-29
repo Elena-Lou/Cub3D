@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minimap_bonus.c                                    :+:      :+:    :+:   */
+/*   minimap.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aweaver <aweaver@student.42.fr>            +#+  +:+       +#+        */
+/*   By: elouisia <elouisia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/29 16:29:34 by aweaver           #+#    #+#             */
-/*   Updated: 2022/10/29 16:30:03 by aweaver          ###   ########.fr       */
+/*   Created: 2022/09/28 16:42:27 by elouisia          #+#    #+#             */
+/*   Updated: 2022/10/29 18:20:20 by aweaver          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,10 +74,10 @@ void	ft_fill_minimap(char minimap[(MMAP_FOG*2) + 2][(MMAP_FOG *2) + 2]
 				minimap[y][x] = 'P';
 			else if (data->grid[offset_y + y][offset_x + x] == '1')
 				minimap[y][x] = '1';
-			else if (data->grid[offset_y + y][offset_x + x] == ' ')
-				minimap[y][x] = ' ';
 			else if (ft_p_or_zero(data->grid[offset_y + y][offset_x + x]) == 1)
 				minimap[y][x] = '0';
+			else
+				minimap[y][x] = ' ';
 		}
 		minimap[y][x] = '\0';
 	}

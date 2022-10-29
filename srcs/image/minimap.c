@@ -6,7 +6,7 @@
 /*   By: elouisia <elouisia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/28 16:42:27 by elouisia          #+#    #+#             */
-/*   Updated: 2022/10/20 11:34:05 by aweaver          ###   ########.fr       */
+/*   Updated: 2022/10/29 12:21:48 by aweaver          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ void	ft_fill_minimap(char minimap[(MMAP_FOG*2) + 2][(MMAP_FOG *2) + 2]
 				minimap[y][x] = '1';
 			else if (data->grid[offset_y + y][offset_x + x] == ' ')
 				minimap[y][x] = ' ';
-			else
+			else if (data->grid[offset_y + y][offset_x + x] != '\n')
 				minimap[y][x] = '0';
 		}
 		minimap[y][x] = '\0';

@@ -6,7 +6,7 @@
 /*   By: elouisia <elouisia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/29 16:29:39 by aweaver           #+#    #+#             */
-/*   Updated: 2022/10/29 19:11:18 by elouisia         ###   ########.fr       */
+/*   Updated: 2022/10/30 10:41:41 by aweaver          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,12 +56,13 @@ static void	ft_tokenise_map(void *arg)
 static void	ft_check_texture_all_set(t_cub_data *data)
 {
 	int			i;
+	const char	*texture[] = {"North: ", "South: ", "East: ", "West: "};
 
 	i = 0;
 	while (i < 4)
 	{
 		if (data->tex[i].path == NULL)
-			ft_wrong_map_exit(data->lst_map, "Texture: ", "not set.");
+			ft_wrong_map_exit(data->lst_map, (char *)texture[i], "not set.");
 		i++;
 	}
 	if (data->floor == -1)

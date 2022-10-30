@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   create_map_grid.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aweaver <aweaver@student.42.fr>            +#+  +:+       +#+        */
+/*   By: elouisia <elouisia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/28 11:11:14 by aweaver           #+#    #+#             */
-/*   Updated: 2022/10/07 13:26:06 by aweaver          ###   ########.fr       */
+/*   Updated: 2022/10/29 19:43:45 by elouisia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-t_list	*ft_skip_header(t_cub_data *data)
+static t_list	*ft_skip_header(t_cub_data *data)
 {
 	t_map_data	*map;
 	t_list		*list;
@@ -37,7 +37,7 @@ t_list	*ft_skip_header(t_cub_data *data)
 	return (list);
 }
 
-int	ft_create_str(char **tab, int tab_size, int length)
+static int	ft_create_str(char **tab, int tab_size, int length)
 {
 	int	i;
 
@@ -59,7 +59,7 @@ int	ft_create_str(char **tab, int tab_size, int length)
 	return (0);
 }
 
-void	ft_fill_grid(t_list *list, int length)
+static void	ft_fill_grid(t_list *list, int length)
 {
 	t_map_data	*map;
 	t_cub_data	*data;

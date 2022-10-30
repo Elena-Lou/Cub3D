@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   window_utils_bonus.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aweaver <aweaver@student.42.fr>            +#+  +:+       +#+        */
+/*   By: elouisia <elouisia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/29 16:29:36 by aweaver           #+#    #+#             */
-/*   Updated: 2022/10/29 16:30:03 by aweaver          ###   ########.fr       */
+/*   Updated: 2022/10/29 19:35:18 by elouisia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,7 @@
 
 int	ft_close_window(t_cub_data *data)
 {
-	int	i;
-
-	i = 0;
-	while (i < 4)
-	{
-		mlx_destroy_image(data->mlx_ptr, data->tex[i].img);
-		i++;
-	}
+	ft_clear_textures(data);
 	mlx_destroy_image(data->mlx_ptr, data->minimap.mlx_img);
 	mlx_destroy_image(data->mlx_ptr, data->img.mlx_img);
 	mlx_destroy_window(data->mlx_ptr, data->win_ptr);

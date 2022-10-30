@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_ceilling_floor_texture_functions.c           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aweaver <aweaver@student.42.fr>            +#+  +:+       +#+        */
+/*   By: elouisia <elouisia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 11:31:41 by aweaver           #+#    #+#             */
-/*   Updated: 2022/10/28 19:37:22 by aweaver          ###   ########.fr       */
+/*   Updated: 2022/10/29 19:06:28 by elouisia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ static int	ft_get_argb(int a, int red, int green, int blue)
 	return (argb);
 }
 
-int	ft_check_redefinition(t_map_data *map, char *col_name, int *colour,
+static int	ft_check_redefinition(t_map_data *map, char *col_name, int *colour,
 	int new_colour)
 {
 	if (*colour == -1)
@@ -46,7 +46,7 @@ int	ft_check_redefinition(t_map_data *map, char *col_name, int *colour,
 	return (1);
 }
 
-int	ft_check_value(char *str, int *colour)
+static int	ft_check_value(char *str, int *colour)
 {
 	int	i;
 
@@ -66,7 +66,7 @@ int	ft_check_value(char *str, int *colour)
 	return (0);
 }
 
-int	ft_check_floor_ceilling(t_map_data *map, int *target, char *cmp)
+int	ft_check_floor_ceiling(t_map_data *map, int *target, char *cmp)
 {
 	char	*tmp;
 	int		rgb[3];

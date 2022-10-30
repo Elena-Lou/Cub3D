@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   wall_projection_bonus.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aweaver <aweaver@student.42.fr>            +#+  +:+       +#+        */
+/*   By: elouisia <elouisia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/29 16:29:44 by aweaver           #+#    #+#             */
-/*   Updated: 2022/10/29 16:30:06 by aweaver          ###   ########.fr       */
+/*   Updated: 2022/10/29 19:31:53 by elouisia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@
     strip_height = wall_size / ray->distance * distance_to_pp
 */
 
-double	ft_glasses_for_fish(t_cub_data *data, t_dda *ray)
+static double	ft_glasses_for_fishes(t_cub_data *data, t_dda *ray)
 {
 	double	correct_dist;
 
@@ -44,7 +44,7 @@ void	ft_wall_scaling(t_cub_data *data, t_dda *ray)
 {
 	double	distance;
 
-	distance = ft_glasses_for_fish(data, ray);
+	distance = ft_glasses_for_fishes(data, ray);
 	ray->strip_height = (64.0 / distance) * data->player.dist_pp;
 }
 

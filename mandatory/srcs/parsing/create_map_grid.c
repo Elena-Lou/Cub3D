@@ -6,7 +6,7 @@
 /*   By: elouisia <elouisia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/28 11:11:14 by aweaver           #+#    #+#             */
-/*   Updated: 2022/10/29 19:43:45 by elouisia         ###   ########.fr       */
+/*   Updated: 2022/10/30 15:07:49 by aweaver          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,8 @@ static t_list	*ft_skip_header(t_cub_data *data)
 				i++;
 			else if (ft_isalpha(map->line[i]))
 				break ;
-			else if ((map->line[i]) == '0' || map->line[i] == '1')
+			else if ((map->line[i]) == '0' || map->line[i] == '1'
+				|| ft_is_player_starting_position(map->line[i]))
 				return (list);
 		}
 		list = list->next;
@@ -119,6 +120,12 @@ int	ft_create_map_grid(t_cub_data *data)
 	tab = malloc(sizeof(*tab) * (tab_size + 1));
 	if (tab == NULL)
 		return (ft_wrong_map_exit(data->lst_map, "Malloc: ", "Error"), 1);
+	if (tab_size == 0)
+	{
+		free(tab);
+		tab = NULL;
+		ft_wrong_map_exit(data->lst_map, "Map: ", "grid not found");
+	}
 	data->grid = tab;
 	if (ft_malloc_grid(list, list, tab, tab_size) == WRONG_MALLOC)
 		return (ft_wrong_map_exit(data->lst_map, "Malloc: ", "Error"), 1);

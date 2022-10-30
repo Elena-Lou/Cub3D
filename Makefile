@@ -76,13 +76,13 @@ SRCS	=		main \
 					set_textures\
 				)\
 
-SRCS_BONUS = $(addsuffix _bonus.c , $(SRCS))
+SRCS_BONUS = $(addprefix bonus/, $(addsuffix _bonus.c, $(SRCS)))
 SRCS_DIR = ./srcs/
 
 OBJS_DIR = ./objs/
 
-OBJS = $(addsuffix .o, $(addprefix $(OBJS_DIR), $(SRCS)))
-OBJS_BONUS = $(addsuffix _bonus.o, $(addprefix $(OBJS_DIR), $(SRCS)))
+OBJS = $(addprefix mandatory/, $(addsuffix .o, $(addprefix $(OBJS_DIR), $(SRCS))))
+OBJS_BONUS = $(addprefix bonus/, $(addsuffix _bonus.o, $(addprefix $(OBJS_DIR), $(SRCS))))
 
 DEPS = $(OBJS:.o=.d)
 DEPS_BONUS = $(OBJS_BONUS:.o=.d)
@@ -107,9 +107,21 @@ all: $(NAME)
 bonus:		$(BONUS)
 			@make $(BONUS) -q && echo "$(GREEN)All Good Here !$(NO_COLOUR)"
 
-$(OBJS_DIR)%.o:	$(SRCS_DIR)%.c
+mandatory/$(OBJS_DIR)%.o:	mandatory/$(SRCS_DIR)%.c
 			@mkdir -p $(dir $@)
 			$(CC) $(CFLAGS) -o $@ -c $< $(DEPSFLAGS) $(INCS)
+
+$(NAME): $(OBJS) $(LIBFT) $(MLX)
+			$(CC) $(CFLAGS) $(OBJS) -o $@ $(INCS) $(LIBFT) minilibx/libmlx_Linux.a $(LIBS)
+			@echo "$(ORANGE)cub3D$(CYAN) is ready$(NO_COLOUR)"
+
+bonus/$(OBJS_DIR)%.o:	bonus/$(SRCS_DIR)%.c
+			@mkdir -p $(dir $@)
+			$(CC) $(CFLAGS) -o $@ -c $< $(DEPSFLAGS) $(INCS)
+
+$(BONUS):	$(OBJS_BONUS) $(LIBFT) $(MLX)
+			$(CC) $(CFLAGS) $(OBJS_BONUS) -o $@ $(INCS) $(LIBFT) minilibx/libmlx_Linux.a $(LIBS)
+			@echo "$(ORANGE)cub3D$(CYAN) is ready$(NO_COLOUR)"
 
 $(LIBFT):
 			@make $(SILENT) -C ./libft/ all
@@ -119,18 +131,13 @@ $(MLX):
 			@make $(SILENT) -C ./minilibx/ all
 			@echo "$(CYAN)\nMiniLibX $(PURPLE)compiled\n$(NO_COLOUR)"
 
-$(NAME): $(OBJS) $(LIBFT) $(MLX)
-			$(CC) $(CFLAGS) $(OBJS) -o $@ $(INCS) $(LIBFT) minilibx/libmlx_Linux.a $(LIBS)
-			@echo "$(ORANGE)cub3D$(CYAN) is ready$(NO_COLOUR)"
 
-$(BONUS):	$(OBJS_BONUS) $(LIBFT) $(MLX)
-			$(CC) $(CFLAGS) $(OBJS_BONUS) -o $@ $(INCS) $(LIBFT) minilibx/libmlx_Linux.a $(LIBS)
-			@echo "$(ORANGE)cub3D$(CYAN) is ready$(NO_COLOUR)"
 
 clean:
 			@make $(SILENT) -C $(LIBFT_PATH) clean
 			@make $(SILENT) -C $(MLX_PATH) clean
-			$(RM) $(OBJS_DIR)
+			$(RM) mandatory/$(OBJS_DIR)
+			$(RM) bonus/$(OBJS_DIR)
 
 fclean: clean
 			$(RM) minilibx/libmlx.a
@@ -147,6 +154,7 @@ test:	all
 vtest:	all
 			$(VALGRIND) ./$(NAME) maps/default_north.cub
 
--include $(DEPS)
 
 .PHONY: all clean fclean re test vtest bonus
+-include $(DEPS)
+-include $(DEPS_BONUS)

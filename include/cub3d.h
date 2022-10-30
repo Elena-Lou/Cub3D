@@ -6,7 +6,7 @@
 /*   By: elouisia <elouisia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/06 15:54:20 by elouisia          #+#    #+#             */
-/*   Updated: 2022/10/30 16:12:23 by aweaver          ###   ########.fr       */
+/*   Updated: 2022/10/30 17:44:54 by aweaver          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,14 @@
 
 # ifndef WRONG_MALLOC
 #  define WRONG_MALLOC 1
+# endif
+
+# ifndef NO_FLOOR
+#  define NO_FLOOR 5
+# endif
+
+# ifndef NO_CEILING
+#  define NO_CEILING 5
 # endif
 
 /* XPM */
@@ -205,7 +213,7 @@ typedef struct s_cub_data
 	char		*so;
 	char		*ea;
 	char		*we;
-	int			ceilling;
+	int			ceiling;
 	int			floor;
 	char		**grid;
 	int			map_height;
@@ -240,6 +248,7 @@ int		ft_check_floor_ceiling(t_map_data *map, int *target, char *cmp);
 ** CHECK_MAP_CONTENT.C
 */
 
+int		ft_check_texture_all_set(t_cub_data *data);
 void	ft_check_map_content(t_cub_data *data);
 int		ft_check_texture(t_map_data *map, char **target, char *cmp);
 

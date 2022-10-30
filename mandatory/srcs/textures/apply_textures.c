@@ -64,7 +64,7 @@ void	ft_render_wall(t_cub_data *data, int top, int bottom, t_dda *ray)
 	ft_init_textures(data);
 	x_offset = ft_texture_x_offset(ray);
 	while (++y < top)
-		ft_put_pix_img(&data->img, x, y, data->ceilling);
+		ft_put_pix_img(&data->img, x, y, data->ceiling);
 	while (y < bottom)
 	{
 		colour = ft_pick_colour(data, ray, y, x_offset);

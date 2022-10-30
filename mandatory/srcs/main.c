@@ -6,7 +6,7 @@
 /*   By: elouisia <elouisia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/06 15:52:30 by elouisia          #+#    #+#             */
-/*   Updated: 2022/10/29 19:58:46 by elouisia         ###   ########.fr       */
+/*   Updated: 2022/10/30 17:44:23 by aweaver          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static void	ft_init_data(t_cub_data *data)
 	data->tex[1].path = NULL;
 	data->tex[2].path = NULL;
 	data->tex[3].path = NULL;
-	data->ceilling = -1;
+	data->ceiling = -1;
 	data->floor = -1;
 	data->lst_map = NULL;
 	data->grid = NULL;

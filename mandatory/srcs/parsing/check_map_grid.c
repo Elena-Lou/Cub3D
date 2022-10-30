@@ -6,7 +6,7 @@
 /*   By: elouisia <elouisia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 09:27:26 by aweaver           #+#    #+#             */
-/*   Updated: 2022/10/29 19:42:38 by elouisia         ###   ########.fr       */
+/*   Updated: 2022/10/30 16:12:35 by aweaver          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ static void	ft_is_valid_map_pattern(t_cub_data *data, char **grid, int x, int y)
 	}
 }
 
-static int	ft_is_valid_map_char(char c)
+int	ft_is_valid_map_char(char c)
 {
 	if (ft_is_player_starting_position(c))
 		return (1);
@@ -91,7 +91,7 @@ void	ft_check_map_grid(t_cub_data *data, char **grid)
 		while (grid[y][++x])
 		{
 			if (ft_map_contains_newline(grid, x, y))
-				ft_exit_check_grid(data, "Map contains newlines.");
+				ft_exit_check_grid(data, "Map contains empty lines.");
 			if (ft_is_player_starting_position(grid[y][x]))
 				ft_set_player_spawn(data, x, y, &player);
 			if (ft_is_valid_map_char(grid[y][x]))

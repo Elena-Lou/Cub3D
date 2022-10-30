@@ -6,7 +6,7 @@
 /*   By: elouisia <elouisia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/06 15:54:20 by elouisia          #+#    #+#             */
-/*   Updated: 2022/10/29 20:00:51 by elouisia         ###   ########.fr       */
+/*   Updated: 2022/10/30 16:12:23 by aweaver          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -244,14 +244,19 @@ void	ft_check_map_content(t_cub_data *data);
 int		ft_check_texture(t_map_data *map, char **target, char *cmp);
 
 /*
+** CREATE_MAP_GRID.C
+*/
+
+int		ft_create_map_grid(t_cub_data *data);
+/*
 ** CHECK_MAP_GRID.C
 */
 
-void	ft_set_player_spawn(t_cub_data *data, int x, int y, int *spawn_counts);
 int		ft_is_player_starting_position(char c);
-int		ft_create_map_grid(t_cub_data *data);
-void	ft_check_map_grid(t_cub_data *data, char **grid);
 int		ft_malloc_grid(t_list *list, t_list *start, char **tab, int tab_size);
+int		ft_is_valid_map_char(char c);
+void	ft_set_player_spawn(t_cub_data *data, int x, int y, int *spawn_counts);
+void	ft_check_map_grid(t_cub_data *data, char **grid);
 
 /*
 **	CHECK_MAP_NAME.C

@@ -142,6 +142,7 @@ clean:
 fclean: clean
 			$(RM) minilibx/libmlx.a
 			$(RM) $(NAME)
+			$(RM) $(BONUS)
 			@make $(SILENT) -C $(LIBFT_PATH) fclean
 			@rm -f $(MLX)
 

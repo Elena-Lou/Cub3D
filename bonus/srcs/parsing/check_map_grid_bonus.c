@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_map_grid_bonus.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: elouisia <elouisia@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aweaver <aweaver@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/29 16:29:40 by aweaver           #+#    #+#             */
-/*   Updated: 2022/10/29 19:43:05 by elouisia         ###   ########.fr       */
+/*   Created: 2022/10/31 10:39:35 by aweaver           #+#    #+#             */
+/*   Updated: 2022/10/31 10:39:36 by aweaver          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,16 +87,17 @@ void	ft_check_map_grid(t_cub_data *data, char **grid)
 	player = 0;
 	while (grid[++y])
 	{
-		x = 0;
-		while (grid[y][x])
+		x = -1;
+		while (grid[y][++x])
 		{
+			if (ft_map_contains_newline(grid, x, y))
+				ft_exit_check_grid(data, "Map contains invalid data.");
 			if (ft_is_player_starting_position(grid[y][x]))
 				ft_set_player_spawn(data, x, y, &player);
 			if (ft_is_valid_map_char(grid[y][x]))
 				ft_is_valid_map_pattern(data, grid, x, y);
 			else
 				ft_exit_check_grid(data, "Map contains wrong data.");
-			x++;
 		}
 	}
 	if (player < 1)
